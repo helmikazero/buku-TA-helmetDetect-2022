@@ -9,17 +9,129 @@ Judul penelitian "Deteksi Helm Keselamatan Kerja Menggunakan CNN" mengikuti meto
 \section{Peralatan}
 \label{sec:peralatan}
 
-Alat yang digunakan yaitu: \lipsum[1]
+Dalam pengerjaan judul tugas akhir ini, terdapat beberapa peralatan dan bahan yang digunakan dalam rangka menyelesaikan penelitian ini mulai dari tools berupa software atau perangkat lunak hingga hardware atau perangkat keras. Berikut pemaparan dari alat - alat yang digunakan.
 
-\subsection{Perangkat}
-\label{subsec:perangkat}
+\subsection{Anaconda}
+\label{subsec:anaconda}
 
-Perangkat yang digunakan menggunakan spesifikasi \lipsum[1]
+Anaconda sendiri merupakan package distribution yang dibuat khusus untuk data science. Anaconda biasanya digunakan untuk membuat environment baru untuk mengisolasi proyek dan menginstall package untuk keperluan tertentu. Pada penelitian ini akan digunakan untuk membantu penulis dalam mengumpulkan package - package yang diperlukan untuk melakukan proses training dan pengembangan sistem.\cite{pankajmathur_2018}
+
+\subsection{Python}
+\label{subsec:python}
+
+Python sendiri adalah bahasa pemrograman high level yang sudah terinterpretasi dan berbasis objek. Struktur data yang sudah ada di dalam python dan penulisan syntax yang sederhana dan mudah dipahami dapat meningkatkan performa pengerjaan. Pada penelitian ini python digunakan karena merupakan bahasa pemrograman yang cocok untuk data science mengingat struktur data di python yang dinamis. Selain itu python juga sudah termasuk saat menginstall Anaconda \cite{python.org}
+
+\subsection{Visual Studio Code}
+\label{subsec:visualstudiocode}
+
+Visual Studio Code adalah source code editor yang ramah performa dan mudah digunakan untuk segala bentuk keperluan penulisan text sehari - harinya. Visual Code mendukung banyak bahasa pemrograman dan menyediakan fitur addons yang digunakan untuk mendownload package untuk berbagai macam kebutuhan berbeda. Pada penelitian ini Visual Studio Code digunakan untuk menulisa script python yang akan digunakan untuk training, pengembangan sistem, dan keperluan lainyna yang sekiranya dibutuhkan pada penelitian ini dan dapat diselesaikan dengan visual studio code.\cite{microsoft_2021}
+
+\subsection{Roboflow}
+\label{subsec:roboflow}
+
+Roboflow merupakan \emph{tools} yang membantu developer untuk mengolah segala keperluan untuk melakukan pengembangan di bidang visi komputer. Fasilitas yang ditawarkan oleh Roboflow meliputi : pengorganisasian dataset, pelabelan atau \emph{annotation} , pembagian rasio \emph{train/test}, \emph{preprocessing} yang meliputi re-size ukuran gambar, isolasi objek, grayscale, auto-adjust contrast, tile, dan bahkan sekaligus train. 
+
+
+\subsection{Google Colab}
+\label{subsec:googlecolab}
+
+Google Colab merupakan produk dari Google Research yang merupakan sarana penjalanan program Python menggunakan browser yang pada umumnya digunakan untuk keperluan machine learning, analisis data, dan pendidikan. Sebenarnya, Google Colab sendiri menggunakan Jupyter Notebook sebagai basisnya. Perbandingannya dengan Jupyter notebook yaitu penggunaan Google Colab tidak memerlukan banyak pe-nyetupan awal seperti pada Jupyter Notebook di komputer lokal. Google Colab juga memberikan fasilitas gratis kebutuhan computingnya termasuk penggunaan GPU. Tetapi terdapat limitasi - limitasi pada penggunaan Google Colab secara gratis seperti lama waktu penggunaan untuk GPU dan limitasi AFK saat menggunakannya. Tetapi batasan - batasan tersebut bisa lebih dilonggarkan lagi dengan berlangganan Google Colab Pro.
+
+Pada tugas akhir ini, Google Colab hanya digunakan untuk melakukan training untuk menghasilkan bobot - bobot menggunakan training dengan yolov5 untuk semua variasi tipe pre-trained dari yolov5, dan juga untuk mengeksport bobot yolov5 yang dihasilkan dalam format PyTorch menjadi format lain seperti ONNX atau TFLite yang dimana juga disedikana dari YOLOv5. Tetapi, Google Colab ini tidak digunakan untuk melakukan proses deteksi.
+
+
 
 \section{Desain Sistem}
 \label{sec:desainsistem}
 
-Sistem akan dibuat dengan \lipsum[1-2]
+Judul untuk tugas akhir “Deteksi Helm Keselamatan Kerja Menggunakan CNN” ini berada dalam bidang computer vision atau visi komputer yang memiliki tujuan merancang sistem yang dapat mendeteksi penggunaan helm keselamatan kerja secara real-time. Menggunakan YOLOv5 yang merupakan versi terbaru dari YOLO (You Only Look Once) yang merupakan algoritma deteksi objek yang berbasis CNN (Convolutional Neural Network). Dataset yang digunakan berupa gambar - gambar personnel proyek yang mengenakan helm keselamatan kerja dan yang tidak. Gambar - gambar tersebut dikumpulkan dari beberapa sumber seperti dataset dari kaggle dan sumber lainnya.
+
+\subsection{Alur Kerja}
+\label{subsec:alurkerja}
+
+Prosedur pengerjaan dari judul tugas akhir ini dibagi menjadi beberapa tahap yang didasari dari metodologi yang sudah disusun seperti di gambar metodologi, yaitu :
+
+\begin{enumerate}
+  \item Akuisi Dataset
+  \item Pelabelan Dataset
+  \item Preprocessing Dataset
+  \item Training Dataset dengan Yolov5
+  \item Perancangan Sistem Deteksi Helm Keselamatan Kerja
+  \item Implementasi
+  \item Evaluasi hasil implementasi
+\end{enumerate}
+
+
+\subsection{Akuisi Dataset}
+\label{subsec:akuisisidataset}
+
+Dataset yang digunakan untuk training menggunakan Yolov5 berupa dataset berisi gambar - gambar yang mengandung personel lapangan proyek yang mengenakan helm dan yang tidak mengenakan helm. Untuk penelitian ini, dataset yang digunakan berasal dari dua sumber yaitu :
+
+\begin{enumerate}
+  \item Safety Helmet Detection oleh andrewmvd
+  \par Dataset ini berisi 5000 gambar pekerja konstruksi yang meliputi orang yang menggunakan helm dan yang tidak menggunakan helm keselamatan kerja. Masin - masing
+  gambar sudah diberi label ”helmet” dan ”head”. Format anotasi label nya berupa
+  fromat PASCAL VOC yang disimpan dalam file .xml.   
+
+  \item SampleERASTY2020 dataset oleh Muhammad Aditya Wicaksono
+  \par Dataset ini berisi 8.867 gambar yang kandungannya serupa dengan dataset Safety Helmet Detection oleh andrewmvd sebelumnya. Dataset ini juga sudah lengkap dengan annotasi nya tetapi membutuhkan beberapa perubahan untuk disesuaikan dengan  metode trainingnya. Selain itu, 8.867 gambar tersebut juga sudah termasuk hasil augmentasi seperti flip, rotation, blur, dan noise.
+\end{enumerate}
+
+\subsection{Pelabelan Dataset}
+\label{subsec:pelabelandataset}
+Untuk keperluan training dan deteksi, terdapat 2 class :
+
+\begin{enumerate}
+  \item "with\textunderscore helmet" yang meliputi kepala dan helm keselamatan kerja
+  \item “no\textunderscore helmet” yang meliputi kepala tanpa helm keselamatan kerja
+\end{enumerate}
+
+
+Pada dataset yang sudah didapatkan sudah memiliki pelabelan atau anotasi nya masing - masing, tetapi khusus untuk dataset SampleERASTY2020 terdapat ketidak sesuaian untuk label Hard-hat  dimana hanya meliputi helm keselamatan kerja tanpa kepala penggunananya. Maka dari itu  dilakukan pelabelan ulang untuk dataset SampleERASTY2020 dimana hanya menggunakan file gambar yang masih belum hasil augmentasi yang berjumlah 338 gambar.
+
+\subsection{Preprocessing Dataset}
+\label{subsec:preprocessing}
+Dataset yang sudah dikumpulkan lali digabungkan dan dilakukan preprocessing yang dimana untuk tahap ini penulis memanfaatkan Roboflow.
+YOLOv5 yang digunakan untuk men-train dataset menerima gambar dalam ukuran 640x640 dengan warna RGB sehingga dataset yang ada akan diresize dalam ukuran tersebut. Source code YOLOv5 dari repository github sebenarnya sudah menyediakan fitur resize sebelum di train tetapi dari penulis melakukan resize menggunakan roboflow. 
+
+Terdapat beberapa gambar yang tidak diperlukan dari dataset yang didapatkan seperti gambar yang hanya memiliki gambar rompi proyek yang dimana tidak digunakan untuk keperluan training. Untuk beberapa gambar tersebut akan tidak diikutkan dalam export dataset dari roboflow.
+
+Penamaan kelas  label yang ada dari dataset yang sudah ada akan disesuaikan untuk keperluan penggunaan dan pemahaman yang lebih mudah. Dataset SampleERASTY2020 yang sudah dilabel ulang tidak perlu melewati proses ini tetapi untuk dataset Safety Helmet Detection perlu dilakukan penamaan ulang dimana untuk class “helmet” menjadi “with\textunderscore helmet” dan “head” menjadi “no\textunderscore helmet”.
+
+Sebelum di export, dilakukan pembagian rasio file untuk train - test - validation. Pembagian nya yaitu 70\% train (4202) , 20\% test (1.200 gambar), dan 10\% validation (600 gambar). 
+
+Lalu khusus untuk dataset SampleERASTY2020 yang sudah dilabel ulang, dilakukan beberapa augmentasi menggunakan roboflow. Augmentasi yang digunakan yaitu flip untuk horizontal dan vertikal diman menghasilkan 600 gambar tambahan. Lalu juga dilakukan augmentasi berupa noise 11\% yang menghasilkan tambahan 300 gambar.
+
+\subsection{Training Dataset}
+\label{subsec:trainingdataset}
+
+Dataset - dataset yang sudah di pre-process sebelumnya di roboflow dan sudah memiliki anotasi yang susai lalu digunakan untuk training menggunakan YOLOv5. Training ini merupakan proses pelatihan model dengan input gambar - gambar dari dataset yang sudah diberi anotasi dimana gambar dan anotasinya tersebut diolah hingga menghasilkan suatu karakteristik atau pola khusu dari kelas/label yang ditentukan sebelumnya lewat anotasi sehingga selanjutnya dapat digunakan komputer untuk menebak gambar yang nantinya dideteksi. Khusus untuk YOLOv5 yang menggunakan PyTorch sebagai framework machine learningnya, hasil training nya beruba bobot atau weight  akan diexport dalam bentuk .pt (format pytorch). 
+
+(Konfigurasi training)
+
+Proses train dilakukan dengan batch size 16 dan 150 epoch dengan optimizer default untuk yolov5 yaitu SGD. Batch\textunderscore size disini menentukan jumlah gambar yang akan digunakan untuk train dalam satu iterasi, ditentukan 16 dengan pertimbangan limitasi hardware yang digunakan untuk proses training ini. Proses training dilakukan di Colab Pro dimana dengan limitasi GPU Ram yang diberikan, digunakan sebanyak …. Untuk image size sendiri algoritma yang sudah disediakan oleh YOLOv5 hanya menyiadakan resolusi 1:1 dimana dengan mengeset parameter imgsize 640 berarti ukuran untuk \emph(height) dan \emph(width) menjadi 640x640.
+
+Proses training untuk judul ini tidak dilakukan dengan hardware komputer lokal melainkan memanfaatkan Google Colab Pro dimana proses trainingnya dijalankan secara cloud. 
+Dataset yang sudah dikumpulkan sebelumnya didownload ke storage vm Colab Pro langsung dari Roboflow.  Dengan limitasi penggunaan storage, ram, dan GPU ram serta runtime yang diberikan google colab, dilakukan penyimpanan checkpoint untuk tiap epoch training di drive pribadi penulis. Hal dilakukan untuk kemungkinan jika sekiranya di tengah proses training session VM Colab Pro nya ter -terminate dengan sendirinya. 
+
+
+\subsection{Perancangan Sistem Deteksi Helm Keselamatan Kerja}
+\label{subsec:perancangansistem}
+
+Sistem deteksi yang dibuat untuk Deteksi Helm Keselamatan kerja sendiri dikembangkan dari sistem deteksi yang sudah ada dari YOLOv5 dengan beberapa perubahan yang disesuaikan khusus untuk judul ini. 
+
+(Flowchart sistem)
+
+Sistem yang dibuat direncanakan akan dijalankan di komputer yang sudah terinstall Python dan framework PyTorch atau ONNX dimana merupakan format yang dihasilkan dari training sebelumnya.
+
+Sistem nya akan dibuat sebagai file script python yang dapat di run dan dapat menerima beberapa parameter : ukuran gambar, sumber input, dan bobot atau weight yang akan digunakan. 
+Input yang dapat digunakan dengan script yang dibuat dapat dilakukan dalam bentuk gambar, file video, link youtube, link stream, dan feed camera dengan basis dari script detect.py dari YOLOv5. Tetapi, yang akan digunakan sebagai default nanti adalah feed dari kamera atau webcam yang tersedia di hardware yang digunakan untuk menjalankan inference. Ukuran atau resolusi gambar yang diterima sebagai ukuran default yaitu 640x640. 
+
+Untuk kasus jika input berupa gambar tunggal, gambar tersebut akan digunakan untuk inference melalu model yolov5 dengan bobot yang sudah dibuat sebelumnya lalu hasil inference yolov5 akan menghasilkan beberapa output. Tetapi untuk sistem yang akan dijalankan akan memanfaatkan feed dari camera atau webcam secara realtime sehingga akan dilakukan inference untuk tiap frame yang masuk dari input webcam.
+
+Output yang dikeluarkan dari hasil inferensi menggunakan yolov5 yaitu xcenter, ycenter, width , height, confidence, dan class. Untuk keperluan menampilkan bounding box akan menggunakan xcenter, ycenter, width, dan height yang didapatkan dari output inference yang lalu dilengkapi dengan menampilkan nama class dan confidence score dari inferencenya. 
+
+Untuk fungsi trigger alarm jika terdeteksi adanya orang yang tidak menggunakan helm, untuk hasil output yang dihasilkan dari inference satu frame akan dicheck sekiranya mengandung class “no\textunderscore helmet” yang jika terpenuhi akan mentrigger fungsi TRIGGER\textunderscore ALARM yang mengandung perintah untuk mengeprint “NO HELMET DETECTED” pada display dan menjalankan audio alarm. 
 
 % Per blok diagram dijelaskan dan dibuatkan section masing-masing
 
@@ -27,26 +139,26 @@ Sistem akan dibuat dengan \lipsum[1-2]
 % \label{sec:blokdiagram}
 
 % Contoh pembuatan potongan kode
-\begin{lstlisting}[
-  language=C++,
-  caption={Program halo dunia.},
-  label={lst:halodunia}
-]
-#include <iostream>
+% \begin{lstlisting}[
+%   language=C++,
+%   caption={Program halo dunia.},
+%   label={lst:halodunia}
+% ]
+% #include <iostream>
 
-int main() {
-    std::cout << "Halo Dunia!";
-    return 0;
-}
-\end{lstlisting}
+% int main() {
+%     std::cout << "Halo Dunia!";
+%     return 0;
+% }
+% \end{lstlisting}
 
-\lipsum[2-3]
+% \lipsum[2-3]
 
-% Contoh input potongan kode dari file
-\lstinputlisting[
-  language=Python,
-  caption={Program perhitungan bilangan prima.},
-  label={lst:bilanganprima}
-]{program/bilangan-prima.py}
+% % Contoh input potongan kode dari file
+% \lstinputlisting[
+%   language=Python,
+%   caption={Program perhitungan bilangan prima.},
+%   label={lst:bilanganprima}
+% ]{program/bilangan-prima.py}
 
-\lipsum[4]
+% \lipsum[4]
