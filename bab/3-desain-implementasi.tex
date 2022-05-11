@@ -213,16 +213,20 @@ Dataset yang sudah dikumpulkan sebelumnya didownload ke storage vm Colab Pro lan
 
 Sistem deteksi yang dibuat untuk Deteksi Helm Keselamatan kerja sendiri dikembangkan dari sistem deteksi yang sudah ada dari YOLOv5 dengan beberapa perubahan yang disesuaikan khusus untuk judul ini. Flowchart untuk sistem Deteksi Helm Keselamatan Kerja dapat dilihat pada Gambar~\ref{fig:flchartdeteksi} .
 
-Sistem yang dibuat direncanakan akan dijalankan di komputer yang sudah terinstall Python dan framework PyTorch atau ONNX dimana merupakan format yang dihasilkan dari training sebelumnya.
+% Sistem yang dibuat direncanakan akan dijalankan di komputer yang sudah terinstall Python dan framework PyTorch atau ONNX dimana merupakan format yang dihasilkan dari training sebelumnya.
 
 Sistem nya akan dibuat sebagai file script python yang dapat di run dan dapat menerima beberapa parameter : ukuran gambar, sumber input, dan bobot atau weight yang akan digunakan. 
 Input yang dapat digunakan dengan script yang dibuat dapat dilakukan dalam bentuk gambar, file video, link youtube, link stream, dan feed camera dengan basis dari script detect.py dari YOLOv5. Tetapi, yang akan digunakan sebagai default nanti adalah feed dari kamera atau webcam yang tersedia di hardware yang digunakan untuk menjalankan inference. Ukuran atau resolusi gambar yang diterima sebagai ukuran default yaitu 640x640. 
 
-Untuk kasus jika input berupa gambar tunggal, gambar tersebut akan digunakan untuk inference melalu model yolov5 dengan bobot yang sudah dibuat sebelumnya lalu hasil inference yolov5 akan menghasilkan beberapa output. Tetapi untuk sistem yang akan dijalankan akan memanfaatkan feed dari camera atau webcam secara realtime sehingga akan dilakukan inference untuk tiap frame yang masuk dari input webcam.
+% Untuk kasus jika input berupa gambar tunggal, gambar tersebut akan digunakan untuk inference melalu model yolov5 dengan bobot yang sudah dibuat sebelumnya lalu hasil inference yolov5 akan menghasilkan beberapa output. Tetapi untuk sistem yang akan dijalankan akan memanfaatkan feed dari camera atau webcam secara realtime sehingga akan dilakukan inference untuk tiap frame yang masuk dari input webcam.
 
-Output yang dikeluarkan dari hasil inferensi menggunakan yolov5 yaitu xcenter, ycenter, width , height, confidence, dan class. Untuk keperluan menampilkan bounding box akan menggunakan xcenter, ycenter, width, dan height yang didapatkan dari output inference yang lalu dilengkapi dengan menampilkan nama class dan confidence score dari inferencenya. 
+Tiap frame yang masuk dari input \emph{webcam} akan digunakan untuk proses \emph{inference} melalui model \emph{yolov5} dengan \emph{weight} yang sudah dibuat sebelumnya melalui proses training. Hasil dari \emph{inference} menggunakanm \emph{YOLOv5} akan menghasilkan input berupa posisi untuk objek yang dideteksi yaitu \emph{xcenter, ycenter} serta dimensi dari objeknya yaitu \emph{widht} dan \emph{height} serta informasi nama \emph{class} dan \emph{confidence\textunderscore score} untuk tiap objek yang dideteksi. Hasil \emph{output inference} yang didapat lalu digunakan untuk menggambar \emph{bounding box} pada \emph{frame} gambar yang sedang di\emph{inference}.
+
+% Output yang dikeluarkan dari hasil inferensi menggunakan yolov5 yaitu xcenter, ycenter, width , height, confidence, dan class. Untuk keperluan menampilkan bounding box akan menggunakan xcenter, ycenter, width, dan height yang didapatkan dari output inference yang lalu dilengkapi dengan menampilkan nama class dan confidence score dari inferencenya. 
 
 Untuk fungsi trigger alarm jika terdeteksi adanya orang yang tidak menggunakan helm, untuk hasil output yang dihasilkan dari inference satu frame akan dicheck sekiranya mengandung class “no\textunderscore helmet” yang jika terpenuhi akan  menjalankan perintah untuk mengeprint “NO HELMET DETECTED” pada display dan menjalankan audio alarm. 
+
+Fungsi alarm akan dijalankan ketika dalam frame yang sedang di-\emph{inference} terdeteks objek dengan \emph{class} bernama \emph{“no\textunderscore helmet”}. Fungsi alarm ini berisi perintah untuk memainkan audio alarm untuk mensimulasikan sirine alarm. Selain menjalankan fungsi alarm, akan juga dijalanan perintah untuk mendisplay text \emph{“NO HELMET DETECTED”} pada frame yang sedang di-\emph{inference}. 
 
 \begin{figure}[ht]
   \centering
