@@ -6,8 +6,14 @@
 Bab ini akan membahas hasil dan analisa dari desain sistem yang sudah dibuat dan implementasinya. Pengujian terhadap hasil dibagi menjadi beberap bagian.
 
 \section{Pengujian Performa antar \emph{Weight}}
+\label{sec:ujiperforma}
+Repositori YOLOv5 menyediakan beberapa \emph{checkpoint} atau \emph{weight} yang merupakan hasil training model YOLOv5 dari dataset COCO yang dimanfaatkan sebagai \emph{pretrained model}. Ekspektasi penggunaan pretrained model ini yaitu bobot yang dihasilkan akan memiliki performa yang lebih tinggi daripada melakukan training tanpa pretrained model sama sekali. \emph{COCO Dataset} ini memiliki 80 \emph{class} berbeda. Seperti disebutkan pada \ref{sec:pelabelandataset} yaitu untuk keperluan penelitian ini hanya memerlukan 2 kelas yaitu "no\textunderscore helmet" dan "with\textunderscore helmet". Pada bagian ini akan dipaparkan dan dibandingkan performa antara tiap bobot yang dihasilkan dengan model pretrained dan yang tidak menggunakan pretrained model.
 
-\subsection{Pengujian Performa \emph{Weight} Hasil \emph{Pretrain} COCO Dataset}
+\subsection{Pengujian Performa \emph{Weight} dari Hasil \emph{Pretrain} COCO Dataset}
+\label{subsec:ujiperforma_coco}
+Beberapa \emph{pretrained model} yang disedikana dari repositori YOLOv5 yaitu YOLOv5n, YOLOV5s, YOLOv5m, YOLOv5l,YOLOv5l, dan YOLOv5x. Selain beberapa model pretrained tersebut juga ada versi untuk ukuran gammbar 1280 yaitu seri YOLOv5n6 hingga YOLOv5l6. Pada penelitian ini hanya menggunakan variasi YOLOv5n hingga YOLOv5l karena variasi YOLOv5x dan versi seri 6 untuk ukuran gambar 1280 membutuhkan waktu yang lebih lama. Perbedaan - perbedaan yang ada pada bobot - bobot pretrained tersebut berasal dari konfigurasi awal dari training pada dataset COCO yang menggunakan YOLOv5, terutama pada paramter "depth\textunderscore multiple" dan "width\textunderscore multiple".
+Proses validasi hasil training dilakukan menggunakan dataset Deteksi Helm Keselamatan Kerja yang pembagiannya dijelaskan pada bagian \ref{sec:preprocessing} yang berjumlah 1200 gambar dengan kelas "no\textunderscore helmet" berjumlah 1322 label dan kelas "with\textunderscore helmet" berjumlah 4294 label.
+
 
 
 \begin{longtable}{|c|c|c|c|c|}
@@ -17,7 +23,7 @@ Bab ini akan membahas hasil dan analisa dari desain sistem yang sudah dibuat dan
   \rowcolor[HTML]{C0C0C0}
   \textbf{\emph{Pretrained Weight}} & \emph{Precision}  & \emph{Recall} & \emph{mAP@.5} & \emph{Inference Time}\\
   \hline
-  YOLOv5n                           & 0.92              & 0.878         & 0.922         & 1.9ms                \\
+  YOLOv5n                           & 0.92               & 0.878         & 0.922         & 1.9ms                \\
   YOLOv5s                           & 0.927              & 0.882         & 0.929         & 4.1ms             \\
   YOLOv5m                           & 0.923             & 0.892         & 0.933        & 9ms                \\
   YOLOv5l                           & 0.917            & 0.87         & 0.919         & 13.9ms                \\
@@ -31,7 +37,7 @@ Bab ini akan membahas hasil dan analisa dari desain sistem yang sudah dibuat dan
   \label{tb:nopretrain}\\
   \hline
   \rowcolor[HTML]{C0C0C0}
-  \textbf{\emph{Pretrained Weight}} & \emph{Precision}  & \emph{Recall} & \emph{mAP@.5} & \emph{Inference Time}\\
+  \textbf{\emph{Configuration}} & \emph{Precision}  & \emph{Recall} & \emph{mAP@.5} & \emph{Inference Time}\\
   \hline
   YOLOv5n                           & 0.918              & 0.85         & 0.909         & 2.4ms                \\
   YOLOv5s                           & 0.927             & 0.865        & 0.919        & 4.1ms               \\
