@@ -25,13 +25,29 @@ Li dan teman teman pada tahun 2020 melakukan penelitian untuk metode deteksi hel
 
 \subsection{Deteksi Penggunaan Helm Pada Pengendara Bermotor Berbasis Deep Learning}
 \label{subsec:deteksihelmmotoryusuf}
-Yusuf Umar pada tahun 2020 melakukan penelitian tentang deteksi penggunaan helm pada pengendara bermotor. Pada penelitiannya menggunakan YOLOv3 yang berbasis dari CNN. Pada sistem yang dikembangkan dapat memberikan bounding box ke pengendara lalu dalam bounding box pengendara terdapat boundbox lain dari kepala hingga dada pengendara untuk mendeteksi penggunaan helm motor ada atau tidak. \cite{hanafi2020deteksi}
+\par Yusuf Umar pada tahun 2020 melakukan penelitian tentang
+ deteksi penggunaan helm pada pengendara bermotor. 
+ Pada penelitiannya menggunakan YOLOv3 yang berbasis dari CNN. 
+ Pada sistem yang dikembangkan dapat memberikan bounding box ke 
+ pengendara lalu dalam bounding box pengendara terdapat boundbox 
+ lain dari kepala hingga dada pengendara untuk mendeteksi 
+ penggunaan helm motor ada atau tidak. \cite{hanafi2020deteksi}
 
 \subsection{\emph{Safety Helmet Detection Based on YOLOv5}}
 \label{subsec:safetyhelmetyolov5}
-Zhou dan teman - teman pada awal tahun 2021 yang berupa penelitian deteksi helm keselamatan kerja yang berbasis dari YOLOv5. Pada penelitiannya Zhou dan teman - teman melakukan perbandingan dengan 4 model dari YOLOv5 yang meliputi YOLOv5s, YOLOv5m, YOLOv5l, dan YOLOv5. Selain itu Zhou dan teman - teman menggunakan dataset yang berisi 6054 gambar yang dikumpulkan dari
-internet dan di anotasi sendiri. Label anotasinya ada dua yaitu "Alarm" yang merupakan kepala tanpa helm dan
-"helmet" yang merupakan kepala dengan helm keselamatan kerja\cite{zhou_zhao_nie_2021}.
+\par Zhou dan teman - teman pada awal tahun 2021 yang berupa penelitian deteksi helm keselamatan kerja yang 
+berbasis dari YOLOv5. Pada penelitiannya Zhou dan teman - teman melakukan perbandingan dengan 4 model dari 
+YOLOv5 yang meliputi YOLOv5s, YOLOv5m, YOLOv5l, dan YOLOv5. Selain itu Zhou dan teman - teman menggunakan 
+dataset yang berisi 6054 gambar yang dikumpulkan dari internet dan di anotasi sendiri. 
+Seperti yang ditunjukan pada Gambar~\ref{fig:zhouimage}, terdapat dua kelas yaitu "Alarm" yang merupakan kepala tanpa helm dan
+"helmet"  yang merupakan kepala dengan helm keselamatan kerja\cite{zhou_zhao_nie_2021}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.7]{gambar/zhou_le.jpg}
+    \caption{Hasil Deteksi Helm Keselamatan Kerja pada penelitian oleh Zhou dan kawan - kawan}
+    \label{fig:zhouimage}  
+\end{figure}
 
 % % Contoh input gambar
 % \begin{figure}[ht]
@@ -83,15 +99,69 @@ Selain dari 2 tipe perlindungan dari benturan, standardisasi ANSI/ISEA Z89.1-201
 
 Dari situ dapat disimpulkan bahwa helm keselamatan kerja memiliki manfaat yang besar dalam melindungi kepala personel konstruksi.
 
+\section{Peraturan Menteri Tenaga Kerja dan Transmigrasi Republik Indonesia tentang Alat Pelindung Diri}
+\label{sec:peraturanapd}
+
+\par Peraturan Menteri Tenaga Kerja dan Transmigrasi Republik Indonesia NOMOR PER.08/MEN/VII/2010 mengatur tentang alat pelindung diri.
+Peraturan ini meliputi pihak - pihak yang terlibat, kewajiban penyediaan APD, peralatan yang termasuk APD, dan karakteristik tempat
+yang diwajibkan APD \cite{suratkementriantenagakerja}. Pada pasal 3 ayat 1, disebutkan alat - alat yang termasuk sebagai alat pelindung diri
+yaitu :
+
+\begin{enumerate}[nolistsep]
+    \item pelindung kepala
+    \item pelindung mata dan muka
+    \item pelindung telinga
+    \item pelindung pernapasan beserta kelengkapannya
+    \item pelindung tangan
+    \item pelindung kaki
+\end{enumerate}
+Dimana pelindung kepala ini meliputi helm keselamatan kerja atau \emph{hardhat}.
+
+\section{Peraturan Menteri Pekerjaan Umum tentang Pedoman Sistem Manajemen Keselamatan dan Kesehatan Kerja (SMK3) Konstruksi Bidang Pekerjaan}
+\label{sec:peraturansmk3}
+
+\par Peraturan Menteri Pekerjaan Umum NOMOR : 05/PRT/M/2014 mengatur Pedoman Sistem Manajemen Keselamatan dan Kesehatan Kerja (SMK3) Konstruksi Bidang Pekerjaan.
+Peraturan ini meliputi ketentuan umum tentang keselamatan dan kesehatan kerja konstruksi, sistem manajemen K3, pekerjaan konstruksi
+,ahli K3 Konstruksi, petugas K3 Konstruksi, potensi bahaya, dan risiko K3. Dijelaskan pada pasal 6 ayat 1 dan 2 bahwa Ahli K3 atau Petugas K3 wajib dilibatkan pada konstruksi
+dengan potensi bahaya tinggi atau rendah.
+
+
 \section{Convolutional Neural Network}
 \label{sec:convolutionalneuralnetwork}
 
-Convolutional Neural Network adalah metode deep learning yang didesain untuk rekognisi pada data dua 
+\par \emph{Convolutional Neural Network} adalah metode deep learning yang didesain untuk rekognisi pada data dua 
 dimensi yang dimana umumnya berupa gambar visual (tetapi tidak harus berupa gambar) dan untuk klasifikasi.
 Convolutional Neural Network memiliki kedalaman jaringan yang tinggi sehingga juga bisa termasuk sebagai \emph{Deep Neural Network}.
 Jika dibandingan dengan \emph{Multilayer Perceptron} atau MLP, kemampuan CNN untuk klasifikasi citra lebih baik dibandingkan dengan MLP karena MLP tidak memiliki
 kemampuan untuk menyimpan \emph{spatial information} dari gambar dimana satu \emph{pixel} pada gambar dianggap sebagai satu fitur
-terpisah atau independen.
+terpisah atau independen \cite{putra2016klasifikasi}. \emph{Convolutional Neural Network} adalah bentuk \emph{deep neural network} yang tidak hanya
+sekadar memiliki banyak \emph{layer} seperti konsep \emph{deep learning} tetapi juga meniru bagaimaimana cara otak manusia mengenali sebuah gambar \cite{kim2017convolutional}.
+
+\par Sebelum adanya \emph{Convolutional Neural Network},pada \emph{image classification} atau \emph{recognition} dibuat sistem independen khusus yang hanya digunakan
+untuk pengambilan fitur dari sebuah gambar dan tidak termasuk dari \emph{machine learning}-nya sendiri yang dimana membutuhkan waktu dan tenaga yang lebih. Selain itu, \emph{feature extractor}
+independen ini juga tidak selalu menghasilkan performa yang stabil. Sistem \emph{fiture extradctor} independen ini digunakan sebelum dilakukan klasifikasi seperti yang ditunjukkan pada Gambar~\ref{fig:imgecog_beforeconv}.
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=1]{gambar/imgrecog_beforconv.jpg}
+    \caption{Sistem \emph{Feature Extractor} yang terpisah dari proses \emph{Machine Learning}}
+    \label{fig:imgecog_beforeconv}  
+\end{figure}
+
+\par \emph{Convolutional Neural Network} mengikutsertakan proses pengambil fitur bersama dengan 
+proses \emph{learning}-nya sendiri seperti yang ditunjukan pada Gambar~\ref{fig:imgrecog_afterconv}. Disinilah perbedaan dan kelebihan utama dari \emph{Convolutional Neural Network}
+dimana CNN atau ConvNet ini secara \emph{automated} melakukan proses \emph{feature extraction} nya sendiri yang
+menggunakan \emph{neural network} khusus yang \emph{weight} nya ditentukan melalui proses \emph{training} \cite{kim2018safety}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=1]{gambar/imgrecog_afterconv.jpg}
+    \caption{\emph{Feature Extractor} yang dilakukan bersama proses \emph{training} pada CNN}
+    \label{fig:imgrecog_afterconv}  
+\end{figure}
+
+
 
 \par CNN dan MLP memiliki kemiripan dalam segi cara kerja. Perbedaan utama dari CNN dengan MLP adalah fakta
 dimana CNN merepresentasikan neuron dalam bentuk 2D atau dua dimensi sedangkan pada MLP satu dimensi.
@@ -107,18 +177,28 @@ Fully Connected Layer}, dan \emph{Activation Layer}.
 layer utama dari CNN. Pada pengolahan gambar di CNN, terjadi proses penggunaan kernel pada gambar yang diinputkan.
 Kernel berkerja seperti memindai dari dari atas kiri ke kanan bawah gambar. Proses ini sebenarnya adalah aplikasi 
 dari operasi konvolusi. Konvolusi merupakan pengaplikasian sebuah fungsi di suatu output secara berulang. Tujuan
-diberlakukannya hal ini yaitu untuk mendapatkan fitur dari input gambar yang dimana konvolusinya akan menghasilkan]
+diberlakukannya hal ini yaitu untuk mendapatkan fitur dari input gambar yang dimana konvolusinya akan menghasilkan
 transformasi linear dari data. Bobot disini dapat diartikan sebagai spesifikasi dari kernel konvolusi yang digunakan yang
-dimaksudkan untuk kernal dapat dilatih berdasarkan input yang diterima.
+dimaksudkan untuk kernal dapat dilatih berdasarkan input yang diterima. Seperti yang diilustrasikan pada Gambar~\ref{fig:ilutrasikonvolusi} , diumpamakan sebuah
+input gambar dalam bentuk matrix 5x5 berwarna hijau digunakan sebagai target konvolusi menggunakan kernel 3x3 yang diilustrasikan dengan
+warna kuning dimana akan memindai dari atas kekanan bawah dengan operasi perkalian dan akan menghasilkan output hasil konvolusi yang
+merupakan bentuk ektraksi fitur dari gambar input.
 
-\par Subsampling Layer merupakan tempat proses reduksi ukuran data dari suatu gambar atau citra. Tujuannya selain mengecilkan
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=1]{gambar/convolution_simulation.jpg}
+    \caption{Ilustrasi Konvolusi pada Matrix 5x5 dengan kernel 3x3 (Eka Putra et al., 2016)}
+    \label{fig:ilutrasikonvolusi}  
+\end{figure}
+
+\par Subsampling Layer merupakan tahap atau proses reduksi ukuran data dari suatu gambar atau citra. Tujuannya selain mengecilkan
 ukurannya yaitu meningkatkan invariasi dari posisi fitur. Pada umunya metode Max Pooling yang sering digunakan pada proses sub sampling ini.
 Max Pooling membagi keluaran dari convolution layer menjadi grid kecil yang dimana disini diambil \emph{max value}-nya dari dari setiap grid
 tadi yang digunakan untuk menyusun gambar citra yang sudah tereduksi. Menurut Springenberg et al. \cite{springenberg2014striving}, pooling layer ini digunakan
 untuk mereduksi gambar sehingga lebih mudah digantikan sebuah convolution layer dengan stride yang sama dengan pooling layer
 bersangkutan\cite{putra2016klasifikasi}.
 
-\par Fully Connected Layer digunakan untuk melakukan transformasi untuk dilakukan klasifikasi secara linear.
+\par \emph{Fully Connected Layer} digunakan untuk melakukan transformasi untuk dilakukan klasifikasi secara linear.
 Neuron yang akan diinputkan ke FC layer ini harus ditransformasikan menjadi satu dimensi yang dimana
 mengakibatkan FC layer ini hanya bisa diletakkan di akhir jaringan karena data kehilangan \emph{spatial information}-nya
 sehingga menjadi \emph{irreversible} atau tidak bisa dikembalikan.

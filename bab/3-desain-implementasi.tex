@@ -159,7 +159,7 @@ YOLOv5 yang digunakan untuk men-train dataset menerima gambar dalam ukuran 640x6
 
 Terdapat beberapa gambar yang tidak diperlukan dari dataset yang didapatkan seperti gambar yang hanya memiliki gambar rompi proyek yang dimana tidak digunakan untuk keperluan training. Untuk beberapa gambar tersebut akan tidak diikutkan dalam export dataset dari roboflow.
 
-Penamaan kelas  label yang ada dari dataset yang sudah ada akan disesuaikan untuk keperluan penggunaan dan pemahaman yang lebih mudah. Dataset SampleERASTY2020 yang sudah dilabel ulang tidak perlu melewati proses ini tetapi untuk dataset Safety Helmet Detection perlu dilakukan penamaan ulang dimana untuk class “helmet” menjadi “with\textunderscore helmet” dan “head” menjadi “no\textunderscore helmet”.
+Penamaan kelas  label yang ada dari dataset yang sudah ada akan disesuaikan untuk keperluan penggunaan dan pemahaman yang lebih mudah. Dataset SampleERASTY2020 yang sudah dilabel ulang tidak perlu melewati proses ini tetapi untuk dataset Safety Helmet Detection perlu dilakukan penamaan ulang dimana untuk class “helmet” menjadi “with\textunderscore helmet” dan “head” menjadi “no\textunderscore helmet” seperti yang ditunjukan pada Gambar \ref{fig:labelbaru}. Augmentasi tambahan juga dilakukan pada dataset untuk menambah variasi gambar pada dataset dimana untuk bentuk augmentasi yang digunakan yaitu \emph{noise} dan \emph{horizontal flip}. Proses augmentasi dilakukan di platform \emph{Roboflow} yang juga menyediakan fitur augmentasi. Dataset SampleERASTY2020 yang sudah dilabel ulang dan diaugmentasi tambahan lali digabungkan dengan dataset yang sudah didapatkan sebelumnya yang berjumlah 5000 gambar. 
 
 \begin{figure}[ht]
   \centering
@@ -168,9 +168,9 @@ Penamaan kelas  label yang ada dari dataset yang sudah ada akan disesuaikan untu
   \label{fig:labelbaru}  
 \end{figure}
 
-Sebelum di export, dilakukan pembagian rasio file untuk train - test - validation. Pembagian nya yaitu 70\% train (4202) , 20\% test (1.200 gambar), dan 10\% validation (600 gambar). Untuk \emph{training} menggunakan YOLOv5 yang berbasis \emph{PyTorch}, \emph{Roboflow} menyediakan fitur \emph{export} dataset ke format yang ditentukan dimana disini anotasinya disimpan dalam bentuk \emph{.txt} dan diatur lewat file \emph{.yaml}.
+Sebelum di export, dilakukan pembagian rasio file untuk train - test - validation. Pembagian nya yaitu 70\% train (4202) , 20\% test (1.200 gambar), dan 10\% validation (600 gambar). Untuk \emph{training} menggunakan YOLOv5 yang berbasis \emph{PyTorch}, \emph{Roboflow} menyediakan fitur \emph{export} dataset ke format yang ditentukan dimana disini anotasinya disimpan dalam bentuk \emph{.txt} dan diatur lewat file \emph{.yaml}. Lalu khusus untuk dataset SampleERASTY2020 yang sudah dilabel ulang, dilakukan beberapa augmentasi menggunakan roboflow. Augmentasi yang digunakan yaitu flip untuk horizontal dan vertikal diman menghasilkan 600 gambar tambahan. Lalu juga dilakukan augmentasi berupa noise 11\% yang menghasilkan tambahan 300 gambar.
 
-Lalu khusus untuk dataset SampleERASTY2020 yang sudah dilabel ulang, dilakukan beberapa augmentasi menggunakan roboflow. Augmentasi yang digunakan yaitu flip untuk horizontal dan vertikal diman menghasilkan 600 gambar tambahan. Lalu juga dilakukan augmentasi berupa noise 11\% yang menghasilkan tambahan 300 gambar.
+Sebelum digunakan untuk men-\emph{traing} \emph{weight}, dataset yang sebelumnya sudah digabungkan perlu ditentukan pembagiannya untuk set \emph{train - test - val}-nya. Pembagian untuk dataset yang digunakan untuk training yaitu 70\% train (4202) , 20\% test (1.200 gambar), dan 10\% validation (600 gambar). Pembagian dataset ini dilakukan melalui fitur \emph{Generate Dataset Version} pada platform \emph{Roboflow}. 
 
 \section{Training Dataset}
 \label{sec:trainingdataset}
