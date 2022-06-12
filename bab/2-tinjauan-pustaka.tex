@@ -144,7 +144,7 @@ independen ini juga tidak selalu menghasilkan performa yang stabil. Sistem \emph
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=1]{gambar/imgrecog_beforconv.jpg}
+    \includegraphics[scale=0.8]{gambar/imgrecog_beforconv.jpg}
     \caption{Sistem \emph{Feature Extractor} yang terpisah dari proses \emph{Machine Learning}}
     \label{fig:imgecog_beforeconv}  
 \end{figure}
@@ -156,7 +156,7 @@ menggunakan \emph{neural network} khusus yang \emph{weight} nya ditentukan melal
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=1]{gambar/imgrecog_afterconv.jpg}
+    \includegraphics[scale=0.8]{gambar/imgrecog_afterconv.jpg}
     \caption{\emph{Feature Extractor} yang dilakukan bersama proses \emph{training} pada CNN}
     \label{fig:imgrecog_afterconv}  
 \end{figure}
@@ -173,8 +173,12 @@ CNN diambil dari operasi linearnya yang menggunakan operasi konvolusi \cite{putr
 Pada arsitektur CNN, terdapat beberapa jenis layer yaitu \emph{Convolution Layer, Subsampling Layer, 
 Fully Connected Layer}, dan \emph{Activation Layer}.
 
-\par Operasi konvolusi dilakukan pada \emph{Convolution Layer}. Dengan begitu \emph{Convolution Layer} merupakan
-layer utama dari CNN. Pada pengolahan gambar di CNN, terjadi proses penggunaan kernel pada gambar yang diinputkan.
+\subsection{\emph{Convolution Layer}}
+\label{subsec:convolutionlayer}
+
+\par \emph{Convolution Layer} yang merupakan layer utama dari CNN yang, sesuai namanya, melakukan proses konvolusi pada gambar 
+yang lalu mengoutputkan \emph{feature map} yang dimana berguna untuk memunculkan fitur yang "unik" dari input gambar. Berbeda dengan layer pada
+\emph{neural network} lainnya, \emph{convolutional layer} menggunakan \emph{convolutional filter} atau kernel untuk mengubah gambar input untuk proses konvolusi.
 Kernel berkerja seperti memindai dari dari atas kiri ke kanan bawah gambar. Proses ini sebenarnya adalah aplikasi 
 dari operasi konvolusi. Konvolusi merupakan pengaplikasian sebuah fungsi di suatu output secara berulang. Tujuan
 diberlakukannya hal ini yaitu untuk mendapatkan fitur dari input gambar yang dimana konvolusinya akan menghasilkan
@@ -191,38 +195,37 @@ merupakan bentuk ektraksi fitur dari gambar input.
     \label{fig:ilutrasikonvolusi}  
 \end{figure}
 
+
+\subsection{\emph{Subsampling Layer}}
+\label{subsec:subsamplinglayer}
+
 \par Subsampling Layer merupakan tahap atau proses reduksi ukuran data dari suatu gambar atau citra. Tujuannya selain mengecilkan
-ukurannya yaitu meningkatkan invariasi dari posisi fitur. Pada umunya metode Max Pooling yang sering digunakan pada proses sub sampling ini.
+ukurannya yaitu meningkatkan invariasi dari posisi fitur. Pada umunya metode \emph{Max Pooling} yang sering digunakan pada proses sub sampling ini daripada \emph{Mean Pooling}.
 Max Pooling membagi keluaran dari convolution layer menjadi grid kecil yang dimana disini diambil \emph{max value}-nya dari dari setiap grid
-tadi yang digunakan untuk menyusun gambar citra yang sudah tereduksi. Menurut Springenberg et al. \cite{springenberg2014striving}, pooling layer ini digunakan
+tadi yang digunakan untuk menyusun gambar citra yang sudah tereduksi seperti yang ditunjukan pada Gambar~\ref{fig:prosespooling}. Menurut Springenberg et al. \cite{springenberg2014striving}, pooling layer ini digunakan
 untuk mereduksi gambar sehingga lebih mudah digantikan sebuah convolution layer dengan stride yang sama dengan pooling layer
 bersangkutan\cite{putra2016klasifikasi}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.6]{gambar/pooling.jpg}
+    \caption{Proses \emph{Max Pooling} dan \emph{Mean Pooling}}
+    \label{fig:prosespooling}  
+\end{figure}
+
+\subsection{\emph{Fully Connected Layer}}
+\label{subsec:fullyconnectedlayer}
 
 \par \emph{Fully Connected Layer} digunakan untuk melakukan transformasi untuk dilakukan klasifikasi secara linear.
 Neuron yang akan diinputkan ke FC layer ini harus ditransformasikan menjadi satu dimensi yang dimana
 mengakibatkan FC layer ini hanya bisa diletakkan di akhir jaringan karena data kehilangan \emph{spatial information}-nya
 sehingga menjadi \emph{irreversible} atau tidak bisa dikembalikan.
 
-\par Activation Layer adalah tempat dilakukannya fungsi aktivasi dimana dilakukan transformasi data input
+\subsection{\emph{Activation Layer}}
+\label{subsec:activationlayer}
+
+\par \emph{Activation Layer} adalah tempat dilakukannya fungsi aktivasi dimana dilakukan transformasi data input
 menjadi dimensi tinggi agar memungkinakan untuk dilakukan klasifikasi\cite{putra2016klasifikasi}.
-
-
-% \subsection{Hukum Newton}
-% \label{subsec:hukumnewton}
-
-% Newton \citep{newton1687} pernah merumuskan bahwa \lipsum[1]
-% Kemudian menjadi persamaan seperti pada persamaan \ref{eq:hukumpertamanewton}.
-
-% % Contoh pembuatan persamaan
-% \begin{equation}
-%   \label{eq:hukumpertamanewton}
-%   \sum \mathbf{F} = 0\; \Leftrightarrow\; \frac{\mathrm{d} \mathbf{v} }{\mathrm{d}t} = 0.
-% \end{equation}
-
-% \subsection{Anti Gravitasi}
-% \label{subsec:antigravitasi}
-
-% Anti gravitasi merupakan \lipsum[1]
 
 
 \section{Visi Komputer}
