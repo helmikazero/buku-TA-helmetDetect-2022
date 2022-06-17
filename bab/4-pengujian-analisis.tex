@@ -108,7 +108,7 @@ Pada bagian ini akan memaparkan hasil deteksi pada dataset validasi yang dibagi 
 
 \begin{figure}[t]
   \centering
-  \includegraphics[scale=0.1]{gambar/BerdasarkanJarak/Jarak4/val_batch0_pred.jpg}
+  \includegraphics[scale=0.15]{gambar/BerdasarkanJarak/Jarak4/val_batch0_pred.jpg}
   \caption{Hasil Prediksi Pada Jarak 4 meter}
   % \label{fig:labelbaru}  
 \end{figure}
@@ -132,7 +132,7 @@ Hasil validasi untuk jarak 5.3 meter masih memiliki tingkat presisi diatas 0.9.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[scale=0.1]{gambar/BerdasarkanJarak/Jarak5_3/val_batch0_pred.jpg}
+  \includegraphics[scale=0.15]{gambar/BerdasarkanJarak/Jarak5_3/val_batch0_pred.jpg}
   \caption{Hasil Prediksi Pada Jarak 5.3 meter}
   % \label{fig:labelbaru}  
 \end{figure}
@@ -152,7 +152,7 @@ Hasil validasi untuk jarak 5.3 meter masih memiliki tingkat presisi diatas 0.9.
 
 \subsection{Pengujian Pada Jarak 6.7 Meter}
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
   \includegraphics[scale=0.1]{gambar/BerdasarkanJarak/Jarak6_7/val_batch0_pred.jpg}
   \caption{Hasil Prediksi Pada Jarak 6.7 meter}
@@ -174,6 +174,7 @@ Hasil validasi untuk jarak 5.3 meter masih memiliki tingkat presisi diatas 0.9.
 
 
 \subsection{Pengujian Pada Jarak 9 Meter}
+\label{}
 
 \begin{figure}[ht]
   \centering
@@ -194,3 +195,206 @@ Hasil validasi untuk jarak 5.3 meter masih memiliki tingkat presisi diatas 0.9.
   with\textunderscore helmet                          & 0.918           & 1        & 0.995           \\
   \hline
 \end{longtable}
+
+\section{Pengujian Pada Tingkat Kecerahan Rendah}
+\label{sec:pengujianberdasarkantingkatkeceharan}
+
+\par Bagian ini memaparkan performa model melakukan
+deteksi pada input gambar dengan tingkat kecerahan rendah. Data validasi berisi
+35 gambar dengan jumlah label \emph{no\textunderscore helmet} 20 dan label \emph{with\textunderscore helmet} 57.
+Validasi dilakukan pada bobot hasil training yang menggunakan \textit{pretrained weight} dan yang tanpa menggunakan \textit{pretrained weight}. 
+
+\subsection{Pengujian Pada Tingkat Kecerahan Rendah dengan \emph{Pretrained Weight}}
+\label{subsec:lowlight_pretrained}
+
+\par Berikut meruoakan pemaparan hasil validasi pada data validasi menggunakan \emph{weight} yang di-\emph{train} menggunakan
+\emph{pretrained weights} yang disedikan repo YOLOv5. Seperti yang dijelaskan pada Subbab~\ref{subsec:ujiperforma_coco}. 
+
+\subsubsection{\emph{Pretrained}  YOLOv5n}
+\label{subsubsec:lowlight_yolov5n}
+
+\par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} menggunakan bobot
+pretrain COCO untuk varian \emph{nano} yang merupakan varian paling kecil dari semua bobot yang disediakan 
+dari repo. Didapatkan rata - rata presisi untuk semua kelas 0.767 dan \emph{recall} untuk semua kelas 0.373.
+\par Didapati untuk kelas \emph{no\textunderscore helmet} mendapatkan nilai \emph{precision} 1 dan \emph{recall}
+0. Hal ini dikarenakan objek kepala tanpa menggunakan helm tidak ada yang terdektsi dan atau terdeteksi
+sebagai kelas \emph{with\textunderscore helmet}. 
+
+\begin{longtable}{|c|c|c|c|}
+  \caption{Hasil Validasi Pada Tingkat Kecerahan Rendah dengan \emph{Pretrained YOLOv5n}}
+  \label{tb:validasitingkatacerahrendah_yolo5n}\\
+  \hline
+  % \rowcolor[HTML]{C0C0C0}
+  \textbf{\emph{Class} }                     & \textbf{\emph{Precision}}  & \textbf{\emph{Recall}} & \textbf{\emph{mAP@.5}}\\
+  \hline
+  all                                                 & 0.767          & 0.373        & 0.415         \\
+  no\textunderscore helmet                            & 1              & 0            & 0.143          \\
+  with\textunderscore helmet                          & 0.534          & 0.745        & 0.687         \\
+  \hline
+\end{longtable}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/yolonano/val_batch0_pred.jpg}
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/yolonano/val_batch0_labels.jpg}
+  \caption{Hasil Prediksi dengan Validation Set Pada Keadaan Rendah dengan Pretrain YOLOv5n}
+  % \label{fig:labelbaru}  
+\end{figure}
+
+\subsubsection{\emph{Pretrained} YOLOv5s}
+\label{subsubsec:lowlight_yolov5s}
+
+\par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} menggunakan bobot
+pretrain COCO untuk varian \emph{small}. Didapatkan rata - rata presisi untuk semua kelas 0.775 dan \emph{recall} untuk semua
+kelas 0.799. Terdapat beberapa \emph{False Positive} dalam prediksi yaitu helm motor yang diletakkan diatas
+motor diprediksi sebagai \emph{with\textunderscore helmet} begitu juga.
+
+\begin{longtable}{|c|c|c|c|}
+  \caption{Hasil Validasi Pada Tingkat Kecerahan Rendah dengan \emph{Pretrained YOLOv5s}}
+  \label{tb:validasitingkatacerahrendah_yolov5s}\\
+  \hline
+  % \rowcolor[HTML]{C0C0C0}
+  \textbf{\emph{Class} }                     & \textbf{\emph{Precision}}  & \textbf{\emph{Recall}} & \textbf{\emph{mAP@.5}}\\
+  \hline
+  all                                                 & 0.775          & 0.799        & 0.823         \\
+  no\textunderscore helmet                            & 0.862           & 0.65        & 0.713          \\
+  with\textunderscore helmet                          & 0.689           & 0.947        & 0.933         \\
+  \hline
+\end{longtable}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/yolosmall/low_light_val_batch0_pred.jpg}
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/yolosmall/lowlight_val_batch0_labels.jpg}
+  \caption{Hasil Prediksi dengan Anotasi Asli Pada Keadaan dengan Pretrained YOLOvs}
+  % \label{fig:labelbaru}  
+\end{figure}
+
+\subsubsection{\emph{Pretrained} YOLOv5m}
+\label{subsubsec:lowlight_yolov5m}
+
+\par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} menggunakan bobot
+pretrain COCO untuk varian \emph{medium}. Didapatkan rata - rata presisi untuk semua kelas 0.833 dan \emph{recall} untuk semua
+kelas 0.831. Didapati hasil \emph{precision} dan \emph{recall} untuk kelas \emph{no\textunderscore helm} ,yang biasanya
+memiliki nilai yang kurang bagus pada varian bobot nano , mendapatkan nilai 1 dan 0.68 yang dimana lebih bagus.
+
+\begin{longtable}{|c|c|c|c|}
+  \caption{Hasil Validasi Pada Tingkat Kecerahan Rendah dengan \emph{Pretrained YOLOv5m}}
+  \label{tb:validasitingkatacerahrendah_yolov5m}\\
+  \hline
+  % \rowcolor[HTML]{C0C0C0}
+  \textbf{\emph{Class} }                     & \textbf{\emph{Precision}}  & \textbf{\emph{Recall}} & \textbf{\emph{mAP@.5}}\\
+  \hline
+  all                                                 & 0.833          & 0.831       & 0.893         \\
+  no\textunderscore helmet                            & 1              & 0.68        & 0.814         \\
+  with\textunderscore helmet                          & 0.666          & 0.982       & 0.973         \\
+  \hline
+\end{longtable}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/yolomedium/val_batch0_pred.jpg}
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/yolomedium/val_batch0_labels.jpg}
+  \caption{Hasil Prediksi dengan Anotasi Asli Pada Keadaan dengan Pretrained YOLOv5m}
+  % \label{fig:labelbaru}  
+\end{figure}
+
+\subsubsection{\emph{Pretrained} YOLOv5l}
+\label{subsubsec:lowlight_yolov5l}
+
+\par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} menggunakan bobot
+pretrain COCO untuk varian \emph{large}. Didapatkan rata - rata presisi untuk semua kelas 0.811 dan \emph{recall} untuk semua
+kelas 0.765. Didapati hasil \emph{precision} dan \emph{recall} untuk kelas \emph{no\textunderscore helm} yang mengalami penurunan dibanding
+menggunakan variant \emph{medium} yaitu 0.914 untuk \emph{precision} dan 0.6 untuk \emph{recall}. Selain itu untuk
+\emph{inference time} nya tentu saja mengalami kenaikan dibandingan dengan varian - varian sebelumnya yang lebih kecil.
+
+\begin{longtable}{|c|c|c|c|}
+  \caption{Hasil Validasi Pada Tingkat Kecerahan Rendah dengan \emph{Pretrained YOLOv5l}}
+  \label{tb:validasitingkatacerahrendah_yolov5l}\\
+  \hline
+  % \rowcolor[HTML]{C0C0C0}
+  \textbf{\emph{Class} }                     & \textbf{\emph{Precision}}  & \textbf{\emph{Recall}} & \textbf{\emph{mAP@.5}}\\
+  \hline
+  all                                                 & 0.811          & 0.765       & 0.893         \\
+  no\textunderscore helmet                            & 0.914          & 0.6         & 0.724         \\
+  with\textunderscore helmet                          & 0.708          & 0.93        & 0.931         \\
+  \hline
+\end{longtable}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/yololarge/val_batch0_pred.jpg}
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/yololarge/val_batch0_labels.jpg}
+  \caption{Hasil Prediksi dengan Anotasi Asli Pada Keadaan dengan Pretrained YOLOv5m}
+  % \label{fig:labelbaru}  
+\end{figure}
+
+\subsection{Pengujian Pada Tingkat Kecerahan Rendah dengan \emph{Weight} Murni Deteksi Helm Keselamatan Kerja}
+\label{subsec:lowlight_pure}
+
+\par Berikut merupakan pemaparan hasil validasi menggunakan data validasi pada keadaan minim pencahayaan menggunakan
+\emph{weight} yang merupakan hasil \emph{train} dari dataset Deteksi Helm Keselamatan Kerja tanpa menggunakan \emph{pretrained weight}.
+Hasil \emph{train} tanpa menggunakan \emph{pretrain weight} ini selanjutkan akan disebut sebagai \emph{"Hedec"}.
+
+
+\subsubsection{\emph{Hedec Nano}}
+\label{subsubsec:lowlight_hedecN}
+
+\par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} tanpa menggunakan bobot
+pretrain COCO tetapi konfigurasi modelnya dibuat serupa dengan konfigurasi YOLOv5n. 
+Didapatkan rata - rata presisi untuk semua kelas 0.659   dan \emph{recall} untuk semuakelas 0.696.
+\par Didapati pada gambar dengan tingkat kecerahan sangat rendah, tidak terdeteksi untuk kedua kelas 
+sama sekali dan juga \emph{miss detect} untuk kepala tanpa helm dideteksi 
+sebagai \emph{with\textunderscore helmet}.
+
+\begin{longtable}{|c|c|c|c|}
+  \caption{Hasil Validasi Pada Tingkat Kecerahan Rendah dengan \emph{Hedec Nano}}
+  \label{tb:validasitingkatacerahrendah_hedecN}\\
+  \hline
+  % \rowcolor[HTML]{C0C0C0}
+  \textbf{\emph{Class} }                     & \textbf{\emph{Precision}}  & \textbf{\emph{Recall}} & \textbf{\emph{mAP@.5}}\\
+  \hline
+  all                                                 & 0.659          & 0.696       & 0.731         \\
+  no\textunderscore helmet                            & 0.76          & 0.55         & 0.621         \\
+  with\textunderscore helmet                          & 0.558          & 0.842        & 0.842         \\
+  \hline
+\end{longtable}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customNano/val_batch0_pred.jpg}
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customNano/val_batch0_labels.jpg}
+  \caption{Hasil Prediksi dengan Anotasi Asli Pada Keadaan dengan Pretrained YOLOv5m}
+  % \label{fig:labelbaru}  
+\end{figure}
+
+\subsubsection{\emph{Hedec Small}}
+\label{subsubsec:lowlight_hedecS}
+
+\par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} tanpa menggunakan bobot
+pretrain COCO tetapi konfigurasi modelnya dibuat serupa dengan konfigurasi YOLOv5s. 
+Didapatkan rata - rata presisi untuk semua kelas 0.659   dan \emph{recall} untuk semuakelas 0.696.
+\par Didapati pada gambar dengan tingkat kecerahan sangat rendah, tidak terdeteksi untuk kedua kelas 
+sama sekali dan juga \emph{miss detect} untuk kepala tanpa helm dideteksi 
+sebagai \emph{with\textunderscore helmet}.
+
+\begin{longtable}{|c|c|c|c|}
+  \caption{Hasil Validasi Pada Tingkat Kecerahan Rendah dengan \emph{Hedec Small}}
+  \label{tb:validasitingkatacerahrendah_hedecS}\\
+  \hline
+  % \rowcolor[HTML]{C0C0C0}
+  \textbf{\emph{Class} }                     & \textbf{\emph{Precision}}  & \textbf{\emph{Recall}} & \textbf{\emph{mAP@.5}}\\
+  \hline
+  all                                                 & 0.706          & 0.696       & 0.731         \\
+  no\textunderscore helmet                            & 0.76          & 0.55         & 0.621         \\
+  with\textunderscore helmet                          & 0.558          & 0.842        & 0.842         \\
+  \hline
+\end{longtable}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customNano/val_batch0_pred.jpg}
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customNano/val_batch0_labels.jpg}
+  \caption{Hasil Prediksi dengan Anotasi Asli Pada Keadaan dengan Pretrained YOLOv5m}
+  % \label{fig:labelbaru}  
+\end{figure}
