@@ -276,7 +276,9 @@ motor diprediksi sebagai \emph{with\textunderscore helmet} begitu juga.
 \par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} menggunakan bobot
 pretrain COCO untuk varian \emph{medium}. Didapatkan rata - rata presisi untuk semua kelas 0.833 dan \emph{recall} untuk semua
 kelas 0.831. Didapati hasil \emph{precision} dan \emph{recall} untuk kelas \emph{no\textunderscore helm} ,yang biasanya
-memiliki nilai yang kurang bagus pada varian bobot nano , mendapatkan nilai 1 dan 0.68 yang dimana lebih bagus.
+memiliki nilai yang kurang bagus pada varian bobot nano , mendapatkan nilai 1 dan 0.68 yang dimana lebih bagus. 
+Varian Medium ini merupakan varian yang memiliki hasil validasi paling tinggi untuk \emph{precision} dan \emph{recall} nya diantara semua \emph{weight}
+yang di \emph{train} menggunakan \emph{pretrained weights} dari YOLOv5 bahkan melebihi varian YOLOv5l yang akan dipaparkan di bagian selanjutnya.
 
 \begin{longtable}{|c|c|c|c|}
   \caption{Hasil Validasi Pada Tingkat Kecerahan Rendah dengan \emph{Pretrained YOLOv5m}}
@@ -304,7 +306,7 @@ memiliki nilai yang kurang bagus pada varian bobot nano , mendapatkan nilai 1 da
 
 \par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} menggunakan bobot
 pretrain COCO untuk varian \emph{large}. Didapatkan rata - rata presisi untuk semua kelas 0.811 dan \emph{recall} untuk semua
-kelas 0.765. Didapati hasil \emph{precision} dan \emph{recall} untuk kelas \emph{no\textunderscore helm} yang mengalami penurunan dibanding
+kelas 0.765 dimana lebih kecil dibandingkan varian \emph{medium}. Didapati juga hasil \emph{precision} dan \emph{recall} untuk kelas \emph{no\textunderscore helm} yang mengalami penurunan dibanding
 menggunakan variant \emph{medium} yaitu 0.914 untuk \emph{precision} dan 0.6 untuk \emph{recall}. Selain itu untuk
 \emph{inference time} nya tentu saja mengalami kenaikan dibandingan dengan varian - varian sebelumnya yang lebih kecil.
 
@@ -325,7 +327,7 @@ menggunakan variant \emph{medium} yaitu 0.914 untuk \emph{precision} dan 0.6 unt
   \centering
   \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/yololarge/val_batch0_pred.jpg}
   \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/yololarge/val_batch0_labels.jpg}
-  \caption{Hasil Prediksi dengan Anotasi Asli Pada Keadaan dengan Pretrained YOLOv5m}
+  \caption{Hasil Prediksi dengan Anotasi Asli Pada Keadaan dengan Pretrained YOLOv5l}
   % \label{fig:labelbaru}  
 \end{figure}
 
@@ -343,9 +345,8 @@ Hasil \emph{train} tanpa menggunakan \emph{pretrain weight} ini selanjutkan akan
 \par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} tanpa menggunakan bobot
 pretrain COCO tetapi konfigurasi modelnya dibuat serupa dengan konfigurasi YOLOv5n. 
 Didapatkan rata - rata presisi untuk semua kelas 0.659   dan \emph{recall} untuk semuakelas 0.696.
-\par Didapati pada gambar dengan tingkat kecerahan sangat rendah, tidak terdeteksi untuk kedua kelas 
-sama sekali dan juga \emph{miss detect} untuk kepala tanpa helm dideteksi 
-sebagai \emph{with\textunderscore helmet}.
+\par  Sewajarnya varian ini mendapatkan nilai \emph{precision} dan \emph{recall} paling kecl diantara varian lainnya dan juga \emph{inference speed}
+yang paling cepat dibanding varian lainnya pada \emph{weight} murni \emph{tanpa pretrained weight}.
 
 \begin{longtable}{|c|c|c|c|}
   \caption{Hasil Validasi Pada Tingkat Kecerahan Rendah dengan \emph{Hedec Nano}}
@@ -354,8 +355,8 @@ sebagai \emph{with\textunderscore helmet}.
   % \rowcolor[HTML]{C0C0C0}
   \textbf{\emph{Class} }                     & \textbf{\emph{Precision}}  & \textbf{\emph{Recall}} & \textbf{\emph{mAP@.5}}\\
   \hline
-  all                                                 & 0.659          & 0.696       & 0.731         \\
-  no\textunderscore helmet                            & 0.76          & 0.55         & 0.621         \\
+  all                                                 & 0.659          & 0.696        & 0.731         \\
+  no\textunderscore helmet                            & 0.76           & 0.55         & 0.621         \\
   with\textunderscore helmet                          & 0.558          & 0.842        & 0.842         \\
   \hline
 \end{longtable}
@@ -373,10 +374,8 @@ sebagai \emph{with\textunderscore helmet}.
 
 \par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} tanpa menggunakan bobot
 pretrain COCO tetapi konfigurasi modelnya dibuat serupa dengan konfigurasi YOLOv5s. 
-Didapatkan rata - rata presisi untuk semua kelas 0.659   dan \emph{recall} untuk semuakelas 0.696.
-\par Didapati pada gambar dengan tingkat kecerahan sangat rendah, tidak terdeteksi untuk kedua kelas 
-sama sekali dan juga \emph{miss detect} untuk kepala tanpa helm dideteksi 
-sebagai \emph{with\textunderscore helmet}.
+Didapatkan rata - rata presisi untuk semua kelas 0.706   dan \emph{recall} untuk semuakelas 0.696 dimana sedikit lebih baik
+dibandingkan varian \emph{Nano} sebelumnya.
 
 \begin{longtable}{|c|c|c|c|}
   \caption{Hasil Validasi Pada Tingkat Kecerahan Rendah dengan \emph{Hedec Small}}
@@ -385,9 +384,9 @@ sebagai \emph{with\textunderscore helmet}.
   % \rowcolor[HTML]{C0C0C0}
   \textbf{\emph{Class} }                     & \textbf{\emph{Precision}}  & \textbf{\emph{Recall}} & \textbf{\emph{mAP@.5}}\\
   \hline
-  all                                                 & 0.706          & 0.696       & 0.731         \\
-  no\textunderscore helmet                            & 0.76          & 0.55         & 0.621         \\
-  with\textunderscore helmet                          & 0.558          & 0.842        & 0.842         \\
+  all                                                 & 0.706          & 0.696        & 0.847         \\
+  no\textunderscore helmet                            & 0.885          & 0.771        & 0.789         \\
+  with\textunderscore helmet                          & 0.623          & 0.947        & 0.905         \\
   \hline
 \end{longtable}
 
@@ -404,10 +403,8 @@ sebagai \emph{with\textunderscore helmet}.
 
 \par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} tanpa menggunakan bobot
 pretrain COCO tetapi konfigurasi modelnya dibuat serupa dengan konfigurasi YOLOv5m. 
-Didapatkan rata - rata presisi untuk semua kelas 0.731   dan \emph{recall} untuk semuakelas 0.862.
-\par Didapati pada gambar dengan tingkat kecerahan sangat rendah, tidak terdeteksi untuk kedua kelas 
-sama sekali dan juga \emph{miss detect} untuk kepala tanpa helm dideteksi 
-sebagai \emph{with\textunderscore helmet}.
+Didapatkan rata - rata presisi untuk semua kelas 0.731   dan \emph{recall} untuk semuakelas 0.862 dimana lebih baik dibandingkan
+varian \emph{Small} .
 
 \begin{longtable}{|c|c|c|c|}
   \caption{Hasil Validasi Pada Tingkat Kecerahan Rendah dengan \emph{Hedec Medium}}
