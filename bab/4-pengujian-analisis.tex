@@ -364,7 +364,7 @@ sebagai \emph{with\textunderscore helmet}.
   \centering
   \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customNano/val_batch0_pred.jpg}
   \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customNano/val_batch0_labels.jpg}
-  \caption{Hasil Prediksi dengan Anotasi Asli Pada Keadaan dengan Pretrained YOLOv5m}
+  \caption{Hasil Prediksi dengan Anotasi Asli Pada Keadaan dengan \emph{Weight Hedec Nano}}
   % \label{fig:labelbaru}  
 \end{figure}
 
@@ -393,8 +393,70 @@ sebagai \emph{with\textunderscore helmet}.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customNano/val_batch0_pred.jpg}
-  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customNano/val_batch0_labels.jpg}
-  \caption{Hasil Prediksi dengan Anotasi Asli Pada Keadaan dengan Pretrained YOLOv5m}
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customSmall/val_batch0_pred.jpg}
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customSmall/val_batch0_labels.jpg}
+  \caption{Hasil Prediksi dengan Anotasi Asli Pada Keadaan dengan \emph{Weight Hedec Small}}
+  % \label{fig:labelbaru}  
+\end{figure}
+
+\subsubsection{\emph{Hedec Medium}}
+\label{subsubsec:lowlight_hedecM}
+
+\par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} tanpa menggunakan bobot
+pretrain COCO tetapi konfigurasi modelnya dibuat serupa dengan konfigurasi YOLOv5m. 
+Didapatkan rata - rata presisi untuk semua kelas 0.731   dan \emph{recall} untuk semuakelas 0.862.
+\par Didapati pada gambar dengan tingkat kecerahan sangat rendah, tidak terdeteksi untuk kedua kelas 
+sama sekali dan juga \emph{miss detect} untuk kepala tanpa helm dideteksi 
+sebagai \emph{with\textunderscore helmet}.
+
+\begin{longtable}{|c|c|c|c|}
+  \caption{Hasil Validasi Pada Tingkat Kecerahan Rendah dengan \emph{Hedec Medium}}
+  \label{tb:validasitingkatacerahrendah_hedecM}\\
+  \hline
+  % \rowcolor[HTML]{C0C0C0}
+  \textbf{\emph{Class} }                     & \textbf{\emph{Precision}}  & \textbf{\emph{Recall}} & \textbf{\emph{mAP@.5}}\\
+  \hline
+  all                                                 & 0.731          & 0.862       & 0.827         \\
+  no\textunderscore helmet                            & 0.799          & 0.793       & 0.757         \\
+  with\textunderscore helmet                          & 0.663          & 0.93        & 0.897         \\
+  \hline
+\end{longtable}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customMedium/val_batch0_pred.jpg}
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customMedium/val_batch0_labels.jpg}
+  \caption{Hasil Prediksi dengan Anotasi Asli Pada Keadaan dengan \emph{Weight Hedec Medium}}
+  % \label{fig:labelbaru}  
+\end{figure}
+
+\subsubsection{\emph{Hedec large}}
+\label{subsubsec:lowlight_hedecL}
+
+\par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} tanpa menggunakan bobot
+pretrain COCO tetapi konfigurasi modelnya dibuat serupa dengan konfigurasi YOLOv5l. 
+Didapatkan rata - rata presisi untuk semua kelas 0.731   dan \emph{recall} untuk semuakelas 0.862.
+\par Didapati pada gambar dengan tingkat kecerahan sangat rendah, tidak terdeteksi untuk kedua kelas 
+sama sekali dan juga \emph{miss detect} untuk kepala tanpa helm dideteksi 
+sebagai \emph{with\textunderscore helmet}.
+
+\begin{longtable}{|c|c|c|c|}
+  \caption{Hasil Validasi Pada Tingkat Kecerahan Rendah dengan \emph{Hedec Large}}
+  \label{tb:validasitingkatacerahrendah_hedecL}\\
+  \hline
+  % \rowcolor[HTML]{C0C0C0}
+  \textbf{\emph{Class} }                     & \textbf{\emph{Precision}}  & \textbf{\emph{Recall}} & \textbf{\emph{mAP@.5}}\\
+  \hline
+  all                                                 & 0.743          & 0.755       & 0.789         \\
+  no\textunderscore helmet                            & 0.85           & 0.65       & 0.733         \\
+  with\textunderscore helmet                          & 0.663          & 0.86        & 0.845         \\
+  \hline
+\end{longtable}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customLarge/val_batch0_pred.jpg}
+  \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customLarge/val_batch0_labels.jpg}
+  \caption{Hasil Prediksi dengan Anotasi Asli Pada Keadaan dengan \emph{Weight Hedec Large}}
   % \label{fig:labelbaru}  
 \end{figure}
