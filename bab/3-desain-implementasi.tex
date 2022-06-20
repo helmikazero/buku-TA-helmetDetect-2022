@@ -14,21 +14,10 @@ Dalam pengerjaan judul tugas akhir ini, terdapat beberapa peralatan dan bahan ya
 \begin{enumerate}[nolistsep]
   \item Computer Desktop 
   \item Google Colab
+  \item Jetson Nano
+  \item Webcam Nemesis NYK A-90 Everest
 \end{enumerate}
 
-% \begin{table}[]
-%   \begin{tabular}{|l|l|}
-%     \caption{Conf 1}
-%     \label{tb:asdadas}\\
-%   \hline
-%   Tipe               & Detail                                                              \\ \hline
-%   \textit{Processor} & AMD Ryzen 5 2600                                                    \\ \hline
-%   Memory             & 16 GB                                                               \\ \hline
-%   Storage            & \begin{tabular}[c]{@{}l@{}}SSD 256 GB, 1 TB\\ HDD 1 TB\end{tabular} \\ \hline
-%   Graphic Card       & NVIDIA GeForce GTX 1060 6GB                                         \\ \hline
-%   Operating System   & Windows 10                                                          \\ \hline
-%   \end{tabular}
-% \end{table}
 
 \begin{longtable}{|c|c|c|}
   \caption{Spesifikasi Komputer Desktop}
@@ -46,42 +35,37 @@ Dalam pengerjaan judul tugas akhir ini, terdapat beberapa peralatan dan bahan ya
   \hline
 \end{longtable}
 
-% \subsection{Anaconda}
-% \label{subsec:anaconda}
+\begin{longtable}{|c|c|c|}
+  \caption{Spesifikasi Jetson Nano}
+  \label{tb:spesifikasijetsonano}\\
+  \hline
+  % \rowcolor[HTML]{C0C0C0}
+  \textbf{Tipe} & \textbf{Detail}  \\
+  \hline
+  \textit{Processor} & Quad-core ARM Cortex-A57 MPCore processor \\ 
+  Memory             & 4 GB 64-bit LPDDR4, 1600MHz 25.6 GB/s  \\
+  Storage            & SDCARD 512 GB\\
+  Graphic Card       & NVIDIA Maxwell architecture with 128 NVIDIA CUDA® cores \\
+  Operating System   & Ubuntu     \\
+  CUDA               & CUDA version 10.2.300    \\              
+  \hline
+\end{longtable}
 
-% Anaconda sendiri merupakan package distribution yang dibuat khusus untuk data science. Anaconda biasanya digunakan untuk membuat environment baru untuk mengisolasi proyek dan menginstall package untuk keperluan tertentu. Pada penelitian ini akan digunakan untuk membantu penulis dalam mengumpulkan package - package yang diperlukan untuk melakukan proses training dan pengembangan sistem.\cite{pankajmathur_2018}
-
-% \subsection{Python}
-% \label{subsec:python}
-
-% Python sendiri adalah bahasa pemrograman high level yang sudah terinterpretasi dan berbasis objek. Struktur data yang sudah ada di dalam python dan penulisan syntax yang sederhana dan mudah dipahami dapat meningkatkan performa pengerjaan. Pada penelitian ini python digunakan karena merupakan bahasa pemrograman yang cocok untuk data science mengingat struktur data di python yang dinamis. Selain itu python juga sudah termasuk saat menginstall Anaconda \cite{python.org}
-
-% \subsection{Visual Studio Code}
-% \label{subsec:visualstudiocode}
-
-% Visual Studio Code adalah source code editor yang ramah performa dan mudah digunakan untuk segala bentuk keperluan penulisan text sehari - harinya. Visual Code mendukung banyak bahasa pemrograman dan menyediakan fitur addons yang digunakan untuk mendownload package untuk berbagai macam kebutuhan berbeda. Pada penelitian ini Visual Studio Code digunakan untuk menulisa script python yang akan digunakan untuk training, pengembangan sistem, dan keperluan lainyna yang sekiranya dibutuhkan pada penelitian ini dan dapat diselesaikan dengan visual studio code.\cite{microsoft_2021}
-
-% \subsection{Roboflow}
-% \label{subsec:roboflow}
-
-% Roboflow merupakan \emph{tools} yang membantu developer untuk mengolah segala keperluan untuk melakukan pengembangan di bidang visi komputer. Fasilitas yang ditawarkan oleh Roboflow meliputi : pengorganisasian dataset, pelabelan atau \emph{annotation} , pembagian rasio \emph{train/test}, \emph{preprocessing} yang meliputi re-size ukuran gambar, isolasi objek, grayscale, auto-adjust contrast, tile, dan bahkan sekaligus train. 
-
-
-% \subsection{Google Colab}
-% \label{subsec:googlecolab}
-
-% Google Colab merupakan produk dari Google Research yang merupakan sarana penjalanan program Python menggunakan browser yang pada umumnya digunakan untuk keperluan machine learning, analisis data, dan pendidikan. Sebenarnya, Google Colab sendiri menggunakan Jupyter Notebook sebagai basisnya. Perbandingannya dengan Jupyter notebook yaitu penggunaan Google Colab tidak memerlukan banyak pe-nyetupan awal seperti pada Jupyter Notebook di komputer lokal. Google Colab juga memberikan fasilitas gratis kebutuhan computingnya termasuk penggunaan GPU. Tetapi terdapat limitasi - limitasi pada penggunaan Google Colab secara gratis seperti lama waktu penggunaan untuk GPU dan limitasi AFK saat menggunakannya. Tetapi batasan - batasan tersebut bisa lebih dilonggarkan lagi dengan berlangganan Google Colab Pro.
-
-% Pada tugas akhir ini, Google Colab hanya digunakan untuk melakukan training untuk menghasilkan bobot - bobot menggunakan training dengan yolov5 untuk semua variasi tipe pre-trained dari yolov5, dan juga untuk mengeksport bobot yolov5 yang dihasilkan dalam format PyTorch menjadi format lain seperti ONNX atau TFLite yang dimana juga disedikana dari YOLOv5. Tetapi, Google Colab ini tidak digunakan untuk melakukan proses deteksi.
-
-% \begin{enumerate}
-%   \item Anaconda
-%   \par 
-%   \item Python
-%   \item Visual Studio Code
-%   \item Roboflow
-%   \item Google Colab
-% \end{enumerate}
+\begin{longtable}{|c|c|c|}
+  \caption{Spesifikasi Webcam Nemesis NYK A-90 Everest}
+  \label{tb:spesifikasijetsonano}\\
+  \hline
+  % \rowcolor[HTML]{C0C0C0}
+  \textbf{Tipe} & \textbf{Detail}  \\
+  \hline
+  Resolution         & 1920x1080 \\ 
+  Max FPS            & 30 FPS  \\
+  Other Detail       & Full 360 Degree Rotation \\
+                      & Auto Focus \\
+                      & Auto Exposure White Balance    \\
+                     & Full HD Glass Lens    \\              
+  \hline
+\end{longtable}
 
 \section{Desain Sistem}
 \label{sec:desainsistem}

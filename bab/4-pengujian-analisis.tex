@@ -7,7 +7,16 @@ Bab ini akan membahas hasil dan analisa dari desain sistem yang sudah dibuat dan
 
 \section{Pengujian Performa antar \emph{Weight}}
 \label{sec:ujiperforma}
-Repositori YOLOv5 menyediakan beberapa \emph{checkpoint} atau \emph{weight} yang merupakan hasil training model YOLOv5 dari dataset COCO yang dimanfaatkan sebagai \emph{pretrained model}. Ekspektasi penggunaan pretrained model ini yaitu bobot yang dihasilkan akan memiliki performa yang lebih tinggi daripada melakukan training tanpa pretrained model sama sekali. \emph{COCO Dataset} ini memiliki 80 \emph{class} berbeda. Seperti disebutkan pada \ref{sec:pelabelandataset} yaitu untuk keperluan penelitian ini hanya memerlukan 2 kelas yaitu "no\textunderscore helmet" dan "with\textunderscore helmet". Pada bagian ini akan dipaparkan dan dibandingkan performa antara tiap bobot yang dihasilkan dengan model pretrained dan yang tidak menggunakan pretrained model.
+\par Repositori YOLOv5 menyediakan beberapa \emph{checkpoint} atau \emph{weight} yang 
+merupakan hasil training model YOLOv5 dari dataset COCO yang dimanfaatkan sebagai 
+\emph{pretrained model}. Ekspektasi penggunaan pretrained model ini yaitu bobot yang 
+dihasilkan akan memiliki performa yang lebih tinggi daripada melakukan training tanpa 
+pretrained model sama sekali. \emph{COCO Dataset} ini memiliki 80 \emph{class} berbeda. 
+Seperti disebutkan pada \ref{sec:pelabelandataset} yaitu untuk keperluan penelitian ini 
+hanya memerlukan 2 kelas yaitu "no\textunderscore helmet" dan "with\textunderscore helmet". 
+Pada bagian ini akan dipaparkan dan dibandingkan performa antara tiap bobot yang dihasilkan 
+dengan model pretrained dan yang tidak menggunakan pretrained model. Pengujian ini dilakukan menggunakan
+\emph{resource} dari Google Colab.
 
 \subsection{Pengujian Performa \emph{Weight} dari Hasil \emph{Pretrain} COCO Dataset}
 \label{subsec:ujiperforma_coco}
@@ -46,7 +55,7 @@ Pada bagian ini akan dipaparkan hasil validasi dari \emph{weight} yang dihasilka
   YOLOv5n                           & 0.918              & 0.85         & 0.909         & 2.4ms                \\
   YOLOv5s                           & 0.927             & 0.865        & 0.919        & 4.1ms               \\
   YOLOv5m                           & 0.939            & 0.862        & 0.924        & 8.7ms                \\
-  YOLOv5l                           &                   &             &               &                \\
+  YOLOv5l                           & 0.922            & 0.876      &   0.923       &  14.0ms        \\
   \hline
 \end{longtable}
 
@@ -64,7 +73,7 @@ Pada bagian ini akan memaparkan hasil deteksi pada dataset validasi yang dibagi 
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[scale=0.1]{gambar/BerdasarkanJarak/Jarak1_3/val_batch0_pred.jpg}
+  \includegraphics[scale=0.2]{gambar/BerdasarkanJarak/Jarak1_3/val_batch0_pred.jpg}
   \caption{Hasil Prediksi Pada Jarak 1.3 meter}
   % \label{fig:labelbaru}  
 \end{figure}
@@ -84,9 +93,9 @@ Pada bagian ini akan memaparkan hasil deteksi pada dataset validasi yang dibagi 
 
 \subsection{Pengujian Pada Jarak 2.6 Meter}
 
-\begin{figure}[ht]
+\begin{figure}[h]
   \centering
-  \includegraphics[scale=0.1]{gambar/BerdasarkanJarak/Jarak2_6/val_batch0_pred.jpg}
+  \includegraphics[scale=0.2]{gambar/BerdasarkanJarak/Jarak2_6/val_batch0_pred.jpg}
   \caption{Hasil Prediksi Pada Jarak 2.6 meter}
   % \label{fig:labelbaru}  
 \end{figure}
@@ -106,9 +115,9 @@ Pada bagian ini akan memaparkan hasil deteksi pada dataset validasi yang dibagi 
 
 \subsection{Pengujian Pada Jarak 4 Meter}
 
-\begin{figure}[t]
+\begin{figure}[H]
   \centering
-  \includegraphics[scale=0.15]{gambar/BerdasarkanJarak/Jarak4/val_batch0_pred.jpg}
+  \includegraphics[scale=0.2]{gambar/BerdasarkanJarak/Jarak4/val_batch0_pred.jpg}
   \caption{Hasil Prediksi Pada Jarak 4 meter}
   % \label{fig:labelbaru}  
 \end{figure}
@@ -132,7 +141,7 @@ Hasil validasi untuk jarak 5.3 meter masih memiliki tingkat presisi diatas 0.9.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[scale=0.15]{gambar/BerdasarkanJarak/Jarak5_3/val_batch0_pred.jpg}
+  \includegraphics[scale=0.2]{gambar/BerdasarkanJarak/Jarak5_3/val_batch0_pred.jpg}
   \caption{Hasil Prediksi Pada Jarak 5.3 meter}
   % \label{fig:labelbaru}  
 \end{figure}
@@ -154,7 +163,7 @@ Hasil validasi untuk jarak 5.3 meter masih memiliki tingkat presisi diatas 0.9.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.1]{gambar/BerdasarkanJarak/Jarak6_7/val_batch0_pred.jpg}
+  \includegraphics[scale=0.2]{gambar/BerdasarkanJarak/Jarak6_7/val_batch0_pred.jpg}
   \caption{Hasil Prediksi Pada Jarak 6.7 meter}
   % \label{fig:labelbaru}  
 \end{figure}
@@ -178,7 +187,7 @@ Hasil validasi untuk jarak 5.3 meter masih memiliki tingkat presisi diatas 0.9.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[scale=0.1]{gambar/BerdasarkanJarak/Jarak9/val_batch0_pred.jpg}
+  \includegraphics[scale=0.2]{gambar/BerdasarkanJarak/Jarak9/val_batch0_pred.jpg}
   \caption{Hasil Prediksi Pada Jarak 9 meter}
   % \label{fig:labelbaru}  
 \end{figure}
@@ -233,7 +242,7 @@ sebagai kelas \emph{with\textunderscore helmet}.
   \hline
 \end{longtable}
 
-\begin{figure}[ht]
+\begin{figure}[h]
   \centering
   \includegraphics[scale=0.2]{gambar/train_v2_val/low_ligjt/yolonano/val_batch0_pred.jpg}
   % \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/yolonano/val_batch0_labels.jpg}
@@ -361,7 +370,7 @@ yang paling cepat dibanding varian lainnya pada \emph{weight} murni \emph{tanpa 
   \hline
 \end{longtable}
 
-\begin{figure}[ht]
+\begin{figure}[h]
   \centering
   \includegraphics[scale=0.2]{gambar/train_v2_val/low_ligjt/customNano/val_batch0_pred.jpg}
   % \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customNano/val_batch0_labels.jpg}
@@ -456,3 +465,44 @@ sedikit lebih baik daripada varian \emph{Medium} nya, tetapi untuk \emph{Recall}
   \caption{Hasil Prediksi Pada Keadaan dengan \emph{Weight Hedec Large}}
   % \label{fig:labelbaru}  
 \end{figure}
+
+\subsection{Pengujian Model YOLOv5 dengan \emph{Helmet Detection Weights} Pada Jetson Nano}
+\label{subsec:jetsonnano_hedectest}
+
+\par Bagian ini merupakan pemaparan hasil pengujian performa Model YOLOv5 dengan bobot - bobot yang sudah di\emph{train}
+sebelumnya pada Jetson Nano. Tujuan dari pengujian ini yaitu membandingkan effektifitas dari masing - masing
+bobot yang sudah dibuat pada aspek performa \emph{inference} mengingat Jetson Nano merupakan \emph{mini-computer} yang memiliki
+\emph{Graphic Processing Unit}(GPU)nya sendiri dan memang didesain untuk aplikasi AI IoT. Pengujuran yang diambil pada pengujian ini
+yaitu nilai \emph{Frame Per Second}(FPS).
+
+\par Pengujian dilakukan menggunakan Webcam Nemesis NYK A-90 Everest yang dipasang dengan Jetson Nano melalui kabel USB dengan resolusi
+input 256x192. Input resolusi 256x192 yang terbilang sangat kecil ini digunakan karena resolusi diatasnya seperti 480p dan 640p akan menghasilkan
+nilai FPS yang sangat kecil atau jika tidak menyebabkan terminal menghentikan secara proses \emph{inference} karena melebihi kapasitas VRAM dari Jetson Nano-nya
+sehingga pengukuran performa sulit untuk dilakukan. Hasil pengukuran FPS pada pengujian YOLOv5 Helmet Detection dipaparkan pada Tabel~\ref{tb:jetsonanoperformancetest}.
+
+
+
+\begin{longtable}{|c|c|}
+  \caption{Hasil Test Peforma Pad Jetson Nano}
+  \label{tb:jetsonanoperformancetest}\\
+  \hline
+  % \rowcolor[HTML]{C0C0C0}
+  \textbf{\emph{Class} }                     & \textbf{FPS}  \\
+  \hline
+  hedec\textunderscore pretrain\textunderscore N                                   & 24.4          \\
+  hedec\textunderscore pretrain\textunderscore S                                   & 22.2          \\
+  hedec\textunderscore pretrain\textunderscore M                                   & 15.2          \\
+  hedec\textunderscore pretrain\textunderscore L                                   & NULL          \\
+  hedec\textunderscore pure\textunderscore N                                       & 24.9          \\
+  hedec\textunderscore pure\textunderscore S                                       & 23          \\
+  hedec\textunderscore pure\textunderscore M                                       & 15          \\
+  hedec\textunderscore pure\textunderscore L                                       & NULL          \\
+  \hline
+\end{longtable}
+
+\par Berdasarkan hasil pengujian pada ~\ref{tb:jetsonanoperformancetest}, terdapat beberapa poin analisis yang bisa diambil.
+Performa dari nilai \emph{Frame Rate} dari \emph{weight} yang menggunakan \emph{Pretrained Weights} dengan pasangan bandingnya di \emph{weight}
+yang tidak menggunakan \emph{Pretrained Weights} memiliki performa yang tidak berbeda jauh. Sewajarnya, varian \emph{Nano (N)} dari
+\emph{Pretrained Weight} atau \emph{Pure Weight} memiliki FPS paling tinggi dibandingkan varian diatasnya yaitu S,M,dan L.
+Pengujian pada varian \emph{Large (L)} selalu berakhir dengan terminal mematikan proses \emph{inference}
+dikarenakan VRAM dari Jetson Nano tidak memadai proses \emph{inference} nya sendiri sehingga data yang dimasukan pada Tabel L NULL.
