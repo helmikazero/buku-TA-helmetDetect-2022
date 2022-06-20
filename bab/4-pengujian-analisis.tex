@@ -80,7 +80,7 @@ Pada bagian ini akan memaparkan hasil deteksi pada dataset validasi yang dibagi 
 
 \begin{longtable}{|c|c|c|c|}
   \caption{Konfigurasi Training menggunakan YOLOv5}
-  \label{tb:wkwkw}\\
+  \label{tb:jarak1_3}\\
   \hline
   % \rowcolor[HTML]{C0C0C0}
   \textbf{\emph{Class} }                     & \textbf{\emph{Precision}}  & \textbf{\emph{Recall}} & \textbf{\emph{mAP@.5}}\\
@@ -113,9 +113,11 @@ Pada bagian ini akan memaparkan hasil deteksi pada dataset validasi yang dibagi 
   \hline
 \end{longtable}
 
+\newpage
+
 \subsection{Pengujian Pada Jarak 4 Meter}
 
-\begin{figure}[H]
+\begin{figure}[ht]
   \centering
   \includegraphics[scale=0.2]{gambar/BerdasarkanJarak/Jarak4/val_batch0_pred.jpg}
   \caption{Hasil Prediksi Pada Jarak 4 meter}
@@ -159,9 +161,11 @@ Hasil validasi untuk jarak 5.3 meter masih memiliki tingkat presisi diatas 0.9.
   \hline
 \end{longtable}
 
+\newpage
+
 \subsection{Pengujian Pada Jarak 6.7 Meter}
 
-\begin{figure}[H]
+\begin{figure}[ht]
   \centering
   \includegraphics[scale=0.2]{gambar/BerdasarkanJarak/Jarak6_7/val_batch0_pred.jpg}
   \caption{Hasil Prediksi Pada Jarak 6.7 meter}
@@ -204,6 +208,8 @@ Hasil validasi untuk jarak 5.3 meter masih memiliki tingkat presisi diatas 0.9.
   with\textunderscore helmet                          & 0.918           & 1        & 0.995           \\
   \hline
 \end{longtable}
+
+\newpage
 
 \section{Pengujian Pada Tingkat Kecerahan Rendah}
 \label{sec:pengujianberdasarkantingkatkeceharan}
@@ -250,6 +256,8 @@ sebagai kelas \emph{with\textunderscore helmet}.
   % \label{fig:labelbaru}  
 \end{figure}
 
+\newpage
+
 \subsubsection{\emph{Pretrained} YOLOv5s}
 \label{subsubsec:lowlight_yolov5s}
 
@@ -278,6 +286,8 @@ motor diprediksi sebagai \emph{with\textunderscore helmet} begitu juga.
   \caption{Hasil Prediksi Pada Keadaan dengan Pretrained YOLOvs}
   % \label{fig:labelbaru}  
 \end{figure}
+
+\newpage
 
 \subsubsection{\emph{Pretrained} YOLOv5m}
 \label{subsubsec:lowlight_yolov5m}
@@ -310,6 +320,8 @@ yang di \emph{train} menggunakan \emph{pretrained weights} dari YOLOv5 bahkan me
   % \label{fig:labelbaru}  
 \end{figure}
 
+\newpage
+
 \subsubsection{\emph{Pretrained} YOLOv5l}
 \label{subsubsec:lowlight_yolov5l}
 
@@ -339,6 +351,8 @@ menggunakan variant \emph{medium} yaitu 0.914 untuk \emph{precision} dan 0.6 unt
   \caption{Hasil Prediksi Pada Keadaan dengan Pretrained YOLOv5l}
   % \label{fig:labelbaru}  
 \end{figure}
+
+\newpage
 
 \subsection{Pengujian Pada Tingkat Kecerahan Rendah dengan \emph{Weight} Murni Deteksi Helm Keselamatan Kerja}
 \label{subsec:lowlight_pure}
@@ -378,6 +392,7 @@ yang paling cepat dibanding varian lainnya pada \emph{weight} murni \emph{tanpa 
   % \label{fig:labelbaru}  
 \end{figure}
 
+\newpage
 \subsubsection{\emph{Hedec Small}}
 \label{subsubsec:lowlight_hedecS}
 
@@ -407,6 +422,7 @@ dibandingkan varian \emph{Nano} sebelumnya.
   % \label{fig:labelbaru}  
 \end{figure}
 
+\newpage
 \subsubsection{\emph{Hedec Medium}}
 \label{subsubsec:lowlight_hedecM}
 
@@ -436,6 +452,7 @@ varian \emph{Small}.
   % \label{fig:labelbaru}  
 \end{figure}
 
+\newpage
 \subsubsection{\emph{Hedec large}}
 \label{subsubsec:lowlight_hedecL}
 
@@ -465,6 +482,8 @@ sedikit lebih baik daripada varian \emph{Medium} nya, tetapi untuk \emph{Recall}
   \caption{Hasil Prediksi Pada Keadaan dengan \emph{Weight Hedec Large}}
   % \label{fig:labelbaru}  
 \end{figure}
+
+\newpage
 
 \subsection{Pengujian Model YOLOv5 dengan \emph{Helmet Detection Weights} Pada Jetson Nano}
 \label{subsec:jetsonnano_hedectest}
