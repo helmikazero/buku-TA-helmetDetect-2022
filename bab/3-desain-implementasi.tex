@@ -74,7 +74,7 @@ Judul untuk tugas akhir “Deteksi Helm Keselamatan Kerja Menggunakan CNN” ini
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[scale=0.7]{gambar/Metodologi CNN.png}
+  \includegraphics[width=1.0\textwidth]{gambar/Metodologi CNN.png}
   \caption{Bagan Umum Sistem}
   \label{fig:baganumumsistem}  
 \end{figure}
@@ -108,13 +108,29 @@ Dataset yang digunakan untuk training menggunakan Yolov5 berupa dataset berisi g
 
   \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.2]{gambar/safetyhelemtdataset_andrewmvd.png}
+    \includegraphics[width=0.3\textwidth]{gambar/sample_kaggle1/hard_hat_workers0.png}
+    \includegraphics[width=0.3\textwidth]{gambar/sample_kaggle1/hard_hat_workers1.png}
+    \includegraphics[width=0.3\textwidth]{gambar/sample_kaggle1/hard_hat_workers19.png}
     \caption{Dataset \emph{Safety Helmet Detection} oleh andrewmvd}
     \label{fig:datasethelmetdetectionpreview}  
   \end{figure}
 
   \item SampleERASTY2020 dataset oleh Muhammad Aditya Wicaksono
-  \par Dataset ini berisi 8.867 gambar yang kandungannya serupa dengan dataset Safety Helmet Detection oleh andrewmvd sebelumnya. Dataset ini juga sudah lengkap dengan annotasi nya tetapi membutuhkan beberapa perubahan untuk disesuaikan dengan  metode trainingnya. Selain itu, 8.867 gambar tersebut juga sudah termasuk hasil augmentasi seperti flip, rotation, blur, dan noise.
+  \par Dataset ini berisi 8.867 gambar yang kandungannya serupa dengan dataset Safety Helmet 
+  Detection oleh andrewmvd sebelumnya. Dataset ini juga sudah lengkap dengan annotasi nya tetapi 
+  membutuhkan beberapa perubahan untuk disesuaikan dengan  metode trainingnya. 
+  Selain itu, 8.867 gambar tersebut juga sudah termasuk hasil augmentasi seperti flip, 
+  rotation, blur, dan noise.
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.3\textwidth]{gambar/sample_erasty/APB-Hat-6-_jpg.rf.79aa17f23c1834efa681edc7aca5cd5f.jpg}
+    \includegraphics[width=0.3\textwidth]{gambar/sample_erasty/APB-Hat-7-_jpg.rf.4e9ff94579f598546de38a9b5c88a05d.jpg}
+    \includegraphics[width=0.3\textwidth]{gambar/sample_erasty/APB-Hat-8-_jpg.rf.804e2e1de8db16912fbbca9d9cfccff3.jpg}
+    \caption{Dataset SampleERASTY2020 oleh Muhammad Aditya Wicaksono}
+    \label{fig:dataseterastypreview}  
+  \end{figure}
+
 \end{enumerate}
 
 \section{Pelabelan Dataset}
@@ -127,34 +143,99 @@ Untuk keperluan training dan deteksi, terdapat 2 class :
 \end{enumerate}
 
 
-Pada dataset yang sudah didapatkan sudah memiliki pelabelan atau anotasi nya masing - masing, tetapi khusus untuk dataset SampleERASTY2020 terdapat ketidak sesuaian untuk label Hard-hat  dimana hanya meliputi helm keselamatan kerja tanpa kepala penggunananya. Maka dari itu  dilakukan pelabelan ulang untuk dataset SampleERASTY2020 dimana hanya menggunakan file gambar yang masih belum hasil augmentasi yang berjumlah 338 gambar.
+Pada dataset yang sudah didapatkan sudah memiliki pelabelan atau anotasi nya masing - masing, 
+tetapi khusus untuk dataset SampleERASTY2020 terdapat ketidak sesuaian untuk label Hard-hat  
+dimana hanya meliputi helm keselamatan kerja tanpa kepala penggunananya. Maka dari itu  dilakukan 
+pelabelan ulang untuk dataset SampleERASTY2020 dimana hanya menggunakan file gambar yang masih 
+belum hasil augmentasi yang berjumlah 338 gambar. Proses pelabelan gambar dilakukan di platform Roboflow
+seperti yang terlihat di Gambar~\ref{fig:gambarbesertalabel}
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[scale=0.2]{gambar/Screenshot_87.png}
-  \caption{Gambar beserta label}
+  \includegraphics[width=1\textwidth]{gambar/labeldiroboflow.png}
+  \caption{Pelabela gambar di Roboflow}
   \label{fig:gambarbesertalabel}  
 \end{figure}
 
 \section{Preprocessing Dataset}
 \label{sec:preprocessing}
-Dataset yang sudah dikumpulkan lali digabungkan dan dilakukan preprocessing yang dimana untuk tahap ini penulis memanfaatkan Roboflow.
-YOLOv5 yang digunakan untuk men-train dataset menerima gambar dalam ukuran 640x640 dengan warna RGB sehingga dataset yang ada akan diresize dalam ukuran tersebut. Source code YOLOv5 dari repository github sebenarnya sudah menyediakan fitur resize sebelum di train tetapi dari penulis melakukan resize menggunakan roboflow. 
+\par Ada beberapa proses yang dilakukan untuk dataset yang sudah dikumpulkan agar bisa digunakan untuk proses
+training dengan benar. Proses tersebut meliputi pengaturan ulang ukuran gambar atau \emph{resizing}, penamaan ulang nama kelas, dan augmentasi.
+Untuk penelitian ini, proses - proses tersebut dilakukan pada platform Roboflow.
 
-Terdapat beberapa gambar yang tidak diperlukan dari dataset yang didapatkan seperti gambar yang hanya memiliki gambar rompi proyek yang dimana tidak digunakan untuk keperluan training. Untuk beberapa gambar tersebut akan tidak diikutkan dalam export dataset dari roboflow.
 
-Penamaan kelas  label yang ada dari dataset yang sudah ada akan disesuaikan untuk keperluan penggunaan dan pemahaman yang lebih mudah. Dataset SampleERASTY2020 yang sudah dilabel ulang tidak perlu melewati proses ini tetapi untuk dataset Safety Helmet Detection perlu dilakukan penamaan ulang dimana untuk class “helmet” menjadi “with\textunderscore helmet” dan “head” menjadi “no\textunderscore helmet” seperti yang ditunjukan pada Gambar \ref{fig:labelbaru}. Augmentasi tambahan juga dilakukan pada dataset untuk menambah variasi gambar pada dataset dimana untuk bentuk augmentasi yang digunakan yaitu \emph{noise} dan \emph{horizontal flip}. Proses augmentasi dilakukan di platform \emph{Roboflow} yang juga menyediakan fitur augmentasi. Dataset SampleERASTY2020 yang sudah dilabel ulang dan diaugmentasi tambahan lali digabungkan dengan dataset yang sudah didapatkan sebelumnya yang berjumlah 5000 gambar. 
+\subsection{Mengatur Ulang Ukuran Gambar}
+\par YOLOv5 yang digunakan untuk men-train dataset menerima gambar dalam ukuran 640x640 dengan 
+warna RGB sehingga dataset yang ada akan diresize dalam ukuran tersebut. 
+Source code YOLOv5 dari repository github sebenarnya sudah menyediakan fitur 
+resize sebelum di train tetapi dari penulis melakukan resize menggunakan roboflow. 
+
+\subsection{Membersihkan Dataset}
+\par Terdapat beberapa gambar yang tidak diperlukan dari dataset yang didapatkan 
+seperti gambar yang hanya memiliki gambar rompi proyek yang dimana tidak digunakan 
+untuk keperluan training. Untuk beberapa gambar tersebut akan tidak diikutkan dalam 
+export dataset dari roboflow.
+
+\subsection{Penamaan Ulang Nama Kelas Pada Dataset SampleERASTY2020}
+\par Penamaan kelas  label yang ada dari dataset yang sudah ada akan disesuaikan untuk 
+keperluan penggunaan dan pemahaman yang lebih mudah. Dataset SampleERASTY2020 yang sudah dilabel 
+ulang tidak perlu melewati proses ini tetapi untuk dataset Safety Helmet Detection perlu dilakukan 
+penamaan ulang dimana untuk class “helmet” menjadi “with\textunderscore helmet” dan “head” 
+menjadi “no\textunderscore helmet” seperti yang ditunjukan pada Gambar \ref{fig:prepro_classrename}. 
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[scale=1]{gambar/Screenshot_86.png}
-  \caption{Label baru}
-  \label{fig:labelbaru}  
+  \includegraphics[width=0.4\textwidth]{gambar/reclass_old.png}
+  \includegraphics[width=0.4\textwidth]{gambar/reclass_new.png}
+  \caption{Nama Kelas Lama dengan Nama Kelas Baru}
+  \label{fig:prepro_classrename}  
 \end{figure}
 
-Sebelum di export, dilakukan pembagian rasio file untuk train - test - validation. Pembagian nya yaitu 70\% train (4202) , 20\% test (1.200 gambar), dan 10\% validation (600 gambar). Untuk \emph{training} menggunakan YOLOv5 yang berbasis \emph{PyTorch}, \emph{Roboflow} menyediakan fitur \emph{export} dataset ke format yang ditentukan dimana disini anotasinya disimpan dalam bentuk \emph{.txt} dan diatur lewat file \emph{.yaml}. Lalu khusus untuk dataset SampleERASTY2020 yang sudah dilabel ulang, dilakukan beberapa augmentasi menggunakan roboflow. Augmentasi yang digunakan yaitu flip untuk horizontal dan vertikal diman menghasilkan 600 gambar tambahan. Lalu juga dilakukan augmentasi berupa noise 11\% yang menghasilkan tambahan 300 gambar.
+\subsection{Augmentasi Gambar}
+\par Augmentasi tambahan juga dilakukan pada dataset untuk menambah variasi gambar 
+pada dataset dimana untuk bentuk augmentasi yang digunakan yaitu \emph{noise} 
+dan \emph{horizontal flip}. Proses augmentasi dilakukan di platform \emph{Roboflow} 
+yang juga menyediakan fitur augmentasi. Dataset SampleERASTY2020 yang sudah dilabel 
+ulang dan diaugmentasi tambahan lali digabungkan dengan dataset yang sudah 
+didapatkan sebelumnya yang berjumlah 5000 gambar. 
 
-Sebelum digunakan untuk men-\emph{traing} \emph{weight}, dataset yang sebelumnya sudah digabungkan perlu ditentukan pembagiannya untuk set \emph{train - test - val}-nya. Pembagian untuk dataset yang digunakan untuk training yaitu 70\% train (4202) , 20\% test (1.200 gambar), dan 10\% validation (600 gambar). Pembagian dataset ini dilakukan melalui fitur \emph{Generate Dataset Version} pada platform \emph{Roboflow}. 
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.4\textwidth]{gambar/aug_flip.png}
+  \includegraphics[width=0.4\textwidth]{gambar/aug_noise.png}
+  \caption{Augmentasi \emph{Flip} dan \emph{Noise}}
+  \label{fig:prepro_augmentasi}  
+\end{figure}
+
+% Sebelum di export, dilakukan pembagian rasio file untuk train - test - validation. Pembagian nya yaitu 70\% train (4202) , 20\% test (1.200 gambar), dan 10\% validation (600 gambar). Untuk \emph{training} menggunakan YOLOv5 yang berbasis \emph{PyTorch}, \emph{Roboflow} menyediakan fitur \emph{export} dataset ke format yang ditentukan dimana disini anotasinya disimpan dalam bentuk \emph{.txt} dan diatur lewat file \emph{.yaml}. Lalu khusus untuk dataset SampleERASTY2020 yang sudah dilabel ulang, dilakukan beberapa augmentasi menggunakan roboflow. Augmentasi yang digunakan yaitu flip untuk horizontal dan vertikal diman menghasilkan 600 gambar tambahan. Lalu juga dilakukan augmentasi berupa noise 11\% yang menghasilkan tambahan 300 gambar.
+
+\subsection{Pembagian Dataset}
+\par Sebelum digunakan untuk men-\emph{traing} \emph{weight}, dataset yang sebelumnya sudah digabungkan 
+perlu ditentukan pembagiannya untuk set \emph{train - test - val}-nya. Pembagian untuk dataset yang 
+digunakan untuk training yaitu 70\% train (4202) , 20\% test (1.200 gambar), dan 10\% validation (600 gambar). 
+Untuk \emph{training} menggunakan YOLOv5 yang berbasis \emph{PyTorch}, \emph{Roboflow} menyediakan 
+fitur \emph{export} dataset ke format yang ditentukan dimana disini anotasinya disimpan dalam bentuk 
+\emph{.txt} dan diatur lewat file \emph{.yaml} Pembagian dataset ini dilakukan melalui fitur 
+\emph{Generate Dataset Version} pada platform \emph{Roboflow}. Dataset yang didapat dari proses penggabungan dataset
+yang disebutkan pada Subbab~\ref{sec:akuisisidataset} dan setelah melalui \emph{pre-processing} selanjutnya akan disebut
+sebagai Dataset Helm Keselamatan Kerja untuk mempersingkat.
+
+\begin{longtable}{|c|c|c|}
+  \caption{Detail Dataset Deteksi Helm Keselamatan Kerja}
+  \label{tb:detailhasilakhirDataset}\\
+  \hline
+  \rowcolor[HTML]{C0C0C0}
+  \textbf{Detail} & \textbf{Keterangan}  \\
+  \hline
+  Total Gambar & 6.002  \\
+  Jumlah \emph{Train Set} & 4.202 \\
+  Jumlah \emph{Validation Set} & 1.200\\
+  Jumlah \emph{Testing Set} & 600\\ 
+  Jumlah label "with\textunderscore helmet" & 19.985 \\
+  Jumlah label "no\textunderscore helmet" & 6.601\\
+  Resolusi Gambar & 640x640 \\
+  \hline
+\end{longtable}
 
 \section{Training Dataset}
 \label{sec:trainingdataset}
@@ -190,7 +271,7 @@ Dataset yang sudah dikumpulkan sebelumnya didownload ke storage vm Colab Pro lan
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[scale=0.4]{gambar/flowchart_sistem.png}
+  \includegraphics[scale=0.55]{gambar/flowchart_sistemhedec.png}
   \caption{Flowchart Sistem Deteksi Helm Keselamatan Kerja}
   \label{fig:flchartdeteksi}  
 \end{figure}
@@ -204,7 +285,14 @@ Input yang dapat digunakan dengan script yang dibuat dapat dilakukan dalam bentu
 
 % Untuk kasus jika input berupa gambar tunggal, gambar tersebut akan digunakan untuk inference melalu model yolov5 dengan bobot yang sudah dibuat sebelumnya lalu hasil inference yolov5 akan menghasilkan beberapa output. Tetapi untuk sistem yang akan dijalankan akan memanfaatkan feed dari camera atau webcam secara realtime sehingga akan dilakukan inference untuk tiap frame yang masuk dari input webcam.
 
-Tiap frame yang masuk dari input \emph{webcam} akan digunakan untuk proses \emph{inference} melalui model \emph{yolov5} dengan \emph{weight} yang sudah dibuat sebelumnya melalui proses training. Hasil dari \emph{inference} menggunakanm \emph{YOLOv5} akan menghasilkan input berupa posisi untuk objek yang dideteksi yaitu \emph{xcenter, ycenter} serta dimensi dari objeknya yaitu \emph{widht} dan \emph{height} serta informasi nama \emph{class} dan \emph{confidence\textunderscore score} untuk tiap objek yang dideteksi. Hasil \emph{output inference} yang didapat lalu digunakan untuk menggambar \emph{bounding box} pada \emph{frame} gambar yang sedang di\emph{inference} seperti pada Gambar~\ref{fig:outputboundingbox}.
+\par Tiap frame yang masuk dari input \emph{webcam} akan digunakan untuk proses \emph{inference} melalui 
+model \emph{yolov5} dengan \emph{weight} yang sudah dibuat sebelumnya melalui proses training. 
+Hasil dari \emph{inference} menggunakanm \emph{YOLOv5} akan menghasilkan input berupa posisi untuk 
+objek yang dideteksi yaitu \emph{xcenter, ycenter} serta dimensi dari objeknya yaitu \emph{widht} 
+dan \emph{height} serta informasi nama \emph{class} dan \emph{confidence\textunderscore score} untuk 
+tiap objek yang dideteksi. Hasil \emph{output inference} yang didapat lalu digunakan untuk menggambar 
+\emph{bounding box} pada \emph{frame} gambar yang sedang di\emph{inference} 
+seperti pada Gambar~\ref{fig:outputboundingbox}.
 
 \begin{figure}[ht]
   \centering
@@ -217,7 +305,11 @@ Tiap frame yang masuk dari input \emph{webcam} akan digunakan untuk proses \emph
 
 % Untuk fungsi trigger alarm jika terdeteksi adanya orang yang tidak menggunakan helm, untuk hasil output yang dihasilkan dari inference satu frame akan dicheck sekiranya mengandung class “no\textunderscore helmet” yang jika terpenuhi akan  menjalankan perintah untuk mengeprint “NO HELMET DETECTED” pada display dan menjalankan audio alarm. 
 
-Fungsi alarm akan dijalankan ketika dalam frame yang sedang di-\emph{inference} terdeteks objek dengan \emph{class} bernama \emph{“no\textunderscore helmet”}. Fungsi alarm ini berisi perintah untuk memainkan audio alarm untuk mensimulasikan sirine alarm. Selain menjalankan fungsi alarm, akan juga dijalanan perintah untuk mendisplay text \emph{“NO HELMET DETECTED”} pada frame yang sedang di-\emph{inference}.
+\par Fungsi alarm akan dijalankan ketika dalam frame yang sedang di-\emph{inference} terdeteks objek 
+dengan \emph{class} bernama \emph{“no\textunderscore helmet”}. Fungsi alarm ini berisi perintah untuk 
+memainkan audio alarm untuk mensimulasikan sirine alarm. Selain menjalankan fungsi alarm, akan juga 
+dijalanan perintah untuk mendisplay text \emph{“NO HELMET DETECTED”} pada frame yang sedang 
+di-\emph{inference} seperti yang ditunjukan pada Gambar~\ref{fig:deteksinohelm}.
 
 \begin{figure}[ht]
   \centering
