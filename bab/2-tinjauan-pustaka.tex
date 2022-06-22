@@ -117,7 +117,7 @@ yaitu :
     \item pelindung tangan
     \item pelindung kaki
 \end{enumerate}
-Dimana pelindung kepala ini meliputi helm keselamatan kerja atau \emph{hardhat}.
+Dimana pelindung kepala ini meliputi helm keselamatan kerja atau \emph{hardhat} \cite{suratkementriantenagakerja}.
 
 \newpage
 
@@ -129,6 +129,26 @@ Peraturan ini meliputi ketentuan umum tentang keselamatan dan kesehatan kerja ko
 ,ahli K3 Konstruksi, petugas K3 Konstruksi, potensi bahaya, dan risiko K3. Dijelaskan pada pasal 6 ayat 1 dan 2 bahwa Ahli K3 atau Petugas K3 wajib dilibatkan pada konstruksi
 dengan potensi bahaya tinggi atau rendah.
 
+\section{Visi Komputer}
+\label{sec:visikomputer}
+
+\par Visi Komputer adalah bidang ilmu yang mempelajari cara untuk memproses gambar terutama dalam meniru
+kemampuan manusia dalam melihat. Kemampuan seperti rekognisi wajah hingga bentuk kemampuan lain yang bahkan
+melebihi kemampuan manusia. Kebanyakan riset dari bidang visi komputer di \emph{deep learning} berfokus pada
+pengenalan objek atau deteksi. Bentuknya dari pengenalan atau deteksi ini bisa meliputi membuat log atau laporan
+objek apa saja yang ada dalam gambar hingga memberi penandaan pada objek yang terdeteksi \cite{Goodfellow-et-al-2016}. 
+
+
+\section{\emph{Object Detection}}
+\label{sec:objectdetection}
+
+\par Deteksi Object atau \emph{Object Detection} dalam visi komputer sendiri adalah prosedur untuk mengklasifikasikan suatu objek
+pada suatu gambar sekaligus berusaha untuk menentukan lokasi atau posisi dari objek yang ada pada gambar tersebut \cite{felzenszwalb2010object}. 
+Manfaat dari \emph{Object Detection} yaitu dapat memberikan informasi terkait suatu gambar atau video agar bisa lebih dipahami yang lalu bisa dimanfaatkan
+untuk berbagai bentuk aplikasi. Penelitian di bidang \emph{Object Detection} ini pada umumnya berjalan di area \emph{neural network} atau sistem \emph{machine learning}
+yang lalu juga termasuk pembuatan algoritma \emph{neural network} untuk teknik deteksi objek. Tetapi deteksi pada suatu gambar memiliki banyak
+hal yang perlu dipertimbangkan seperti arah sudut pandang, pencahayaan, objek yang menghalang, dan hal lainnya yang membuat 
+deteksi objek dengan prediksi lokasi akurat semakin sulit untuk dilakukan \cite{zhao2019object}.
 
 \section{Convolutional Neural Network}
 \label{sec:convolutionalneuralnetwork}
@@ -143,7 +163,8 @@ sekadar memiliki banyak \emph{layer} seperti konsep \emph{deep learning} tetapi 
 
 \par Sebelum adanya \emph{Convolutional Neural Network},pada \emph{image classification} atau \emph{recognition} dibuat sistem independen khusus yang hanya digunakan
 untuk pengambilan fitur dari sebuah gambar dan tidak termasuk dari \emph{machine learning}-nya sendiri yang dimana membutuhkan waktu dan tenaga yang lebih. Selain itu, \emph{feature extractor}
-independen ini juga tidak selalu menghasilkan performa yang stabil. Sistem \emph{fiture extradctor} independen ini digunakan sebelum dilakukan klasifikasi seperti yang ditunjukkan pada Gambar~\ref{fig:imgecog_beforeconv}.
+independen ini juga tidak selalu menghasilkan performa yang stabil. 
+Sistem \emph{fiture extradctor} independen ini digunakan sebelum dilakukan klasifikasi seperti yang ditunjukkan pada Gambar~\ref{fig:imgecog_beforeconv}.
 
 
 \begin{figure}[ht]
@@ -229,23 +250,15 @@ sehingga menjadi \emph{irreversible} atau tidak bisa dikembalikan.
 \label{subsec:activationlayer}
 
 \par \emph{Activation Layer} adalah tempat dilakukannya fungsi aktivasi dimana dilakukan transformasi data input
-menjadi dimensi tinggi agar memungkinakan untuk dilakukan klasifikasi\cite{putra2016klasifikasi}.
+menjadi dimensi tinggi agar memungkinakan untuk dilakukan klasifikasi \cite{putra2016klasifikasi}.
 
 
-\section{Visi Komputer}
-\label{sec:visikomputer}
 
-Visi Komputer adalah bidang ilmu yang mempelajari cara untuk memproses gambar terutama dalam meniru
-kemampuan manusia dalam melihat. Kemampuan seperti rekognisi wajah hingga bentuk kemampuan lain yang bahkan
-melebihi kemampuan manusia. Kebanyakan riset dari bidang visi komputer di \emph{deep learning} berfokus pada
-pengenalan objek atau deteksi. Bentuknya dari pengenalan atau deteksi ini bisa meliputi membuat log atau laporan
-objek apa saja yang ada dalam gambar hingga memberi penandaan pada objek yang terdeteksi \cite{Goodfellow-et-al-2016}. 
-
-\section{You Only Look Once (YOLO)}
+\section{\emph{You Only Look Once} (YOLO)}
 \label{sec:youonlylookone}
 
 \emph{You Only Look Once} atau YOLO adalah algoritma \emph{muti object detection} yang sangat cepat yang dicetuskan oleh Redmot et al pada tahun 2015
-lewat buku mereka \emph{You Only Look Once: Unified, Real-Time Object Detection}\cite{redmon2016you}. Convolutional Neural Network menjadi basis dari sistem deteksi YOLO ini.
+lewat buku mereka \emph{You Only Look Once: Unified, Real-Time Object Detection} \cite{redmon2016you}. \emph{Convolutional Neural Network} menjadi basis dari sistem deteksi YOLO ini.
 YOLO melakukan deteksi objek dengan menganggap nya sebagai pemrasalahan regresi tunggal yang diambil langsung dari \emph{pixel - pixel} yang ada
 di gambar menjadi \emph{bounding box} penanda dari koordinat - koordinat dan probabilitas dari klasifikasinya. Dengan begitu
 hanya perlu dilakukan satu kali pengecekan pada gambar untuk melakukan deteksi atau indentifikasi. \cite{redmon2016you}
