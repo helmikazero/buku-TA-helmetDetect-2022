@@ -29,12 +29,12 @@ Proses validasi hasil training dilakukan menggunakan dataset Deteksi Helm Kesela
   \label{tb:pretraincoco}\\
   \hline
   \rowcolor[HTML]{C0C0C0}
-  \textbf{\emph{Pretrained Weight}} & \emph{Precision}  & \emph{Recall} & \emph{mAP@.5} & \emph{Inference Time}\\
+  \textbf{Nama Bobot} & \emph{Precision}  & \emph{Recall} & \emph{mAP@.5} & \emph{Inference Time}\\
   \hline
-  YOLOv5n                           & 0.92               & 0.878         & 0.922         & 1.9ms              \\
-  YOLOv5s                           & 0.927              & 0.882         & 0.929         & 4.1ms              \\
-  YOLOv5m                           & 0.923              & 0.892         & 0.933        & 9ms                  \\
-  YOLOv5l                           & 0.917              & 0.87          & 0.919         & 13.9ms                \\
+  hedec\textunderscore pretrain\textunderscore N & 0.92               & 0.878         & 0.922         & 1.9ms              \\
+  hedec\textunderscore pretrain\textunderscore S & 0.927              & 0.882         & 0.929         & 4.1ms              \\
+  hedec\textunderscore pretrain\textunderscore M & 0.923              & 0.892         & 0.933        & 9ms                  \\
+  hedec\textunderscore pretrain\textunderscore L & 0.917              & 0.87          & 0.919         & 13.9ms                \\
   \hline
 \end{longtable}
 
@@ -50,12 +50,12 @@ Pada bagian ini akan dipaparkan hasil validasi dari \emph{weight} yang dihasilka
   \label{tb:nopretrain}\\
   \hline
   \rowcolor[HTML]{C0C0C0}
-  \textbf{\emph{Configuration}} & \emph{Precision}  & \emph{Recall} & \emph{mAP@.5} & \emph{Inference Time}\\
+  \textbf{Nama Bobot} & \emph{Precision}  & \emph{Recall} & \emph{mAP@.5} & \emph{Inference Time}\\
   \hline
-  YOLOv5n                           & 0.918              & 0.85         & 0.909         & 2.4ms                \\
-  YOLOv5s                           & 0.927             & 0.865        & 0.919        & 4.1ms               \\
-  YOLOv5m                           & 0.939            & 0.862        & 0.924        & 8.7ms                \\
-  YOLOv5l                           & 0.922            & 0.876      &   0.923       &  14.0ms        \\
+  hedec\textunderscore pure\textunderscore N  & 0.918              & 0.85         & 0.909         & 2.4ms                \\
+  hedec\textunderscore pure\textunderscore S  & 0.927             & 0.865        & 0.919        & 4.1ms               \\
+  hedec\textunderscore pure\textunderscore M & 0.939            & 0.862        & 0.924        & 8.7ms                \\
+  hedec\textunderscore pure\textunderscore L & 0.922            & 0.876      &   0.923       &  14.0ms        \\
   \hline
 \end{longtable}
 
