@@ -125,7 +125,7 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pretrain".
   nilai \emph{precision} untuk kelas "with\_helmet" berada pada angka 0.686 dan \emph{recall} untuk kelas "no\_helmet" 0.8 karena ada beberapa 
   kelas "no\_helmet" yang salah terdeteksi sebagai "with\_helmet".
 
-  \begin{table}[ht]
+  \begin{table}[h]
     \centering
     \caption{Hasil Validasi Perbedaan Jarak Pada \textbf{"hedec\_pretrain\_S"}}
     \label{tb:hasiljarak_hedec_pretrain_S}
@@ -155,16 +155,13 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pretrain".
     \end{tabular}
   \end{table}
 
-  \begin{figure}[ht]
+  \begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{gambar/BerdasarkanJarak/hedec_pretrain_S.png}
     \caption{Grafik \emph{Precision, Recall, mAP} untuk \textbf{"hedec\_pretrain\_S"} Pada Jarak 1.3 meter Hingga 9 meter}
     \label{fig:grafvaljarak_hedec_pretrain_S}  
   \end{figure}
   
-
-
-
   \item \textbf{hedec\_pretrain\_M}
   
   \par Pada pengujian menggunakan bobot "hedec\_pretrain\_M" pada perbedaan jarak seperti yang bisa dilihat di Gambar~\ref{fig:grafvaljarak_hedec_pretrain_M}, jarak 1.3 meter dan 9 meter
@@ -266,9 +263,199 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pure".
 
 \begin{enumerate}
   \item \textbf{hedec\_pure\_N}
+  \par Pada bagian dipaparkan hasil pengujian dari bobot "hedec\_pure\_N" yang merupakan bobot hasil \emph{training}
+  yang tidak menggunakan \emph{Pretrained Weights} dari repository YOLOv5 tetapi konfigurasinya menyerupai konfigurasi
+  varian \emph{Pretrained Weights} varian YOLOv5n. Seperti yang ditunjukkan pada Gambar~\ref{fig:grafvaljarak_hedec_pure_N}
+  , untuk semua kelas memiliki nilai \emph{precision} di atas 0.8 untuk semua jarak. Tetapi untuk \emph{recall} pada jarak 1.3 meter
+  untuk kelas "no\_helmet" memiliki nilai 0.6 dimana terdapat kegagalan memprediksi kelas "no\_helmet" dan prediksi lokasi yang
+  kurang akurat. Tabel Hasil Validasi bobot "hedec\_pure\_N" bisa dilihat pada Tabel~\ref{tb:hasiljarak_hedec_pure_N}.
+
+  \begin{table}[ht]
+    \centering
+    \caption{Hasil Validasi Perbedaan Jarak Pada \textbf{"hedec\_pure\_N"}}
+    \label{tb:hasiljarak_hedec_pure_N}
+    \begin{tabular}{|l|l|l|l|l|} 
+      \hline
+      Jarak     & class        & precision & recall & mAP    \\ 
+      \hline
+      1.3 meter & all          & 0.889     & 0.8    & 0.903  \\
+      2.6 meter & all          & 0.971     & 1      & 0.995  \\
+      4 meter   & all          & 0.904     & 0.986  & 0.995  \\
+      5.3 meter & all          & 0.847     & 0.989  & 0.995  \\
+      6.7 meter & all          & 0.949     & 1      & 0.995  \\
+      9 meter   & all          & 0.92      & 1      & 0.995  \\
+      1.3 meter & no\_helmet   & 0.876     & 0.6    & 0.812  \\
+      2.6 meter & no\_helmet   & 0.991     & 1      & 0.995  \\
+      4 meter   & no\_helmet   & 1         & 0.971  & 0.995  \\
+      5.3 meter & no\_helmet   & 1         & 0.977  & 0.995  \\
+      6.7 meter & no\_helmet   & 0.997     & 1      & 0.995  \\
+      9 meter   & no\_helmet   & 0.979     & 1      & 0.995  \\
+      1.3 meter & with\_helmet & 0.902     & 1      & 0.995  \\
+      2.6 meter & with\_helmet & 0.952     & 1      & 0.995  \\
+      4 meter   & with\_helmet & 0.808     & 1      & 0.995  \\
+      5.3 meter & with\_helmet & 0.694     & 1      & 0.995  \\
+      6.7 meter & with\_helmet & 0.901     & 1      & 0.995  \\
+      9 meter   & with\_helmet & 0.861     & 1      & 0.995  \\
+      \hline
+    \end{tabular}
+  \end{table}
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{gambar/BerdasarkanJarak/hedec_pure_N.png}
+    \caption{Grafik \emph{Precision, Recall, mAP} untuk \textbf{"hedec\_pure\_N"} Pada Jarak 1.3 meter Hingga 9 meter}
+    \label{fig:grafvaljarak_hedec_pure_N}  
+  \end{figure}
+
+
   \item \textbf{hedec\_pure\_S}
+  
+  \par Pada pengujian pada jarak berbeda dari 1.3 meter hingga 9 meter untuk bobot "hedec\_pure\_S" yang merupakan bobot hasil \emph{training}
+  yang tidak menggunakan \emph{Pretrained Weights} dari repository YOLOv5 tetapi konfigurasinya menyerupai konfigurasi
+  varian \emph{Pretrained Weights} varian YOLOv5s ini ditemukan beberapa hal. Seperti yang bisa dilihat pada Gambar~\ref{fig:grafvaljarak_hedec_pure_S},
+  pada jarak 1.3 meter memiliki nilai yang rendah untuk \emph{precision, recall} dan juga nilai mAP nya dimana untuk kelas "no\_helmet" didapati kesalahan prediksi. Lalu mulai dari
+  jarak 2.6 meter hingga 6.7 meter mengalami kenaikan. Tetapi pada jarak 9 meter, \emph{precision} untuk kelas "with\_helmet"
+  mengalami penurunan karena ada kelas "no\_helmet" yang terdeteksi sebagai "with\_helmet". Tabel untuk hasil validasi dari "hedec\_pure\_N" bisa dilihat
+  pada Tabel~\ref{tb:hasiljarak_hedec_pure_S}.
+  
+  \begin{table}[ht]
+    \centering
+    \caption{Hasil Validasi Perbedaan Jarak Pada \textbf{"hedec\_pure\_S"}}
+    \label{tb:hasiljarak_hedec_pure_S}
+    \begin{tabular}{|l|l|l|l|l|} 
+      \hline
+      Jarak     & class        & precision & recall & mAP    \\ 
+      \hline
+      1.3 meter & all          & 0.846     & 0.8    & 0.891  \\
+      2.6 meter & all          & 0.978     & 1      & 0.995  \\
+      4 meter   & all          & 0.959     & 1      & 0.995  \\
+      5.3 meter & all          & 0.891     & 1      & 0.995  \\
+      6.7 meter & all          & 0.948     & 1      & 0.995  \\
+      9 meter   & all          & 0.745     & 1      & 0.97   \\
+      1.3 meter & no\_helmet   & 0.728     & 0.6    & 0.787  \\
+      2.6 meter & no\_helmet   & 0.991     & 1      & 0.995  \\
+      4 meter   & no\_helmet   & 0.987     & 1      & 0.995  \\
+      5.3 meter & no\_helmet   & 0.985     & 1      & 0.995  \\
+      6.7 meter & no\_helmet   & 0.994     & 1      & 0.995  \\
+      9 meter   & no\_helmet   & 0.981     & 1      & 0.995  \\
+      1.3 meter & with\_helmet & 0.964     & 1      & 0.995  \\
+      2.6 meter & with\_helmet & 0.965     & 1      & 0.995  \\
+      4 meter   & with\_helmet & 0.93      & 1      & 0.995  \\
+      5.3 meter & with\_helmet & 0.797     & 1      & 0.995  \\
+      6.7 meter & with\_helmet & 0.901     & 1      & 0.995  \\
+      9 meter   & with\_helmet & 0.508     & 1      & 0.945  \\
+      \hline
+    \end{tabular}
+  \end{table}
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{gambar/BerdasarkanJarak/hedec_pure_S.png}
+    \caption{Grafik \emph{Precision, Recall, mAP} untuk \textbf{"hedec\_pure\_S"} Pada Jarak 1.3 meter Hingga 9 meter}
+    \label{fig:grafvaljarak_hedec_pure_S}  
+  \end{figure}
+
+
   \item \textbf{hedec\_pure\_M}
+  
+  \par Berikut merupakan hasil validasi pada pengujian prediksi dari jarak 1.3 meter hingga 9 meter untuk bobot "hedec\_pure\_M"
+  yang konfigurasi nya menyerupai konfigurasi varian bobot YOLOv5m dari repo YOLOv5 tetapi tidak di-\emph{train} menggunakan bobot \emph{pretrain}-nya.
+  Pada Gambar~\ref{fig:grafvaljarak_hedec_pure_M} dapat dilihat bahwa untuk rata-rata kedua kelas dari jarak 1.3 meter hingga 6.7 meter
+  memiliki nilai \emph{precision} di atas 0.9, \emph{recall} di atas 0.7 dan mAP 0.995. Tetapi pada jarak 9 meter terjadi penurunan
+  nilai \emph{precision} untuk kelas "with\_helmet" mencapai nilai 0.508 dimana terdapat seperti pada umumnya mengalami penurunan. 
+  Tabel untuk hasil validasi dari "hedec\_pure\_M" bisa dilihat
+  pada Tabel~\ref{tb:hasiljarak_hedec_pure_M}.
+  
+  \begin{table}[ht]
+    \centering
+    \caption{Hasil Validasi Perbedaan Jarak Pada \textbf{"hedec\_pure\_M"}}
+    \label{tb:hasiljarak_hedec_pure_M}
+    \begin{tabular}{|l|l|l|l|l|} 
+      \hline
+      Jarak     & class        & precision & recall & mAP    \\ 
+      \hline
+      1.3 meter & all          & 0.909     & 0.869  & 0.995  \\
+      2.6 meter & all          & 0.988     & 1      & 0.995  \\
+      4 meter   & all          & 0.978     & 1      & 0.995  \\
+      5.3 meter & all          & 0.967     & 1      & 0.995  \\
+      6.7 meter & all          & 0.948     & 1      & 0.995  \\
+      9 meter   & all          & 0.745     & 1      & 0.97   \\
+      1.3 meter & no\_helmet   & 1         & 0.739  & 0.995  \\
+      2.6 meter & no\_helmet   & 0.989     & 1      & 0.995  \\
+      4 meter   & no\_helmet   & 0.991     & 1      & 0.995  \\
+      5.3 meter & no\_helmet   & 0.987     & 1      & 0.995  \\
+      6.7 meter & no\_helmet   & 0.994     & 1      & 0.995  \\
+      9 meter   & no\_helmet   & 0.981     & 1      & 0.995  \\
+      1.3 meter & with\_helmet & 0.818     & 1      & 0.995  \\
+      2.6 meter & with\_helmet & 0.988     & 1      & 0.995  \\
+      4 meter   & with\_helmet & 0.965     & 1      & 0.995  \\
+      5.3 meter & with\_helmet & 0.946     & 1      & 0.995  \\
+      6.7 meter & with\_helmet & 0.901     & 1      & 0.995  \\
+      9 meter   & with\_helmet & 0.508     & 1      & 0.945  \\
+      \hline
+    \end{tabular}
+  \end{table}
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{gambar/BerdasarkanJarak/hedec_pure_M.png}
+    \caption{Grafik \emph{Precision, Recall, mAP} untuk \textbf{"hedec\_pure\_M"} Pada Jarak 1.3 meter Hingga 9 meter}
+    \label{fig:grafvaljarak_hedec_pure_M}  
+  \end{figure}
+
+
   \item \textbf{hedec\_pure\_L}
+  
+  \par Pada pengujian pada jarak berbeda dari 1.3 meter hingga 9 meter untuk bobot "hedec\_pure\_L" yang merupakan bobot hasil \emph{training}
+  yang tidak menggunakan \emph{Pretrained Weights} dari repository YOLOv5 tetapi konfigurasinya menyerupai konfigurasi
+  varian \emph{Pretrained Weights} varian YOLOv5l memeiliki beberapa poin yang dapat ditarik. 
+  Seperti yang bisa dilihat pada Gambar~\ref{fig:grafvaljarak_hedec_pure_L},
+  pada jarak 1.3 meter memiliki nilai yang sedikit rendah untuk \emph{precision, recall} (0.842 dan 0.871) jika dibandingkan dengan jarak 2.6 meter hingga 6.7 meter. 
+  Lalu \emph{precision} untuk kelas "with\_helmet" mengalami penurunan drastis pada jarak 9 meter yaitu 0.598.
+  Tidak seperti untuk bobot sebandingnya yaitu "hedec\_pretain\_L" yang memiliki hasil validasi yang semua berada di atas 0.9, bobot "hedec\_pure\_L" memiliki penurunan
+  pada jarak 9 meter.
+  Tabel untuk hasil validasi dari "hedec\_pure\_L" bisa dilihat
+  pada Tabel~\ref{tb:hasiljarak_hedec_pure_L}.
+  
+  \begin{table}[ht]
+    \centering
+    \caption{Hasil Validasi Perbedaan Jarak Pada \textbf{"hedec\_pure\_L"}}
+    \label{tb:hasiljarak_hedec_pure_L}
+    \begin{tabular}{|l|l|l|l|l|} 
+      \hline
+      Jarak     & class        & precision & recall & mAP    \\ 
+      \hline
+      1.3 meter & all          & 0.842     & 0.871  & 0.978  \\
+      2.6 meter & all          & 0.98      & 1      & 0.995  \\
+      4 meter   & all          & 0.977     & 1      & 0.995  \\
+      5.3 meter & all          & 0.874     & 0.99   & 0.995  \\
+      6.7 meter & all          & 0.972     & 1      & 0.995  \\
+      9 meter   & all          & 0.794     & 0.849  & 0.995  \\
+      1.3 meter & no\_helmet   & 1         & 0.741  & 0.962  \\
+      2.6 meter & no\_helmet   & 0.988     & 1      & 0.995  \\
+      4 meter   & no\_helmet   & 0.99      & 1      & 0.995  \\
+      5.3 meter & no\_helmet   & 1         & 0.98   & 0.995  \\
+      6.7 meter & no\_helmet   & 0.987     & 1      & 0.995  \\
+      9 meter   & no\_helmet   & 1         & 0.698  & 0.995  \\
+      1.3 meter & with\_helmet & 0.683     & 1      & 0.995  \\
+      2.6 meter & with\_helmet & 0.971     & 1      & 0.995  \\
+      4 meter   & with\_helmet & 0.964     & 1      & 0.995  \\
+      5.3 meter & with\_helmet & 0.749     & 1      & 0.995  \\
+      6.7 meter & with\_helmet & 0.956     & 1      & 0.995  \\
+      9 meter   & with\_helmet & 0.589     & 1      & 0.995  \\
+      \hline
+    \end{tabular}
+  \end{table}
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{gambar/BerdasarkanJarak/hedec_pure_L.png}
+    \caption{Grafik \emph{Precision, Recall, mAP} untuk \textbf{"hedec\_pure\_L"} Pada Jarak 1.3 meter Hingga 9 meter}
+    \label{fig:grafvaljarak_hedec_pure_L}  
+  \end{figure}
+
+
+
 \end{enumerate}
 
 
