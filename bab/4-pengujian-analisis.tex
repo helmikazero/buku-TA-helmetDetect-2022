@@ -14,54 +14,160 @@ dihasilkan akan memiliki performa yang lebih tinggi daripada melakukan training 
 pretrained model sama sekali. \emph{COCO Dataset} ini memiliki 80 \emph{class} berbeda. 
 Seperti disebutkan pada \ref{sec:pelabelandataset} yaitu untuk keperluan penelitian ini 
 hanya memerlukan 2 kelas yaitu "no\textunderscore helmet" dan "with\textunderscore helmet". 
-Pada bagian ini akan dipaparkan dan dibandingkan performa antara tiap bobot yang dihasilkan 
+
+\par Beberapa \emph{pretrained model} yang disedikana dari repositori YOLOv5 yaitu YOLOv5n, YOLOV5s, 
+YOLOv5m, YOLOv5l,YOLOv5l, dan YOLOv5x. Selain beberapa model pretrained tersebut juga ada versi 
+untuk ukuran gammbar 1280 yaitu seri YOLOv5n6 hingga YOLOv5l6. Pada penelitian ini hanya 
+menggunakan variasi YOLOv5n hingga YOLOv5l karena variasi YOLOv5x dan versi seri 6 untuk 
+ukuran gambar 1280 membutuhkan waktu yang lebih lama. Perbedaan - perbedaan yang ada pada 
+bobot - bobot pretrained tersebut berasal dari konfigurasi awal dari training pada dataset 
+COCO yang menggunakan YOLOv5, terutama pada paramter "depth\textunderscore multiple" 
+dan "width\textunderscore multiple".
+
+\par Proses validasi hasil training dilakukan menggunakan dataset Deteksi Helm Keselamatan 
+Kerja yang pembagiannya dijelaskan pada bagian \ref{sec:preprocessing} yang berjumlah 1200 
+gambar dengan kelas "no\textunderscore helmet" berjumlah 1322 label dan kelas 
+"with\textunderscore helmet" berjumlah 4294 label.
+
+\par Pada bagian ini akan dipaparkan dan dibandingkan performa antara tiap bobot yang dihasilkan 
 dengan model pretrained dan yang tidak menggunakan pretrained model. Pengujian ini dilakukan menggunakan
-\emph{resource} dari Google Colab.
+\emph{resource} dari Google Colab. Spesifikasi \emph{resource} Google Colab yang digunakan saat melakukan validasi
+untuk bobot yang sudah di-\emph{train} dapat dilihat pada Tabel~\ref{tb:spekgoogleclab}.
+
+\begin{table}
+  \centering
+  \caption{Spesifikasi \emph{Resource} Google Colab Untuk Validasi \emph{Weight}}
+  \label{tb:spekgoogleclab}
+  \begin{tabular}{|l|l|} 
+  \hline
+  Tipe    & Keterangan                      \\ 
+  \hline
+  Python  & Python-3.7.13                   \\
+  PyTorch & torch-1.11.0+cu113              \\
+  GPU     & Tesla P100-PCIE-16GB, 16281MiB  \\
+  \hline
+  \end{tabular}
+\end{table}
 
 \subsection{Pengujian Performa \emph{Weight} dari Hasil \emph{Pretrain} COCO Dataset}
 \label{subsec:ujiperforma_coco}
-Beberapa \emph{pretrained model} yang disedikana dari repositori YOLOv5 yaitu YOLOv5n, YOLOV5s, YOLOv5m, YOLOv5l,YOLOv5l, dan YOLOv5x. Selain beberapa model pretrained tersebut juga ada versi untuk ukuran gammbar 1280 yaitu seri YOLOv5n6 hingga YOLOv5l6. Pada penelitian ini hanya menggunakan variasi YOLOv5n hingga YOLOv5l karena variasi YOLOv5x dan versi seri 6 untuk ukuran gambar 1280 membutuhkan waktu yang lebih lama. Perbedaan - perbedaan yang ada pada bobot - bobot pretrained tersebut berasal dari konfigurasi awal dari training pada dataset COCO yang menggunakan YOLOv5, terutama pada paramter "depth\textunderscore multiple" dan "width\textunderscore multiple".
-Proses validasi hasil training dilakukan menggunakan dataset Deteksi Helm Keselamatan Kerja yang pembagiannya dijelaskan pada bagian \ref{sec:preprocessing} yang berjumlah 1200 gambar dengan kelas "no\textunderscore helmet" berjumlah 1322 label dan kelas "with\textunderscore helmet" berjumlah 4294 label. Dari semua \emph{weight} yang dihasilkan dari training menggunkana Dataset Helm Keselamatan Kerja lalu dilakukan validasi yang hasilnya dapat dilihat pada Tabel~\ref{tb:pretraincoco}.
 
+\par Berikut merupakan pemaparan dari hasil validasi untuk bobot yang dilatih menggunakan \emph{pretrained weights}
+dari YOLOv5 untuk varian \emph{Nano (N), Small (S), Medium(M),} dan \emph{Large(L)}. Hasil validasi dapat dilihat pada
+Tabel~\ref{tb:pretraincoco}.
 
-\begin{longtable}{|c|c|c|c|c|}
+\begin{table}[ht]
+  \centering
   \caption{Hasil Validasi \emph{Weight} dari Hasil Pretrain}
-  \label{tb:pretraincoco}\\
+  \label{tb:pretraincoco}
+  \begin{tabular}{|l|l|l|l|l|l|l|} 
   \hline
-  \rowcolor[HTML]{C0C0C0}
-  \textbf{Nama Bobot} & \emph{Precision}  & \emph{Recall} & \emph{mAP@.5} & \emph{Inference Time}\\
+  Nama Bobot                          & class        & precision & recall & mAP   & mAP .5:.95 & inference time (ms)    \\ 
   \hline
-  hedec\textunderscore pretrain\textunderscore N & 0.92               & 0.878         & 0.922         & 1.9ms              \\
-  hedec\textunderscore pretrain\textunderscore S & 0.927              & 0.882         & 0.929         & 4.1ms              \\
-  hedec\textunderscore pretrain\textunderscore M & 0.923              & 0.892         & 0.933        & 9ms                  \\
-  hedec\textunderscore pretrain\textunderscore L & 0.917              & 0.87          & 0.919         & 13.9ms                \\
+  \multirow{3}{*}{hedec\_pretrain\_N} & all          & 0.925     & 0.871  & 0.922 & 0.557      & \multirow{3}{*}{1.9}   \\
+                                      & no\_helmet   & 0.924     & 0.867  & 0.916 & 0.552      &                        \\
+                                      & with\_helmet & 0.926     & 0.875  & 0.929 & 0.562      &                        \\ 
   \hline
-\end{longtable}
+  \multirow{3}{*}{hedec\_pretrain\_S} & all          & 0.929     & 0.878  & 0.929 & 0.568      & \multirow{3}{*}{4}     \\
+                                      & no\_helmet   & 0.925     & 0.857  & 0.918 & 0.561      &                        \\
+                                      & with\_helmet & 0.932     & 0.9    & 0.941 & 0.575      &                        \\ 
+  \hline
+  \multirow{3}{*}{hedec\_pretrain\_M} & all          & 0.923     & 0.891  & 0.933 & 0.57       & \multirow{3}{*}{8.7}   \\
+                                      & no\_helmet   & 0.919     & 0.883  & 0.923 & 0.561      &                        \\
+                                      & with\_helmet & 0.928     & 0.898  & 0.943 & 0.58       &                        \\ 
+  \hline
+  \multirow{3}{*}{hedec\_pretrain\_L} & all          & 0.919     & 0.867  & 0.919 & 0.579      & \multirow{3}{*}{14}    \\
+                                      & no\_helmet   & 0.904     & 0.846  & 0.899 & 0.565      &                        \\
+                                      & with\_helmet & 0.934     & 0.887  & 0.939 & 0.593      &                        \\ 
+  \hline
+  \end{tabular}
+\end{table}
 
-Berdasarkan hasil validasi, tidak ada perbedaan signifikan dari \emph{precision, recall, mAP}. Tetapi perbedaan besar ada pada \emph{inference time}-nya. 
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\textwidth]{gambar/final_weight_val/hedec_pretrain-all.png}
+  \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Hasil Pretrain COCO-YOLOv5 untuk Semua Kelas}
+  \label{fig:grafval_pretrain_all}  
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\textwidth]{gambar/final_weight_val/hedec_pretrain-no_helmet.png}
+  \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Hasil Pretrain COCO-YOLOv5 untuk Kelas "no\_helmet"}
+  \label{fig:grafval_pretrain_no_helmet}  
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\textwidth]{gambar/final_weight_val/hedec_pretrain-with_helmet.png}
+  \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Hasil Pretrain COCO-YOLOv5 untuk Kelas "with\_helmet"}
+  \label{fig:grafval_pretrain_with_helmet}  
+\end{figure}
+
+\par Berdasarkan hasil validasi yang dipaparkan, tidak ada perbedaan signifikan dari \emph{precision, recall, mAP} 
+baik pada kelas "with\_helmet" seperti yang ditunjukan pada Gambar~\ref{fig:grafval_pretrain_with_helmet} ataupun "no\_helmet" pada Gambar~\ref{fig:grafval_pretrain_no_helmet}.
+Untuk nilai \emph{precision} berada di atas 0.9 dengan nilai tertinggi oleh varian "hedec\_pretrain\_S" . Untuk \emph{recall}
+juga tidak terlalu berbeda diantara bobot dimana semuanya berada diatas angka 0.8 dengan bilai teringgi 
+oleh varian "hedec\_pretrain\_M". Dan sewajarnya 
 
 \subsection{Pengujian Performa \emph{Weight} Hasil Train Murni Dataset Deteksi Helm Keselamatan Kerja}
 \label{subsec:murnidataset}
 
-Pada bagian ini akan dipaparkan hasil validasi dari \emph{weight} yang dihasilkan dari train tanpa menggunakan \emph{pretrained weight} yang disediakan dari repositori YOLOv5. Untuk proses training, akan digunakan konfigurasi yang serupa dengan konfigurasi yang digunakan pada \emph{weight} yang disediakan repositori YOLOv5.
+\par Berikut merupakan pemaparan dari hasil validasi untuk bobot yang dilatih tanpa \emph{pretrained weights}
+dari YOLOv5 . Tetapi untuk konfigurasinya dibuat serupa dengan varian \emph{Nano (N), Small (S), Medium(M),} dan \emph{Large(L)}. 
+Hasil validasi dapat dilihat pada Tabel~\ref{tb:nopretrain}.
 
-\begin{longtable}{|c|c|c|c|c|}
+
+\begin{table}[ht]
+  \centering
   \caption{hasil Validasi \emph{Weight} dari Murni Dataset}
-  \label{tb:nopretrain}\\
+  \label{tb:nopretrain}
+  \begin{tabular}{|l|l|l|l|l|l|l|} 
   \hline
-  \rowcolor[HTML]{C0C0C0}
-  \textbf{Nama Bobot} & \emph{Precision}  & \emph{Recall} & \emph{mAP@.5} & \emph{Inference Time}\\
+  Nama Bobot                          & class        & precision & recall & mAP   & mAP .5:.95 & inference time (ms)    \\ 
   \hline
-  hedec\textunderscore pure\textunderscore N  & 0.918              & 0.85         & 0.909         & 2.4ms                \\
-  hedec\textunderscore pure\textunderscore S  & 0.927             & 0.865        & 0.919        & 4.1ms               \\
-  hedec\textunderscore pure\textunderscore M & 0.939            & 0.862        & 0.924        & 8.7ms                \\
-  hedec\textunderscore pure\textunderscore L & 0.922            & 0.876      &   0.923       &  14.0ms        \\
+  \multirow{3}{*}{hedec\_pure\_N}     & all          & 0.918     & 0.848  & 0.909 & 0.532      & \multirow{3}{*}{1.9}   \\
+                                      & no\_helmet   & 0.919     & 0.839  & 0.903 & 0.52       &                        \\
+                                      & with\_helmet & 0.918     & 0.856  & 0.915 & 0.544      &                        \\ 
   \hline
-\end{longtable}
+  \multirow{3}{*}{hedec\_pure\_S}     & all          & 0.926     & 0.866  & 0.919 & 0.555      & \multirow{3}{*}{4.2}   \\
+                                      & no\_helmet   & 0.925     & 0.86   & 0.911 & 0.55       &                        \\
+                                      & with\_helmet & 0.927     & 0.872  & 0.927 & 0.559      &                        \\ 
+  \hline
+  \multirow{3}{*}{hedec\_pure\_M}     & all          & 0.932     & 0.866  & 0.924 & 0.564      & \multirow{3}{*}{8.9}   \\
+                                      & no\_helmet   & 0.937     & 0.856  & 0.917 & 0.562      &                        \\
+                                      & with\_helmet & 0.927     & 0.877  & 0.93  & 0.566      &                        \\ 
+  \hline
+  \multirow{3}{*}{hedec\_pure\_L}     & all          & 0.922     & 0.876  & 0.923 & 0.566      & \multirow{3}{*}{14.1}  \\
+                                      & no\_helmet   & 0.919     & 0.868  & 0.914 & 0.561      &                        \\
+                                      & with\_helmet & 0.925     & 0.884  & 0.932 & 0.572      &                        \\
+  \hline
+  \end{tabular}
+\end{table}
 
-Dari \emph{precision, recall, mAP} tidak berbeda jauh dengan yang menggunakan pretrained checkpoint begitu juga dari \emph{inference time} nya.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\textwidth]{gambar/final_weight_val/hedec_pure-all.png}
+  \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Tanpa Pretrain COCO-YOLOv5 untuk Semua Kelas}
+  \label{fig:grafval_pure_all}  
+\end{figure}
 
-\newpage
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\textwidth]{gambar/final_weight_val/hedec_pure-no_helmet.png}
+  \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Tanpa Pretrain COCO-YOLOv5 untuk Kelas "no\_helmet"}
+  \label{fig:grafval_pure_no_helmet}  
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\textwidth]{gambar/final_weight_val/hedec_pure-with_helmet.png}
+  \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Tanpa Pretrain COCO-YOLOv5 untuk Kelas "with\_helmet"}
+  \label{fig:grafval_pure_with_helmet}  
+\end{figure}
+
+\par Berdasarkan hasil validasi
+
 \section{Pengujian Performa Berdasarkan Jarak}
 \label{sec:ujiberdasarkanjarak}
 
@@ -459,7 +565,7 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pure".
 \end{enumerate}
 
 
-\newpage
+
 
 \section{Pengujian Pada Tingkat Kecerahan Rendah}
 \label{sec:pengujianberdasarkantingkatkeceharan}
@@ -508,7 +614,7 @@ Seperti yang dijelaskan pada Subbab~\ref{subsec:ujiperforma_coco}.
     % \label{fig:labelbaru}  
   \end{figure}
 
-  \newpage
+  
   \item \textbf{hedec\textunderscore pretrain\textunderscore S}
   
   \par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} menggunakan bobot
@@ -538,7 +644,7 @@ Seperti yang dijelaskan pada Subbab~\ref{subsec:ujiperforma_coco}.
   \end{figure}
 
 
-  \newpage
+  
   \item \textbf{hedec\textunderscore pretrain\textunderscore M} 
   
   \par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} menggunakan bobot
