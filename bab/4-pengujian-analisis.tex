@@ -168,7 +168,11 @@ Hasil validasi dapat dilihat pada Tabel~\ref{tb:nopretrain}.
 %   \label{fig:grafval_pure_with_helmet}  
 % \end{figure}
 
-\par Berdasarkan hasil validasi yang dilakukan untuk
+\par Berdasarkan hasil validasi yang dilakukan untuk bobot - bobot yang dilatih tanpa menggunakan \emph{Pretrained Weights} dari YOLOv5
+yang dapat ditarik beberapa point.Seperti yang dapat dilihat Gambar~\ref{fig:grafval_pure_all} untuk rata- rata semua kelas
+dan Gambar~\ref{fig:grafval_pure_eachclass} untuk masing-masing kelas, ntuk \emph{precision} secara umum berada di atas 0.9 dan \emph{recall} di atas 0.8, begitu juga dengan
+mAP.5 nya yang berada ditas 0.9. Tetapi dari segi \emph{inference time} untuk masing - masin varian, tidak ada perbedaan jauh jika dibandingkan
+bobot - bobot yang di latih menggunakan \emph{Pretrained Weights} dari YOLOv5 yang dijelaskan di Sub Bab~\ref{subsec:murnidataset}.
 
 \section{Pengujian Performa Berdasarkan Jarak}
 \label{sec:ujiberdasarkanjarak}
@@ -830,6 +834,38 @@ Hasil \emph{train} tanpa menggunakan \emph{pretrain weight} ini selanjutkan akan
     \caption{Hasil Prediksi Pada Keadaan dengan \emph{Weight Hedec Large}}
     % \label{fig:labelbaru}  
   \end{figure}
+
+  \subsection{Analisis Pengujian Pada Pencahayaan Rendah}
+  \label{subsec:analisis_lowlight}
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=1.0\textwidth]{gambar/lowlight_grafic/Low Light - all.png}
+    \caption{Grafik Hasil Testing Pada Pencahayaan Rendah untuk Semua Kelas}
+    \label{fig:graf_lowlight_all}  
+  \end{figure}
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=.45\textwidth]{gambar/lowlight_grafic/Low Light - no_helmet.png}
+    \includegraphics[width=.45\textwidth]{gambar/lowlight_grafic/Low Light - with_helmet.png}
+    \caption{Grafik Hasil Testing Pada Pencahayaan Rendah untuk Masing - Masing Kelas}
+    \label{fig:graf_lowlight_eachclass}  
+  \end{figure}
+
+  \par Berdasarkan hasil yang sudah diaparkan untuk bobot varian hasil 
+  pretrain dan murni tanpa pretrain yang diapaprkan pada Subbab~\ref{subsec:lowlight_pretrained} 
+  dan Subbab~\ref{subsec:lowlight_pure}, dapat ditarik beberapa point. Varian bobot "hedec\_pretrain\_N"
+  memiliki nilai \emph{recall} paling rendah dari semua bobot dikarenakan kegagalan dalam mendeteksi
+  kelas "no\_helmet" pada dataset testing yang disediakan. Secara umum, bobot yang paling bagus digunakan
+  pada kasus pencahayaan rendah terdapat pada bobot "hedec\_pretrain\_L" yang merupakan
+  bobot yang dilatih menggunakan\emph{pretrained weights}" untuk varian yolov5l yang memiliki
+  \emph{"depth\_multiplier"} dan "\emph{width\_multiplier}" paling besar. Selain itu, seperti yang
+  ditunjukkan pada Gambar~\ref{fig:graf_lowlight_all} untuk varian yang menggunakan
+  \emph{pretrained weights} jika diurutkan dari varian \emph{Nano} hingga \emph{Large} selalu mengalami
+  kenaikan nilai mAP.5 nya. Tetapi untuk varian yang dilatih murni hanya menggunakan Dataset Helm Keselamatan Kerja
+  mengalami kenaikan nilai mAP.5 hanya sampai pada varian \emph{Small (S)} dan setelah itu mengalami penurunan hingga varian \emph{Large (L)}.
+
   
 \end{enumerate}
 
