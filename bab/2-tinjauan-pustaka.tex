@@ -107,8 +107,16 @@ sebuah balok memiliki ketebalan atau sebuah pot bunga yang memiliki isi. Kita ju
 seperti kantong plastik dimana cahaya matahari dapat menembus lembaran plastik tersebut. Lalu saat kita mengamati suatu kumpulan
 barang - barang di gudang, kita juga dapat dengan mudahnya menentukan nama dari barang tersebut dan lokasinya. Begitu juga saat
 mengamati foto keluarga yang terdiri dari banyak individu dimana kita dapat membedakan antara satu dengan yang lainnya bahkan hingga
-emosi yang mereka perlihatkan lewat raut wajahnya. Peneliti sudah melakukan pengembangan
+emosi yang mereka perlihatkan lewat raut wajahnya. Peneliti sudah melakukan pengembangan untuk metode pengenalan visual seperti pada
+manusia untuk komputer yang dimana bidangnya disebut sebagai \emph{Computer Vision} (Visi Komputer). Tetapi untuk mencapai titik dimana
+komputer memiliki kemampuan untuk yang sama dengan manusia seperti dapat menghitung jumlah binatang yang ada dalam suatu gambar masih menjadi
+sesuatu yang sulit. Hal ini dikarenakan bidang visi komputer ini merupakan bentuk \emph{inverse problem} dimana kita berusaha untuk menarik
+suatu kesimpulan untuk suatu solusi tetapi informasi yang dimiliki sangat terbatas. Beberapa solusi yang memungkinkan untuk menyelesaiakan
+permasalah visi komputer ini yaitu antaralain dengan penyelesaian secara fisika atau perhitungan probabilitas \cite{szeliski2010computer}.
 
+\par Dalam visi komputer, kita berusaha untuk memahami dunia yang ditangkap dalam satu gambar atau lebih dan meniru ulang setiap detil nya seperti
+bentuk, pencahayaan, dan pewarnaan. Manusia dapat dengan mudahnya memahami detail - detail tersebut sedangkan algoritma visi komputer
+akan sering mengalami \emph{error} \cite{margaret2008mind}.  
 
 
 \par Visi Komputer adalah bidang ilmu yang mempelajari cara untuk memproses gambar terutama dalam meniru
@@ -121,13 +129,34 @@ objek apa saja yang ada dalam gambar hingga memberi penandaan pada objek yang te
 \section{\emph{Object Detection}}
 \label{sec:objectdetection}
 
-\par Deteksi Object atau \emph{Object Detection} dalam visi komputer sendiri adalah prosedur untuk mengklasifikasikan suatu objek
-pada suatu gambar sekaligus berusaha untuk menentukan lokasi atau posisi dari objek yang ada pada gambar tersebut \cite{felzenszwalb2010object}. 
-Manfaat dari \emph{Object Detection} yaitu dapat memberikan informasi terkait suatu gambar atau video agar bisa lebih dipahami yang lalu bisa dimanfaatkan
+% \par Deteksi Object atau \emph{Object Detection} dalam visi komputer sendiri adalah prosedur untuk mengklasifikasikan suatu objek
+% pada suatu gambar sekaligus berusaha untuk menentukan lokasi atau posisi dari objek yang ada pada gambar tersebut \cite{felzenszwalb2010object}.
+
+\par Untuk dapat memahami konsep deteksi objek, selain menyelesaikan klasifikasi kelas dari objek yang diamati, kita juga harus dapat
+menentukan lokasi dari objek yang diamati secara akurat dalam gambar yang sedang diamati. Proses penentuan lokasi sekaligus menentukan
+klasifikasi kelas untuk menentukan "nama" dari objek yang diamati inilah yang disebut sebagai \emph{Object Detection} \cite{felzenszwalb2010object}.
+
+\par Manfaat dari \emph{Object Detection} yaitu dapat memberikan informasi terkait suatu gambar atau video agar bisa lebih dipahami yang lalu bisa dimanfaatkan
 untuk berbagai bentuk aplikasi. Penelitian di bidang \emph{Object Detection} ini pada umumnya berjalan di area \emph{neural network} atau sistem \emph{machine learning}
 yang lalu juga termasuk pembuatan algoritma \emph{neural network} untuk teknik deteksi objek. Tetapi deteksi pada suatu gambar memiliki banyak
 hal yang perlu dipertimbangkan seperti arah sudut pandang, pencahayaan, objek yang menghalang, dan hal lainnya yang membuat 
-deteksi objek dengan prediksi lokasi akurat semakin sulit untuk dilakukan \cite{zhao2019object}.
+deteksi objek dengan prediksi lokasi akurat semakin sulit untuk dilakukan \cite{zhao2019object} \cite{girshick2014rich}.
+
+\par Proses penyelesain deteksi objek biasanya dilakukan dalam 3 tahap yaitu pemilihan wilayah informatif, ekstraksi fitur, dan
+klasifikasi.
+
+\par Ada kemungkinan bahwa terdapat lebih dari satu objek yang ada dalam satu gambar yang akan dilakukan proses deteksi objek dan
+juga berkemungkinan memiliki ukuran yang berbeda - beda. Pada tahap inilah dilakukan pemilihan region atau wilayah dengan melakukan \emph{scanning} pada gambar tersebut mulai
+dari bagian awal gambar hingga akhir yang dimana merupakan metode yang sangat menguras energi dan memiliki banyak kelemahan \cite{zhao2019object}.
+
+\par Tahap ekstraksi fitur kelas berguna untuk membedakan objek - objek yang berbeda dari gambar yang sedang diamati dimana kita perlu
+memilah - milah "fitur" visual yang dapat memberi kita informasi yang dapat diapahami. Terdapat beberapa metode berbeda yang dilakukan
+untuk mendapatkan fitur yang membantu untuk mengenali objek tersebut seperti SIFT, HOG, dan Haar-like \cite{zhao2019object}. Tetapi pada \emph{Convolutional Neural Network}
+proses ekstraksi fitur nya dilakukan pada \emph{neural network}-nya juga yang akan dijelaskan pada Subbab~\ref{sec:convolutionalneuralnetwork}.
+
+\par Klasifikasi berguna untuk mengenali objek yang ada pada gambar dengan kategori - kategori. Juga sudah terdapat beberapa metode
+klasifkasi yang biasa digunakan seperti \emph{Supported Vector Machine}, AdaBoost, dan \emph{Deformable Part-based Model}. 
+
 
 \section{Convolutional Neural Network}
 \label{sec:convolutionalneuralnetwork}
