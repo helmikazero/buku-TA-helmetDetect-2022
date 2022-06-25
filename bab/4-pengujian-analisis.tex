@@ -92,20 +92,21 @@ Tabel~\ref{tb:pretraincoco}.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=1\textwidth]{gambar/final_weight_val/hedec_pretrain-no_helmet.png}
-  \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Hasil Pretrain COCO-YOLOv5 untuk Kelas "no\_helmet"}
-  \label{fig:grafval_pretrain_no_helmet}  
+  \includegraphics[width=0.49\textwidth]{gambar/final_weight_val/hedec_pretrain-no_helmet.png}
+  \includegraphics[width=0.49\textwidth]{gambar/final_weight_val/hedec_pretrain-with_helmet.png}
+  \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Hasil Pretrain COCO-YOLOv5 untuk Masing Masing Kelas}
+  \label{fig:grafval_pretrain_eachclass}  
 \end{figure}
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=1\textwidth]{gambar/final_weight_val/hedec_pretrain-with_helmet.png}
-  \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Hasil Pretrain COCO-YOLOv5 untuk Kelas "with\_helmet"}
-  \label{fig:grafval_pretrain_with_helmet}  
-\end{figure}
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[width=1\textwidth]{gambar/final_weight_val/hedec_pretrain-with_helmet.png}
+%   \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Hasil Pretrain COCO-YOLOv5 untuk Kelas "with\_helmet"}
+%   \label{fig:grafval_pretrain_with_helmet}  
+% \end{figure}
 
 \par Berdasarkan hasil validasi yang dipaparkan, tidak ada perbedaan signifikan dari \emph{precision, recall, mAP} 
-baik pada kelas "with\_helmet" seperti yang ditunjukan pada Gambar~\ref{fig:grafval_pretrain_with_helmet} ataupun "no\_helmet" pada Gambar~\ref{fig:grafval_pretrain_no_helmet}.
+baik pada kelas "with\_helmet" ataupun "no\_helmet" seperti yang ditunjukan pada Gambar~\ref{fig:grafval_pretrain_eachclass}.
 Untuk nilai \emph{precision} berada di atas 0.9 dengan nilai tertinggi oleh varian "hedec\_pretrain\_S" . Untuk \emph{recall}
 juga tidak terlalu berbeda diantara bobot dimana semuanya berada diatas angka 0.8 dengan bilai teringgi 
 oleh varian "hedec\_pretrain\_M". Dan sewajarnya 
@@ -154,19 +155,20 @@ Hasil validasi dapat dilihat pada Tabel~\ref{tb:nopretrain}.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=1\textwidth]{gambar/final_weight_val/hedec_pure-no_helmet.png}
+  \includegraphics[width=0.4\textwidth]{gambar/final_weight_val/hedec_pure-no_helmet.png}
+  \includegraphics[width=0.4\textwidth]{gambar/final_weight_val/hedec_pure-with_helmet.png}
   \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Tanpa Pretrain COCO-YOLOv5 untuk Kelas "no\_helmet"}
-  \label{fig:grafval_pure_no_helmet}  
+  \label{fig:grafval_pure_eachclass}  
 \end{figure}
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=1\textwidth]{gambar/final_weight_val/hedec_pure-with_helmet.png}
-  \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Tanpa Pretrain COCO-YOLOv5 untuk Kelas "with\_helmet"}
-  \label{fig:grafval_pure_with_helmet}  
-\end{figure}
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[width=1\textwidth]{gambar/final_weight_val/hedec_pure-with_helmet.png}
+%   \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Tanpa Pretrain COCO-YOLOv5 untuk Kelas "with\_helmet"}
+%   \label{fig:grafval_pure_with_helmet}  
+% \end{figure}
 
-\par Berdasarkan hasil validasi
+\par Berdasarkan hasil validasi yang dilakukan untuk
 
 \section{Pengujian Performa Berdasarkan Jarak}
 \label{sec:ujiberdasarkanjarak}
