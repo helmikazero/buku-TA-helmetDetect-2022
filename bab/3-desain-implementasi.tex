@@ -240,7 +240,15 @@ sebagai Dataset Helm Keselamatan Kerja untuk mempersingkat.
 \section{Training Dataset}
 \label{sec:trainingdataset}
 
-Dataset - dataset yang sudah di pre-process sebelumnya di roboflow dan sudah memiliki anotasi yang susai lalu digunakan untuk training menggunakan YOLOv5. Training ini merupakan proses pelatihan model dengan input gambar - gambar dari dataset yang sudah diberi anotasi dimana gambar dan anotasinya tersebut diolah hingga menghasilkan suatu karakteristik atau pola khusu dari kelas/label yang ditentukan sebelumnya lewat anotasi sehingga selanjutnya dapat digunakan komputer untuk menebak gambar yang nantinya dideteksi. Khusus untuk YOLOv5 yang menggunakan PyTorch sebagai framework machine learningnya, hasil training nya beruba bobot atau weight  akan diexport dalam bentuk .pt (format pytorch). 
+\par Dataset - dataset yang sudah di pre-process sebelumnya di roboflow dan sudah 
+memiliki anotasi yang susai lalu digunakan untuk training menggunakan YOLOv5. 
+Training ini merupakan proses pelatihan model dengan input gambar - gambar dari dataset 
+yang sudah diberi anotasi dimana gambar dan anotasinya tersebut diolah hingga 
+menghasilkan suatu karakteristik atau pola khusu dari kelas/label yang ditentukan 
+sebelumnya lewat anotasi sehingga selanjutnya dapat digunakan komputer untuk menebak 
+gambar yang nantinya dideteksi. Khusus untuk YOLOv5 yang menggunakan PyTorch sebagai 
+framework machine learningnya, hasil training nya beruba bobot atau weight  akan 
+diexport dalam bentuk .pt (format pytorch). 
 
 \begin{longtable}{|c|c|c|}
   \caption{Konfigurasi Training menggunakan YOLOv5}
@@ -254,16 +262,53 @@ Dataset - dataset yang sudah di pre-process sebelumnya di roboflow dan sudah mem
   \emph{imgsize} & 640\\
   \emph{data} & /content/yolov5/helmetDetection\textunderscore yolov5\textunderscore 2/data.yaml\\
   \emph{optimizer} & SGD (DEFAULT)\\
-  \emph{device} & CUDA\\ 
-  \emph{weights} & yolov5n, yolov5s, yolov5m, yolov5l\\ 
+  \emph{device} & CUDA\\  
   \hline
 \end{longtable}
 
 
-Proses train dilakukan dengan batch size 16 dan 150 epoch dengan optimizer default untuk yolov5 yaitu SGD. Batch\textunderscore size disini menentukan jumlah gambar yang akan digunakan untuk train dalam satu iterasi, ditentukan 16 dengan pertimbangan limitasi hardware yang digunakan untuk proses training ini. Proses training dilakukan di Colab Pro dimana dengan limitasi GPU Ram yang diberikan, digunakan hingga mendekati 12 GB. Untuk image size sendiri algoritma yang sudah disediakan oleh YOLOv5 hanya menyiadakan resolusi 1:1 dimana dengan mengeset parameter imgsize 640 berarti ukuran untuk \emph{(height)} dan \emph{(width)} menjadi 640x640.
+\par Seperti yang dapat dilihat pada Tabel~\ref{tb:konfigurasitrainingyolov5s},
+proses \emph{train} dilakukan dengan batch size 16 dan 150 \emph{epoch} dengan \emph{optimizer} 
+\emph{default} untuk yolov5 yaitu SGD. Batch\textunderscore size disini menentukan 
+jumlah gambar yang akan digunakan untuk train dalam satu iterasi, ditentukan 
+16 dengan pertimbangan limitasi \emph{hardware} yang digunakan untuk proses training ini. 
+Proses training dilakukan di Colab Pro dimana dengan limitasi GPU Ram yang diberikan, 
+digunakan hingga mendekati 12 GB. Untuk image size sendiri algoritma yang sudah 
+disediakan oleh YOLOv5 hanya menyiadakan resolusi 1:1 dimana dengan menentukan 
+parameter \emph{imgsize} 640 berarti ukuran untuk \emph{(height)} dan \emph{(width)} menjadi 640x640.
 
-Proses training untuk judul ini tidak dilakukan dengan hardware komputer lokal melainkan memanfaatkan Google Colab Pro dimana proses trainingnya dijalankan secara cloud. 
-Dataset yang sudah dikumpulkan sebelumnya didownload ke storage vm Colab Pro langsung dari Roboflow.  Dengan limitasi penggunaan storage, ram, dan GPU ram serta runtime yang diberikan google colab, dilakukan penyimpanan checkpoint untuk tiap epoch training di drive pribadi penulis. Hal dilakukan untuk kemungkinan jika sekiranya di tengah proses training session VM Colab Pro nya ter -terminate dengan sendirinya. 
+\par Proses \emph{training} pada penilitian ini dilakukan dengan memanfaatkan \emph{pretrained weights} yang
+disediakan dari \emph{repository} YOLOv5 dan juga tanpa menggunakan \emph{pretrained weights} tersebut dengan
+tujuan membandingkan performa bobot - bobot yang dihasilkan dari metode - metode tersebut tetapi akan menggunakan
+konfigurasi yang serupa dengan konfugrasi yang digunakan untuk men-\emph{train} \emph{pretrained weighst} tersebut. Varian bobot yang
+akan digunakan yaitu varian yolov5n \emph{(Nano)}, yolov5s \emph{(Small)}, yolov5m \emph{(Medium)}, dan yolov5l \emph{(Large)}. Berdasarkan penjelasan dari \emph{repository}
+YOLOv5, \emph{pretrained weights} yang disediakan merupakan hasil \emph{training} menggunakan dataset COCO val2017
+parameter 300 epoch \cite{glenn_jocher_yolov5}.  Perbedaan utama dari varian - varian \emph{pretrained weights} tersebut
+berada pada parameter "depth\_multiplier" dan "width\_multiplier" yang berdampak pada kedalaman layer dan jumlah \emph{channel} dari output untuk
+tiap layer. Nominal konfigurasi "depth\_multiplier" dan "width\_multiplier" untuk masing - masing varian dapat dilihat pada Tabel.
+
+\begin{longtable}{|l|l|l|} 
+  \caption{Perbedaan Parameter "depth\_multiplier" dan "width\_multiplier" untuk Masing- Masing Varian \emph{Pretrained Weights} YOLOv5}
+  \label{tb:perbedaanpretrainedyolov5}\\
+  \hline
+  \multirow{2}{*}{Nama Varian} & \multicolumn{2}{l|}{Konfigurasi}      \\ 
+  \cline{2-3}
+                               & depth\_multiplier & width\_muliplier  \\ 
+  \hline
+  yolov5n\textit{ (Nano)}      & 0.33              & 0.25              \\
+  yolov5s\textit{ (Small)}     & 0.33              & 0.5               \\
+  yolov5m\textit{ (Medium)}    & 0.67              & 0.75              \\
+  yolov5l\textit{ (Large)}     & 1                 & 1                 \\
+  \hline
+\end{longtable}
+
+\par Proses training untuk judul ini tidak dilakukan dengan \emph{hardware} komputer 
+lokal melainkan memanfaatkan Google Colab Pro dimana proses trainingnya dijalankan secara cloud. 
+Dataset yang sudah dikumpulkan sebelumnya didownload ke storage vm Colab Pro langsung dari 
+Roboflow.  Dengan limitasi penggunaan storage, ram, dan GPU ram serta runtime 
+yang diberikan google colab, dilakukan penyimpanan checkpoint untuk tiap epoch 
+training di drive pribadi penulis. Hal dilakukan untuk kemungkinan jika 
+sekiranya di tengah proses training session VM Colab Pro nya ter -terminate dengan sendirinya. 
 
 
 \section{Perancangan Sistem Deteksi Helm Keselamatan Kerja}
