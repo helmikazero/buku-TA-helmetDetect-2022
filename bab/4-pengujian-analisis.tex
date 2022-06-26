@@ -56,32 +56,6 @@ untuk bobot yang sudah di-\emph{train} dapat dilihat pada Tabel~\ref{tb:spekgoog
 dari YOLOv5 untuk varian \emph{Nano (N), Small (S), Medium(M),} dan \emph{Large(L)}. Hasil validasi dapat dilihat pada
 Tabel~\ref{tb:pretraincoco}.
 
-% \begin{table}[ht]
-%   \centering
-%   \caption{Hasil Validasi \emph{Weight} dari Hasil Pretrain}
-%   \label{tb:pretraincoco}
-%   \begin{tabular}{|l|l|l|l|l|l|l|} 
-%   \hline
-%   Nama Bobot                          & class        & precision & recall & mAP   & mAP .5:.95 & inference time (ms)    \\ 
-%   \hline
-%   \multirow{3}{*}{hedec\_pretrain\_N} & all          & 0.925     & 0.871  & 0.922 & 0.557      & \multirow{3}{*}{1.9}   \\
-%                                       & no\_helmet   & 0.924     & 0.867  & 0.916 & 0.552      &                        \\
-%                                       & with\_helmet & 0.926     & 0.875  & 0.929 & 0.562      &                        \\ 
-%   \hline
-%   \multirow{3}{*}{hedec\_pretrain\_S} & all          & 0.929     & 0.878  & 0.929 & 0.568      & \multirow{3}{*}{4}     \\
-%                                       & no\_helmet   & 0.925     & 0.857  & 0.918 & 0.561      &                        \\
-%                                       & with\_helmet & 0.932     & 0.9    & 0.941 & 0.575      &                        \\ 
-%   \hline
-%   \multirow{3}{*}{hedec\_pretrain\_M} & all          & 0.923     & 0.891  & 0.933 & 0.57       & \multirow{3}{*}{8.7}   \\
-%                                       & no\_helmet   & 0.919     & 0.883  & 0.923 & 0.561      &                        \\
-%                                       & with\_helmet & 0.928     & 0.898  & 0.943 & 0.58       &                        \\ 
-%   \hline
-%   \multirow{3}{*}{hedec\_pretrain\_L} & all          & 0.919     & 0.867  & 0.919 & 0.579      & \multirow{3}{*}{14}    \\
-%                                       & no\_helmet   & 0.904     & 0.846  & 0.899 & 0.565      &                        \\
-%                                       & with\_helmet & 0.934     & 0.887  & 0.939 & 0.593      &                        \\ 
-%   \hline
-%   \end{tabular}
-% \end{table}
 
 \begin{longtable}{|l|l|l|l|l|l|l|} 
   \caption{Hasil Validasi \emph{Weight} dari Hasil Pretrain}
@@ -107,14 +81,14 @@ Tabel~\ref{tb:pretraincoco}.
   \hline
 \end{longtable}
 
-\begin{figure}[ht]
+\begin{figure} [h!]
   \centering
   \includegraphics[width=1\textwidth]{gambar/final_weight_val/hedec_pretrain-all.png}
   \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Hasil Pretrain COCO-YOLOv5 untuk Semua Kelas}
   \label{fig:grafval_pretrain_all}  
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure} [h!]
   \centering
   \includegraphics[width=0.49\textwidth]{gambar/final_weight_val/hedec_pretrain-no_helmet.png}
   \includegraphics[width=0.49\textwidth]{gambar/final_weight_val/hedec_pretrain-with_helmet.png}
@@ -122,12 +96,6 @@ Tabel~\ref{tb:pretraincoco}.
   \label{fig:grafval_pretrain_eachclass}  
 \end{figure}
 
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[width=1\textwidth]{gambar/final_weight_val/hedec_pretrain-with_helmet.png}
-%   \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Hasil Pretrain COCO-YOLOv5 untuk Kelas "with\_helmet"}
-%   \label{fig:grafval_pretrain_with_helmet}  
-% \end{figure}
 
 \par Berdasarkan hasil validasi yang dipaparkan, tidak ada perbedaan signifikan dari \emph{precision, recall, mAP} 
 baik pada kelas "with\_helmet" ataupun "no\_helmet" seperti yang ditunjukan pada Gambar~\ref{fig:grafval_pretrain_eachclass}.
@@ -167,14 +135,14 @@ Hasil validasi dapat dilihat pada Tabel~\ref{tb:nopretrain}.
   \hline
 \end{longtable}
 
-\begin{figure}[ht]
+\begin{figure} [h!]
   \centering
   \includegraphics[width=1\textwidth]{gambar/final_weight_val/hedec_pure-all.png}
   \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Tanpa Pretrain COCO-YOLOv5 untuk Semua Kelas}
   \label{fig:grafval_pure_all}  
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure} [h!]
   \centering
   \includegraphics[width=0.4\textwidth]{gambar/final_weight_val/hedec_pure-no_helmet.png}
   \includegraphics[width=0.4\textwidth]{gambar/final_weight_val/hedec_pure-with_helmet.png}
@@ -182,14 +150,14 @@ Hasil validasi dapat dilihat pada Tabel~\ref{tb:nopretrain}.
   \label{fig:grafval_pure_eachclass}  
 \end{figure}
 
-% \begin{figure}[ht]
+% \begin{figure} [h!]
 %   \centering
 %   \includegraphics[width=1\textwidth]{gambar/final_weight_val/hedec_pure-with_helmet.png}
 %   \caption{Grafik \emph{Precision, Recall, mAP} untuk Bobot Tanpa Pretrain COCO-YOLOv5 untuk Kelas "with\_helmet"}
 %   \label{fig:grafval_pure_with_helmet}  
 % \end{figure}
 
-\newpage
+ 
 
 \par Berdasarkan hasil validasi yang dilakukan untuk bobot - bobot yang dilatih tanpa menggunakan \emph{Pretrained Weights} dari YOLOv5
 yang dapat ditarik beberapa point.Seperti yang dapat dilihat Gambar~\ref{fig:grafval_pure_all} untuk rata- rata semua kelas
@@ -245,14 +213,14 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pretrain".
   \end{longtable}
 
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=1\textwidth]{gambar/BerdasarkanJarak/hedec_pretrain_N.png}
     \caption{Grafik \emph{Precision, Recall, mAP} untuk \textbf{"hedec\_pretrain\_N"} Pada Jarak 1.3 meter Hingga 9 meter}
     \label{fig:grafvaljarak_hedec_pretrain_N}  
   \end{figure}
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=0.3\textwidth]{gambar/BerdasarkanJarak_v2/val_hedec_pretrain_N/Jarak1_3/val_batch0_pred.jpg}
     \includegraphics[width=0.3\textwidth]{gambar/BerdasarkanJarak_v2/val_hedec_pretrain_N/Jarak5_3/val_batch0_pred.jpg}
@@ -269,7 +237,7 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pretrain".
   kelas "no\_helmet" yang salah terdeteksi sebagai "with\_helmet".
 
 
-  \newpage
+   
   \begin{longtable}{|l|l|l|l|l|} 
     \caption{Hasil Validasi Perbedaan Jarak Pada \textbf{"hedec\_pretrain\_S"}}
     \label{tb:hasiljarak_hedec_pretrain_S}\\
@@ -304,7 +272,7 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pretrain".
     \label{fig:grafvaljarak_hedec_pretrain_S}  
   \end{figure}
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=0.3\textwidth]{gambar/BerdasarkanJarak_v2/val_hedec_pretrain_S/Jarak1_3/val_batch0_pred.jpg}
     \includegraphics[width=0.3\textwidth]{gambar/BerdasarkanJarak_v2/val_hedec_pretrain_S/Jarak5_3/val_batch0_pred.jpg}
@@ -313,7 +281,7 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pretrain".
     \label{fig:valjarak_sample_hedec_pretrain_S}  
   \end{figure}
   
-  \newpage
+   
   \item \textbf{hedec\_pretrain\_M}
   
   \par Pada pengujian menggunakan bobot "hedec\_pretrain\_M" pada perbedaan jarak seperti yang bisa dilihat di Gambar~\ref{fig:grafvaljarak_hedec_pretrain_M}, jarak 1.3 meter dan 9 meter
@@ -350,14 +318,14 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pretrain".
     \hline
   \end{longtable}
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=1\textwidth]{gambar/BerdasarkanJarak/hedec_pretrain_M.png}
     \caption{Grafik \emph{Precision, Recall, mAP} untuk \textbf{"hedec\_pretrain\_M"} Pada Jarak 1.3 meter Hingga 9 meter}
     \label{fig:grafvaljarak_hedec_pretrain_M}  
   \end{figure}
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=0.3\textwidth]{gambar/BerdasarkanJarak_v2/val_hedec_pretrain_M/Jarak1_3/val_batch0_pred.jpg}
     \includegraphics[width=0.3\textwidth]{gambar/BerdasarkanJarak_v2/val_hedec_pretrain_M/Jarak5_3/val_batch0_pred.jpg}
@@ -366,7 +334,7 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pretrain".
     \label{fig:valjarak_sample_hedec_pretrain_M}  
   \end{figure}
 
-  \newpage
+   
   \item \textbf{hedec\_pretrain\_L}
   
   \par Pada pengujian menggunakan bobot "hedec\_pretrain\_L" pada perbedaan jarak, bobot ini memiliki hasil pengujian
@@ -404,14 +372,14 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pretrain".
     \hline
   \end{longtable}
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=1\textwidth]{gambar/BerdasarkanJarak/hedec_pretrain_L.png}
     \caption{Grafik \emph{Precision, Recall, mAP} untuk \textbf{"hedec\_pretrain\_L"} Pada Jarak 1.3 meter Hingga 9 meter}
     \label{fig:grafvaljarak_hedec_pretrain_L}  
   \end{figure}
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=0.3\textwidth]{gambar/BerdasarkanJarak_v2/val_hedec_pretrain_L/Jarak1_3/val_batch0_pred.jpg}
     \includegraphics[width=0.3\textwidth]{gambar/BerdasarkanJarak_v2/val_hedec_pretrain_L/Jarak5_3/val_batch0_pred.jpg}
@@ -464,14 +432,14 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pure".
       \hline
   \end{longtable}
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=1\textwidth]{gambar/BerdasarkanJarak/hedec_pure_N.png}
     \caption{Grafik \emph{Precision, Recall, mAP} untuk \textbf{"hedec\_pure\_N"} Pada Jarak 1.3 meter Hingga 9 meter}
     \label{fig:grafvaljarak_hedec_pure_N}  
   \end{figure}
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=0.3\textwidth]{gambar/BerdasarkanJarak_v2/val_hedec_pure_N/Jarak1_3/val_batch0_pred.jpg}
     \includegraphics[width=0.3\textwidth]{gambar/BerdasarkanJarak_v2/val_hedec_pure_N/Jarak5_3/val_batch0_pred.jpg}
@@ -518,14 +486,14 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pure".
     \hline
   \end{longtable}
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=1\textwidth]{gambar/BerdasarkanJarak/hedec_pure_S.png}
     \caption{Grafik \emph{Precision, Recall, mAP} untuk \textbf{"hedec\_pure\_S"} Pada Jarak 1.3 meter Hingga 9 meter}
     \label{fig:grafvaljarak_hedec_pure_S}  
   \end{figure}
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=0.3\textwidth]{gambar/BerdasarkanJarak_v2/val_hedec_pure_S/Jarak1_3/val_batch0_pred.jpg}
     \includegraphics[width=0.3\textwidth]{gambar/BerdasarkanJarak_v2/val_hedec_pure_S/Jarak5_3/val_batch0_pred.jpg}
@@ -573,14 +541,14 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pure".
     \hline
   \end{longtable}
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=1\textwidth]{gambar/BerdasarkanJarak/hedec_pure_M.png}
     \caption{Grafik \emph{Precision, Recall, mAP} untuk \textbf{"hedec\_pure\_M"} Pada Jarak 1.3 meter Hingga 9 meter}
     \label{fig:grafvaljarak_hedec_pure_M}  
   \end{figure}
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=0.3\textwidth]{gambar/BerdasarkanJarak_v2/val_hedec_pure_M/Jarak1_3/val_batch0_pred.jpg}
     \includegraphics[width=0.3\textwidth]{gambar/BerdasarkanJarak_v2/val_hedec_pure_M/Jarak5_3/val_batch0_pred.jpg}
@@ -589,7 +557,7 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pure".
     \label{fig:valjarak_sample_hedec_pure_M}  
   \end{figure}
 
-  \newpage
+   
   \item \textbf{hedec\_pure\_L}
   
   \par Pada pengujian pada jarak berbeda dari 1.3 meter hingga 9 meter untuk bobot "hedec\_pure\_L" yang merupakan bobot hasil \emph{training}
@@ -630,14 +598,14 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pure".
     \hline
   \end{longtable}
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=1\textwidth]{gambar/BerdasarkanJarak/hedec_pure_L.png}
     \caption{Grafik \emph{Precision, Recall, mAP} untuk \textbf{"hedec\_pure\_L"} Pada Jarak 1.3 meter Hingga 9 meter}
     \label{fig:grafvaljarak_hedec_pure_L}  
   \end{figure}
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=0.3\textwidth]{gambar/BerdasarkanJarak_v2/val_hedec_pure_L/Jarak1_3/val_batch0_pred.jpg}
     \includegraphics[width=0.3\textwidth]{gambar/BerdasarkanJarak_v2/val_hedec_pure_L/Jarak5_3/val_batch0_pred.jpg}
@@ -700,7 +668,7 @@ Seperti yang dijelaskan pada Subbab~\ref{subsec:ujiperforma_coco}.
     % \label{fig:labelbaru}  
   \end{figure}
 
-  \newpage
+   
   \item \textbf{hedec\textunderscore pretrain\textunderscore S}
   
   \par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} menggunakan bobot
@@ -721,7 +689,7 @@ Seperti yang dijelaskan pada Subbab~\ref{subsec:ujiperforma_coco}.
     \hline
   \end{longtable}
   
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[scale=0.2]{gambar/train_v2_val/low_ligjt/yolosmall/low_light_val_batch0_pred.jpg}
     % \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/yolosmall/lowlight_val_batch0_labels.jpg}
@@ -753,7 +721,7 @@ Seperti yang dijelaskan pada Subbab~\ref{subsec:ujiperforma_coco}.
     \hline
   \end{longtable}
   
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[scale=0.2]{gambar/train_v2_val/low_ligjt/yolomedium/val_batch0_pred.jpg}
     % \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/yolomedium/val_batch0_labels.jpg}
@@ -761,7 +729,7 @@ Seperti yang dijelaskan pada Subbab~\ref{subsec:ujiperforma_coco}.
     % \label{fig:labelbaru}  
   \end{figure}
 
-  \newpage
+   
   \item \textbf{hedec\textunderscore pretrain\textunderscore L}
   
   \par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} menggunakan bobot
@@ -783,7 +751,7 @@ Seperti yang dijelaskan pada Subbab~\ref{subsec:ujiperforma_coco}.
     \hline
   \end{longtable}
   
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[scale=0.2]{gambar/train_v2_val/low_ligjt/yololarge/val_batch0_pred.jpg}
     % \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/yololarge/val_batch0_labels.jpg}
@@ -801,7 +769,7 @@ Seperti yang dijelaskan pada Subbab~\ref{subsec:ujiperforma_coco}.
 \emph{weight} yang merupakan hasil \emph{train} dari dataset Deteksi Helm Keselamatan Kerja tanpa menggunakan \emph{pretrained weight}.
 Hasil \emph{train} tanpa menggunakan \emph{pretrain weight} ini selanjutkan akan disebut sebagai "hedec\textunderscore pure".
 
-\newpage
+ 
 
 \begin{enumerate}
   \item \textbf{hedec\textunderscore pure\textunderscore N } 
@@ -854,7 +822,7 @@ Hasil \emph{train} tanpa menggunakan \emph{pretrain weight} ini selanjutkan akan
     \hline
   \end{longtable}
   
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[scale=0.2]{gambar/train_v2_val/low_ligjt/customSmall/val_batch0_pred.jpg}
     % \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customSmall/val_batch0_labels.jpg}
@@ -862,7 +830,7 @@ Hasil \emph{train} tanpa menggunakan \emph{pretrain weight} ini selanjutkan akan
     % \label{fig:labelbaru}  
   \end{figure}
 
-  \newpage
+   
   \item \textbf{hedec\textunderscore pure\textunderscore M }
   
   \par Dilakukan pengujian kecerahan rendah dengan menggunakan bobot yang di-\emph{train} tanpa menggunakan bobot
@@ -883,7 +851,7 @@ Hasil \emph{train} tanpa menggunakan \emph{pretrain weight} ini selanjutkan akan
     \hline
   \end{longtable}
   
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[scale=0.2]{gambar/train_v2_val/low_ligjt/customMedium/val_batch0_pred.jpg}
     % \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customMedium/val_batch0_labels.jpg}
@@ -898,7 +866,7 @@ Hasil \emph{train} tanpa menggunakan \emph{pretrain weight} ini selanjutkan akan
   \par Berbeda dengan bobot imbangan variasi \emph{Large} yang dilatih menggunakan Pretrained COCO, \emph{overall precision} pada varian ini
   sedikit lebih baik daripada varian \emph{Medium} nya, tetapi untuk \emph{Recall} sama - sama lebih kecil.
   
-  \newpage
+   
   \begin{longtable}{|c|c|c|c|}
     \caption{Hasil Validasi Pada Tingkat Kecerahan Rendah dengan \emph{Hedec Large}}
     \label{tb:validasitingkatacerahrendah_hedecL}\\
@@ -912,7 +880,7 @@ Hasil \emph{train} tanpa menggunakan \emph{pretrain weight} ini selanjutkan akan
     \hline
   \end{longtable}
   
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[scale=0.2]{gambar/train_v2_val/low_ligjt/customLarge/val_batch0_pred.jpg}
     % \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customLarge/val_batch0_labels.jpg}
@@ -923,14 +891,14 @@ Hasil \emph{train} tanpa menggunakan \emph{pretrain weight} ini selanjutkan akan
   \subsection{Analisis Pengujian Pada Pencahayaan Rendah}
   \label{subsec:analisis_lowlight}
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=1.0\textwidth]{gambar/lowlight_grafic/Low Light - all.png}
     \caption{Grafik Hasil Testing Pada Pencahayaan Rendah untuk Semua Kelas}
     \label{fig:graf_lowlight_all}  
   \end{figure}
 
-  \begin{figure}[ht]
+  \begin{figure} [h!]
     \centering
     \includegraphics[width=.45\textwidth]{gambar/lowlight_grafic/Low Light - no_helmet.png}
     \includegraphics[width=.45\textwidth]{gambar/lowlight_grafic/Low Light - with_helmet.png}
@@ -964,7 +932,7 @@ bobot yang sudah dibuat pada aspek performa \emph{inference} mengingat Jetson Na
 \emph{Graphic Processing Unit}(GPU)nya sendiri dan memang didesain untuk aplikasi AI IoT. Pengujuran yang diambil pada pengujian ini
 yaitu nilai \emph{Frame Per Second}(FPS).
 
-\newpage
+ 
 \par Pengujian dilakukan menggunakan Webcam Nemesis NYK A-90 Everest yang dipasang dengan Jetson Nano melalui kabel USB dengan resolusi
 input 256x192. Input resolusi 256x192 yang terbilang sangat kecil ini digunakan karena resolusi diatasnya seperti 480p dan 640p akan menghasilkan
 nilai FPS yang sangat kecil atau jika tidak menyebabkan terminal menghentikan secara proses \emph{inference} karena melebihi kapasitas VRAM dari Jetson Nano-nya
