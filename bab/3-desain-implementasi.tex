@@ -11,6 +11,7 @@ Judul penelitian "Deteksi Helm Keselamatan Kerja Menggunakan CNN" mengikuti meto
 
 Dalam pengerjaan judul tugas akhir ini, terdapat beberapa peralatan dan bahan yang digunakan dalam rangka menyelesaikan penelitian ini mulai dari tools berupa software atau perangkat lunak hingga hardware atau perangkat keras. Berikut pemaparan dari alat - alat yang digunakan.
 
+
 \begin{enumerate}[nolistsep]
   \item Computer Desktop 
   \item Google Colab
@@ -53,7 +54,7 @@ Dalam pengerjaan judul tugas akhir ini, terdapat beberapa peralatan dan bahan ya
 
 \begin{longtable}{|c|c|c|}
   \caption{Spesifikasi Webcam Nemesis NYK A-90 Everest}
-  \label{tb:spesifikasijetsonano}\\
+  \label{tb:spesifikasiwebcam}\\
   \hline
   % \rowcolor[HTML]{C0C0C0}
   \textbf{Tipe} & \textbf{Detail}  \\
@@ -102,9 +103,7 @@ Dataset yang digunakan untuk training menggunakan Yolov5 berupa dataset berisi g
 
 \begin{enumerate}
   \item Safety Helmet Detection oleh andrewmvd
-  \par Dataset ini berisi 5000 gambar pekerja konstruksi yang meliputi orang yang menggunakan helm dan yang tidak menggunakan helm keselamatan kerja. Masin - masing
-  gambar sudah diberi label ”helmet” dan ”head”. Format anotasi label nya berupa
-  fromat PASCAL VOC yang disimpan dalam file .xml.   
+  \par Dataset ini berisi 5000 gambar pekerja konstruksi yang meliputi orang yang menggunakan helm dan yang tidak menggunakan helm keselamatan kerja. Masin - masing gambar sudah diberi label ”helmet” dan ”head”. Format anotasi label nya berupa fromat PASCAL VOC yang disimpan dalam file .xml.  
 
   \begin{figure}[ht]
     \centering
@@ -116,11 +115,7 @@ Dataset yang digunakan untuk training menggunakan Yolov5 berupa dataset berisi g
   \end{figure}
 
   \item SampleERASTY2020 dataset oleh Muhammad Aditya Wicaksono
-  \par Dataset ini berisi 8.867 gambar yang kandungannya serupa dengan dataset Safety Helmet 
-  Detection oleh andrewmvd sebelumnya. Dataset ini juga sudah lengkap dengan annotasi nya tetapi 
-  membutuhkan beberapa perubahan untuk disesuaikan dengan  metode trainingnya. 
-  Selain itu, 8.867 gambar tersebut juga sudah termasuk hasil augmentasi seperti flip, 
-  rotation, blur, dan noise.
+  \par Dataset ini berisi 8.867 gambar yang kandungannya serupa dengan dataset Safety Helmet Detection oleh andrewmvd sebelumnya. Dataset ini juga sudah lengkap dengan annotasi nya tetapi membutuhkan beberapa perubahan untuk disesuaikan dengan  metode trainingnya. Selain itu, 8.867 gambar tersebut juga sudah termasuk hasil augmentasi seperti flip, rotation, blur, dan noise.
 
   \begin{figure}[ht]
     \centering
@@ -143,12 +138,7 @@ Untuk keperluan training dan deteksi, terdapat 2 class :
 \end{enumerate}
 
 
-Pada dataset yang sudah didapatkan sudah memiliki pelabelan atau anotasi nya masing - masing, 
-tetapi khusus untuk dataset SampleERASTY2020 terdapat ketidak sesuaian untuk label Hard-hat  
-dimana hanya meliputi helm keselamatan kerja tanpa kepala penggunananya. Maka dari itu  dilakukan 
-pelabelan ulang untuk dataset SampleERASTY2020 dimana hanya menggunakan file gambar yang masih 
-belum hasil augmentasi yang berjumlah 338 gambar. Proses pelabelan gambar dilakukan di platform Roboflow
-seperti yang terlihat di Gambar~\ref{fig:gambarbesertalabel}
+Pada dataset yang sudah didapatkan sudah memiliki pelabelan atau anotasi nya masing - masing, tetapi khusus untuk dataset SampleERASTY2020 terdapat ketidak sesuaian untuk label Hard-hat dimana hanya meliputi helm keselamatan kerja tanpa kepala penggunananya. Maka dari itu  dilakukan pelabelan ulang untuk dataset SampleERASTY2020 dimana hanya menggunakan file gambar yang masih belum hasil augmentasi yang berjumlah 338 gambar. Proses pelabelan gambar dilakukan di platform Roboflow seperti yang terlihat di Gambar~\ref{fig:gambarbesertalabel}
 
 \begin{figure}[ht]
   \centering
@@ -159,29 +149,17 @@ seperti yang terlihat di Gambar~\ref{fig:gambarbesertalabel}
 
 \section{Preprocessing Dataset}
 \label{sec:preprocessing}
-\par Ada beberapa proses yang dilakukan untuk dataset yang sudah dikumpulkan agar bisa digunakan untuk proses
-training dengan benar. Proses tersebut meliputi pengaturan ulang ukuran gambar atau \emph{resizing}, penamaan ulang nama kelas, dan augmentasi.
-Untuk penelitian ini, proses - proses tersebut dilakukan pada platform Roboflow.
+\par Ada beberapa proses yang dilakukan untuk dataset yang sudah dikumpulkan agar bisa digunakan untuk proses training dengan benar. Proses tersebut meliputi pengaturan ulang ukuran gambar atau \emph{resizing}, penamaan ulang nama kelas, dan augmentasi. Untuk penelitian ini, proses - proses tersebut dilakukan pada platform Roboflow.
 
 
 \subsection{Mengatur Ulang Ukuran Gambar}
-\par YOLOv5 yang digunakan untuk men-train dataset menerima gambar dalam ukuran 640x640 dengan 
-warna RGB sehingga dataset yang ada akan diresize dalam ukuran tersebut. 
-Source code YOLOv5 dari repository github sebenarnya sudah menyediakan fitur 
-resize sebelum di train tetapi dari penulis melakukan resize menggunakan roboflow. 
+\par YOLOv5 yang digunakan untuk men-train dataset menerima gambar dalam ukuran 640x640 dengan warna RGB sehingga dataset yang ada akan diresize dalam ukuran tersebut. Source code YOLOv5 dari repository github sebenarnya sudah menyediakan fitur resize sebelum di train tetapi dari penulis melakukan resize menggunakan roboflow. 
 
 \subsection{Membersihkan Dataset}
-\par Terdapat beberapa gambar yang tidak diperlukan dari dataset yang didapatkan 
-seperti gambar yang hanya memiliki gambar rompi proyek yang dimana tidak digunakan 
-untuk keperluan training. Untuk beberapa gambar tersebut akan tidak diikutkan dalam 
-export dataset dari roboflow.
+\par Terdapat beberapa gambar yang tidak diperlukan dari dataset yang didapatkan seperti gambar yang hanya memiliki gambar rompi proyek yang dimana tidak digunakan untuk keperluan training. Untuk beberapa gambar tersebut akan tidak diikutkan dalam export dataset dari roboflow.
 
 \subsection{Penamaan Ulang Nama Kelas Pada Dataset SampleERASTY2020}
-\par Penamaan kelas  label yang ada dari dataset yang sudah ada akan disesuaikan untuk 
-keperluan penggunaan dan pemahaman yang lebih mudah. Dataset SampleERASTY2020 yang sudah dilabel 
-ulang tidak perlu melewati proses ini tetapi untuk dataset Safety Helmet Detection perlu dilakukan 
-penamaan ulang dimana untuk class “helmet” menjadi “with\textunderscore helmet” dan “head” 
-menjadi “no\textunderscore helmet” seperti yang ditunjukan pada Gambar \ref{fig:prepro_classrename}. 
+\par Penamaan kelas  label yang ada dari dataset yang sudah ada akan disesuaikan untuk keperluan penggunaan dan pemahaman yang lebih mudah. Dataset SampleERASTY2020 yang sudah dilabel ulang tidak perlu melewati proses ini tetapi untuk dataset Safety Helmet Detection perlu dilakukan penamaan ulang dimana untuk class “helmet” menjadi “with\textunderscore helmet” dan “head” menjadi “no\textunderscore helmet” seperti yang ditunjukan pada Gambar \ref{fig:prepro_classrename}. 
 
 \begin{figure}[ht]
   \centering
@@ -192,12 +170,7 @@ menjadi “no\textunderscore helmet” seperti yang ditunjukan pada Gambar \ref{
 \end{figure}
 
 \subsection{Augmentasi Gambar}
-\par Augmentasi tambahan juga dilakukan pada dataset untuk menambah variasi gambar 
-pada dataset dimana untuk bentuk augmentasi yang digunakan yaitu \emph{noise} 
-dan \emph{horizontal flip}. Proses augmentasi dilakukan di platform \emph{Roboflow} 
-yang juga menyediakan fitur augmentasi. Dataset SampleERASTY2020 yang sudah dilabel 
-ulang dan diaugmentasi tambahan lali digabungkan dengan dataset yang sudah 
-didapatkan sebelumnya yang berjumlah 5000 gambar. 
+\par Augmentasi tambahan juga dilakukan pada dataset untuk menambah variasi gambar pada dataset dimana untuk bentuk augmentasi yang digunakan yaitu \emph{noise} dan \emph{horizontal flip}. Proses augmentasi dilakukan di platform \emph{Roboflow} yang juga menyediakan fitur augmentasi. Dataset SampleERASTY2020 yang sudah dilabel ulang dan diaugmentasi tambahan lali digabungkan dengan dataset yang sudah didapatkan sebelumnya yang berjumlah 5000 gambar. 
 
 \begin{figure}[ht]
   \centering
@@ -210,15 +183,7 @@ didapatkan sebelumnya yang berjumlah 5000 gambar.
 % Sebelum di export, dilakukan pembagian rasio file untuk train - test - validation. Pembagian nya yaitu 70\% train (4202) , 20\% test (1.200 gambar), dan 10\% validation (600 gambar). Untuk \emph{training} menggunakan YOLOv5 yang berbasis \emph{PyTorch}, \emph{Roboflow} menyediakan fitur \emph{export} dataset ke format yang ditentukan dimana disini anotasinya disimpan dalam bentuk \emph{.txt} dan diatur lewat file \emph{.yaml}. Lalu khusus untuk dataset SampleERASTY2020 yang sudah dilabel ulang, dilakukan beberapa augmentasi menggunakan roboflow. Augmentasi yang digunakan yaitu flip untuk horizontal dan vertikal diman menghasilkan 600 gambar tambahan. Lalu juga dilakukan augmentasi berupa noise 11\% yang menghasilkan tambahan 300 gambar.
 
 \subsection{Pembagian Dataset}
-\par Sebelum digunakan untuk men-\emph{traing} \emph{weight}, dataset yang sebelumnya sudah digabungkan 
-perlu ditentukan pembagiannya untuk set \emph{train - test - val}-nya. Pembagian untuk dataset yang 
-digunakan untuk training yaitu 70\% train (4202) , 20\% test (1.200 gambar), dan 10\% validation (600 gambar). 
-Untuk \emph{training} menggunakan YOLOv5 yang berbasis \emph{PyTorch}, \emph{Roboflow} menyediakan 
-fitur \emph{export} dataset ke format yang ditentukan dimana disini anotasinya disimpan dalam bentuk 
-\emph{.txt} dan diatur lewat file \emph{.yaml} Pembagian dataset ini dilakukan melalui fitur 
-\emph{Generate Dataset Version} pada platform \emph{Roboflow}. Dataset yang didapat dari proses penggabungan dataset
-yang disebutkan pada Subbab~\ref{sec:akuisisidataset} dan setelah melalui \emph{pre-processing} selanjutnya akan disebut
-sebagai Dataset Helm Keselamatan Kerja untuk mempersingkat.
+\par Sebelum digunakan untuk men-\emph{traing} \emph{weight}, dataset yang sebelumnya sudah digabungkan perlu ditentukan pembagiannya untuk set \emph{train - test - val}-nya. Pembagian untuk dataset yang digunakan untuk training yaitu 70\% train (4202) , 20\% test (1.200 gambar), dan 10\% validation (600 gambar). Untuk \emph{training} menggunakan YOLOv5 yang berbasis \emph{PyTorch}, \emph{Roboflow} menyediakan fitur \emph{export} dataset ke format yang ditentukan dimana disini anotasinya disimpan dalam bentuk \emph{.txt} dan diatur lewat file \emph{.yaml} Pembagian dataset ini dilakukan melalui fitur \emph{Generate Dataset Version} pada platform \emph{Roboflow}. Dataset yang didapat dari proses penggabungan dataset yang disebutkan pada Subbab~\ref{sec:akuisisidataset} dan setelah melalui \emph{pre-processing} selanjutnya akan disebut sebagai Dataset Helm Keselamatan Kerja untuk mempersingkat.
 
 \begin{longtable}{|c|c|c|}
   \caption{Detail Dataset Deteksi Helm Keselamatan Kerja}
@@ -240,15 +205,7 @@ sebagai Dataset Helm Keselamatan Kerja untuk mempersingkat.
 \section{Training Dataset}
 \label{sec:trainingdataset}
 
-\par Dataset - dataset yang sudah di pre-process sebelumnya di roboflow dan sudah 
-memiliki anotasi yang susai lalu digunakan untuk training menggunakan YOLOv5. 
-Training ini merupakan proses pelatihan model dengan input gambar - gambar dari dataset 
-yang sudah diberi anotasi dimana gambar dan anotasinya tersebut diolah hingga 
-menghasilkan suatu karakteristik atau pola khusu dari kelas/label yang ditentukan 
-sebelumnya lewat anotasi sehingga selanjutnya dapat digunakan komputer untuk menebak 
-gambar yang nantinya dideteksi. Khusus untuk YOLOv5 yang menggunakan PyTorch sebagai 
-framework machine learningnya, hasil training nya beruba bobot atau weight  akan 
-diexport dalam bentuk .pt (format pytorch). 
+\par Dataset - dataset yang sudah di pre-process sebelumnya di roboflow dan sudah memiliki anotasi yang susai lalu digunakan untuk training menggunakan YOLOv5. Training ini merupakan proses pelatihan model dengan input gambar - gambar dari dataset yang sudah diberi anotasi dimana gambar dan anotasinya tersebut diolah hingga menghasilkan suatu karakteristik atau pola khusu dari kelas/label yang ditentukan sebelumnya lewat anotasi sehingga selanjutnya dapat digunakan komputer untuk menebak gambar yang nantinya dideteksi. Khusus untuk YOLOv5 yang menggunakan PyTorch sebagai framework machine learningnya, hasil training nya beruba bobot atau weight  akan diexport dalam bentuk .pt (format pytorch). 
 
 \begin{longtable}{|c|c|c|}
   \caption{Konfigurasi Training menggunakan YOLOv5}
@@ -267,25 +224,9 @@ diexport dalam bentuk .pt (format pytorch).
 \end{longtable}
 
 
-\par Seperti yang dapat dilihat pada Tabel~\ref{tb:konfigurasitrainingyolov5s},
-proses \emph{train} dilakukan dengan batch size 16 dan 150 \emph{epoch} dengan \emph{optimizer} 
-\emph{default} untuk yolov5 yaitu SGD. Batch\textunderscore size disini menentukan 
-jumlah gambar yang akan digunakan untuk train dalam satu iterasi, ditentukan 
-16 dengan pertimbangan limitasi \emph{hardware} yang digunakan untuk proses training ini. 
-Proses training dilakukan di Colab Pro dimana dengan limitasi GPU Ram yang diberikan, 
-digunakan hingga mendekati 12 GB. Untuk image size sendiri algoritma yang sudah 
-disediakan oleh YOLOv5 hanya menyiadakan resolusi 1:1 dimana dengan menentukan 
-parameter \emph{imgsize} 640 berarti ukuran untuk \emph{(height)} dan \emph{(width)} menjadi 640x640.
+\par Seperti yang dapat dilihat pada Tabel~\ref{tb:konfigurasitrainingyolov5s}, proses \emph{train} dilakukan dengan batch size 16 dan 150 \emph{epoch} dengan \emph{optimizer} \emph{default} untuk yolov5 yaitu SGD. Batch\textunderscore size disini menentukan jumlah gambar yang akan digunakan untuk train dalam satu iterasi, ditentukan 16 dengan pertimbangan limitasi \emph{hardware} yang digunakan untuk proses training ini. Proses training dilakukan di Colab Pro dimana dengan limitasi GPU Ram yang diberikan, digunakan hingga mendekati 12 GB. Untuk image size sendiri algoritma yang sudah disediakan oleh YOLOv5 hanya menyiadakan resolusi 1:1 dimana dengan menentukan parameter \emph{imgsize} 640 berarti ukuran untuk \emph{(height)} dan \emph{(width)} menjadi 640x640.
 
-\par Proses \emph{training} pada penilitian ini dilakukan dengan memanfaatkan \emph{pretrained weights} yang
-disediakan dari \emph{repository} YOLOv5 dan juga tanpa menggunakan \emph{pretrained weights} tersebut dengan
-tujuan membandingkan performa bobot - bobot yang dihasilkan dari metode - metode tersebut tetapi akan menggunakan
-konfigurasi yang serupa dengan konfugrasi yang digunakan untuk men-\emph{train} \emph{pretrained weighst} tersebut. Varian bobot yang
-akan digunakan yaitu varian yolov5n \emph{(Nano)}, yolov5s \emph{(Small)}, yolov5m \emph{(Medium)}, dan yolov5l \emph{(Large)}. Berdasarkan penjelasan dari \emph{repository}
-YOLOv5, \emph{pretrained weights} yang disediakan merupakan hasil \emph{training} menggunakan dataset COCO val2017
-parameter 300 epoch \cite{glenn_jocher_yolov5}.  Perbedaan utama dari varian - varian \emph{pretrained weights} tersebut
-berada pada parameter "depth\_multiplier" dan "width\_multiplier" yang berdampak pada kedalaman layer dan jumlah \emph{channel} dari output untuk
-tiap layer. Nominal konfigurasi "depth\_multiplier" dan "width\_multiplier" untuk masing - masing varian dapat dilihat pada Tabel.
+\par Proses \emph{training} pada penilitian ini dilakukan dengan memanfaatkan \emph{pretrained weights} yang disediakan dari \emph{repository} YOLOv5 dan juga tanpa menggunakan \emph{pretrained weights} tersebut dengan tujuan membandingkan performa bobot - bobot yang dihasilkan dari metode - metode tersebut tetapi akan menggunakan konfigurasi yang serupa dengan konfugrasi yang digunakan untuk men-\emph{train} \emph{pretrained weighst} tersebut. Varian bobot yang akan digunakan yaitu varian yolov5n \emph{(Nano)}, yolov5s \emph{(Small)}, yolov5m \emph{(Medium)}, dan yolov5l \emph{(Large)}. Berdasarkan penjelasan dari \emph{repository} YOLOv5, \emph{pretrained weights} yang disediakan merupakan hasil \emph{training} menggunakan dataset COCO val2017 parameter 300 epoch \cite{glenn_jocher_yolov5}.  Perbedaan utama dari varian - varian \emph{pretrained weights} tersebut berada pada parameter "depth\_multiplier" dan "width\_multiplier" yang berdampak pada kedalaman layer dan jumlah \emph{channel} dari output untuk tiap layer. Nominal konfigurasi "depth\_multiplier" dan "width\_multiplier" untuk masing - masing varian dapat dilihat pada Tabel.
 
 \begin{longtable}{|l|l|l|} 
   \caption{Perbedaan Parameter "depth\_multiplier" dan "width\_multiplier" untuk Masing- Masing Varian \emph{Pretrained Weights} YOLOv5}
@@ -302,13 +243,7 @@ tiap layer. Nominal konfigurasi "depth\_multiplier" dan "width\_multiplier" untu
   \hline
 \end{longtable}
 
-\par Proses training untuk judul ini tidak dilakukan dengan \emph{hardware} komputer 
-lokal melainkan memanfaatkan Google Colab Pro dimana proses trainingnya dijalankan secara cloud. 
-Dataset yang sudah dikumpulkan sebelumnya didownload ke storage vm Colab Pro langsung dari 
-Roboflow.  Dengan limitasi penggunaan storage, ram, dan GPU ram serta runtime 
-yang diberikan google colab, dilakukan penyimpanan checkpoint untuk tiap epoch 
-training di drive pribadi penulis. Hal dilakukan untuk kemungkinan jika 
-sekiranya di tengah proses training session VM Colab Pro nya ter -terminate dengan sendirinya. 
+\par Proses training untuk judul ini tidak dilakukan dengan \emph{hardware} komputer lokal melainkan memanfaatkan Google Colab Pro dimana proses trainingnya dijalankan secara cloud. Dataset yang sudah dikumpulkan sebelumnya didownload ke storage vm Colab Pro langsung dari Roboflow.  Dengan limitasi penggunaan storage, ram, dan GPU ram serta runtime yang diberikan google colab, dilakukan penyimpanan checkpoint untuk tiap epoch training di drive pribadi penulis. Hal dilakukan untuk kemungkinan jika sekiranya di tengah proses training session VM Colab Pro nya ter -terminate dengan sendirinya. 
 
 
 \section{Perancangan Sistem Deteksi Helm Keselamatan Kerja}
@@ -321,12 +256,17 @@ sekiranya di tengah proses training session VM Colab Pro nya ter -terminate deng
   \label{fig:flchartdeteksi}  
 \end{figure}
 
-Sistem deteksi yang dibuat untuk Deteksi Helm Keselamatan kerja sendiri dikembangkan dari sistem deteksi yang sudah ada dari YOLOv5 dengan beberapa perubahan yang disesuaikan khusus untuk judul ini. Flowchart untuk sistem Deteksi Helm Keselamatan Kerja dapat dilihat pada Gambar~\ref{fig:flchartdeteksi} .
+\par Sistem deteksi helm keselamatan kerja ini akan memanfaatkan YOLOv5 untuk melakukan prediksi pada input yang diterima. Input berupa gambar yang diterima dari \emph{webcam}
+atau camera yang terhubung ke komputer yang akan menjalankan sistem ini. Sistem dikembangkan dengan tujuan untuk mendeteksi penggunaan helm keselamatan kerja secara \emph{real-time}
+dan akan menjalankan mekanisme alarm jika pada camera input terdapat seseorang yang tidak menggunakan helm keselamatan kerja. 
+Flowchart untuk sistem Deteksi Helm Keselamatan Kerja dapat dilihat pada Gambar~\ref{fig:flchartdeteksi}.
 
 % Sistem yang dibuat direncanakan akan dijalankan di komputer yang sudah terinstall Python dan framework PyTorch atau ONNX dimana merupakan format yang dihasilkan dari training sebelumnya.
 
-Sistem nya akan dibuat sebagai file script python yang dapat di run dan dapat menerima beberapa parameter : ukuran gambar, sumber input, dan bobot atau weight yang akan digunakan. 
-Input yang dapat digunakan dengan script yang dibuat dapat dilakukan dalam bentuk gambar, file video, link youtube, link stream, dan feed camera dengan basis dari script detect.py dari YOLOv5. Tetapi, yang akan digunakan sebagai default nanti adalah feed dari kamera atau webcam yang tersedia di hardware yang digunakan untuk menjalankan inference. Ukuran atau resolusi gambar yang diterima sebagai ukuran default yaitu 640x640. 
+\par Sistem nya akan dibuat sebagai file script python yang dapat di run dan dapat menerima beberapa parameter :  sumber input, weight yang akan digunakan, confidence threshold, dan IoU threshold untuk proses Non Max Supression. 
+\par Input yang dapat digunakan dengan script yang dibuat dapat dilakukan dalam bentuk file video atau feed camera. 
+Sistem dapat menerima berbagai resolusi, tetapi untuk proses \emph{inference} akan dilakukan pengubahan ukuran dimensi input menjadi 640x640 yang lalu outputnya akan
+disesuaikan dengan dimensi input awal.
 
 % Untuk kasus jika input berupa gambar tunggal, gambar tersebut akan digunakan untuk inference melalu model yolov5 dengan bobot yang sudah dibuat sebelumnya lalu hasil inference yolov5 akan menghasilkan beberapa output. Tetapi untuk sistem yang akan dijalankan akan memanfaatkan feed dari camera atau webcam secara realtime sehingga akan dilakukan inference untuk tiap frame yang masuk dari input webcam.
 

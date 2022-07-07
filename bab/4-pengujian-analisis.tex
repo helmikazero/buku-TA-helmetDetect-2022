@@ -7,32 +7,13 @@ Bab ini akan membahas hasil dan analisa dari desain sistem yang sudah dibuat dan
 
 \section{Pengujian Performa antar \emph{Weight}}
 \label{sec:ujiperforma}
-\par Repositori YOLOv5 menyediakan beberapa \emph{checkpoint} atau \emph{weight} yang 
-merupakan hasil training model YOLOv5 dari dataset COCO yang dimanfaatkan sebagai 
-\emph{pretrained model}. Ekspektasi penggunaan pretrained model ini yaitu bobot yang 
-dihasilkan akan memiliki performa yang lebih tinggi daripada melakukan training tanpa 
-pretrained model sama sekali. \emph{COCO Dataset} ini memiliki 80 \emph{class} berbeda. 
-Seperti disebutkan pada \ref{sec:pelabelandataset} yaitu untuk keperluan penelitian ini 
-hanya memerlukan 2 kelas yaitu "no\textunderscore helmet" dan "with\textunderscore helmet". 
+\par Repositori YOLOv5 menyediakan beberapa \emph{checkpoint} atau \emph{weight} yang merupakan hasil training model YOLOv5 dari dataset COCO yang dimanfaatkan sebagai \emph{pretrained model}. Ekspektasi penggunaan pretrained model ini yaitu bobot yang dihasilkan akan memiliki performa yang lebih tinggi daripada melakukan training tanpa pretrained model sama sekali. \emph{COCO Dataset} ini memiliki 80 \emph{class} berbeda. Seperti disebutkan pada \ref{sec:pelabelandataset} yaitu untuk keperluan penelitian ini hanya memerlukan 2 kelas yaitu "no\textunderscore helmet" dan "with\textunderscore helmet". 
 
-\par Beberapa \emph{pretrained model} yang disedikana dari repositori YOLOv5 yaitu YOLOv5n, YOLOV5s, 
-YOLOv5m, YOLOv5l,YOLOv5l, dan YOLOv5x. Selain beberapa model pretrained tersebut juga ada versi 
-untuk ukuran gammbar 1280 yaitu seri YOLOv5n6 hingga YOLOv5l6. Pada penelitian ini hanya 
-menggunakan variasi YOLOv5n hingga YOLOv5l karena variasi YOLOv5x dan versi seri 6 untuk 
-ukuran gambar 1280 membutuhkan waktu yang lebih lama. Perbedaan - perbedaan yang ada pada 
-bobot - bobot pretrained tersebut berasal dari konfigurasi awal dari training pada dataset 
-COCO yang menggunakan YOLOv5, terutama pada paramter "depth\textunderscore multiple" 
-dan "width\textunderscore multiple".
+\par Beberapa \emph{pretrained model} yang disedikana dari repositori YOLOv5 yaitu YOLOv5n, YOLOV5s, YOLOv5m, YOLOv5l,YOLOv5l, dan YOLOv5x. Selain beberapa model pretrained tersebut juga ada versi untuk ukuran gammbar 1280 yaitu seri YOLOv5n6 hingga YOLOv5l6. Pada penelitian ini hanya menggunakan variasi YOLOv5n hingga YOLOv5l karena variasi YOLOv5x dan versi seri 6 untuk ukuran gambar 1280 membutuhkan waktu yang lebih lama. Perbedaan - perbedaan yang ada pada bobot - bobot pretrained tersebut berasal dari konfigurasi awal dari training pada dataset COCO yang menggunakan YOLOv5, terutama pada paramter "depth\textunderscore multiple" dan "width\textunderscore multiple".
 
-\par Proses validasi hasil training dilakukan menggunakan dataset Deteksi Helm Keselamatan 
-Kerja yang pembagiannya dijelaskan pada bagian \ref{sec:preprocessing} yang berjumlah 1200 
-gambar dengan kelas "no\textunderscore helmet" berjumlah 1322 label dan kelas 
-"with\textunderscore helmet" berjumlah 4294 label.
+\par Proses validasi hasil training dilakukan menggunakan dataset Deteksi Helm Keselamatan Kerja yang pembagiannya dijelaskan pada bagian \ref{sec:preprocessing} yang berjumlah 1200 gambar dengan kelas "no\textunderscore helmet" berjumlah 1322 label dan kelas "with\textunderscore helmet" berjumlah 4294 label.
 
-\par Pada bagian ini akan dipaparkan dan dibandingkan performa antara tiap bobot yang dihasilkan 
-dengan model pretrained dan yang tidak menggunakan pretrained model. Pengujian ini dilakukan menggunakan
-\emph{resource} dari Google Colab. Spesifikasi \emph{resource} Google Colab yang digunakan saat melakukan validasi
-untuk bobot yang sudah di-\emph{train} dapat dilihat pada Tabel~\ref{tb:spekgoogleclab}.
+\par Pada bagian ini akan dipaparkan dan dibandingkan performa antara tiap bobot yang dihasilkan dengan model pretrained dan yang tidak menggunakan pretrained model. Pengujian ini dilakukan menggunakan \emph{resource} dari Google Colab. Spesifikasi \emph{resource} Google Colab yang digunakan saat melakukan validasi untuk bobot yang sudah di-\emph{train} dapat dilihat pada Tabel~\ref{tb:spekgoogleclab}.
 
 \begin{table}
   \centering
