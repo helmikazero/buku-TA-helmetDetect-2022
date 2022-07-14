@@ -11,7 +11,7 @@ Peraturan Menteri Tenga Kerja dan Transmigrasi Republik Indonesia NOMOR PER.08/M
 
 Tetapi walaupun sudah diatur dalam aturan pemerintah belum menjamin semua pekerja menggunakan Helm Keselamatan Kerja saat diinstruksikan untuk digunakan. Melalui jurnal Menakar Implementasi Kebijakan Keselamatan dan Kesehatan Kerja di Indonesia oleh Masrully pada tahun 2019, Sekretaris Umum BPD Gabungan Pelaksana Konstruksi Indonesia atau GAPENSI menyatakan bahwa menurutnya sejumlah proyek konstruksi yang digarap perusahaan BUMN sering didapati pekerja yang mengabaikan keselamatan kerja yang dimana waktu itu bahasan utamanya adalah kecelakan kerja yang marak terjadi sepanjang tahun 2017 hingga 2018 \cite{masrully2019menakar}.
 
-Dalam penanggulangan kelalaian penggunaan helm keselamatan kerja ataupun APD lainnya, perusahaan - perusahaan yang melakukan pekerjaan pada umumnya sudah mengerahkan supervisor atau pengawasa berupa petugas K3 atau Ahli K3 yang dimana juga bertugas untuk mengawasi penggunaan APD sebagai salah satu bentuk K3. Selain itu pengerahnnya  ini sendiri pun juga diatur dalam PERATURAN MENTERI PEKERJAAN UMUM NOMOR : 05/PRT/M/2014 Pasal 6 ayat 1 dan 2  yang menyebutkan bahwa wajib melibatkankan ahli atau petugas K3 pada potensi bahaya rendah atau tinggi \cite{kementrianpekerjaanumum}. Tetapi, petugas K3 yang dikerahkankan pada umumnya masih melakukan pengawasan secara manual. Disini seperti yang diketahui yaitu manusia memilki batasan tertentu dimana luas area pengawasan yang terlalu luas dan banyaknya jumlah pekerja yang harus diawasi menjadi tantangan.
+Dalam penanggulangan kelalaian penggunaan helm keselamatan kerja ataupun APD lainnya, perusahaan - perusahaan yang melakukan pekerjaan pada umumnya sudah mengerahkan supervisor atau pengawasa berupa petugas K3 atau Ahli K3 yang dimana juga bertugas untuk mengawasi penggunaan APD sebagai salah satu bentuk K3. Selain itu pengerahnnya  ini sendiri pun juga diatur dalam PERATURAN MENTERI PEKERJAAN UMUM DAN PERUMAHAN RAKYAT NOMOR : 21/PRT/M/2019 tentang Pedoman Sistem Manajemen Keselamatan Konstruksi yang dimana menyebutkan adanya Pengawas Pekerjaan Konstruksi yang merupakan tim pendukung yang ditunjuk untuk pengawasaan Pekerjaan konstruksi dan pemenuhan terhadap norma, standar, prosedur, dan kriteria \cite{permen21prtm2019pedomansistemmanajemenkeselamatankonstruksi}. Tetapi, petugas K3 yang dikerahkankan pada umumnya masih melakukan pengawasan secara manual. Disini seperti yang diketahui yaitu manusia memilki batasan tertentu dimana luas area pengawasan yang terlalu luas dan banyaknya jumlah pekerja yang harus diawasi menjadi tantangan.
 
 Terlepas dari adanya aturan K3 dan pengerahan pengawasan dengan segala keterbatasannya, berdasarkan Data Kecelakaan dan Penyakit Akibat Kerja Triwulan II 2020 dari Kemnaker, kecelakaan kerja Tipe A yang meliputi "Terbentur pada umumnya menunjukan kontak atau persinggungan dengan benda tajam atau benda keras yang menyebabkan tergores, terpotong, tertusuk dll" mencapai angka 878 kecelakaan dimana menjadi angka terbesar dibanding tipe kecelakaan lain dengan Tipe J (lain-lain) dengan angka 637 dan Tipe C (terjepit) dengan angka 439 \cite{satudata_kecelakaan_kerja}.
 
@@ -22,15 +22,24 @@ Terlepas dari adanya aturan K3 dan pengerahan pengawasan dengan segala keterbata
 Berdasarkan latar belakang tersebut, ditarik suatu permasalahan untuk judul ini yaitu Helm keselamatan kerja sebagai salah satu APD K3 masih sering diabaikan ditambah dengan pengawasan penggunaan helm sebagai APD K3 yang masih dilakukan secara manual oleh petugas pengawas.
 
 
-\section{Batasan Masalah}
-\label{sec:batasanmasalah}
-
-Dalam pengerjaan judul penelitian ini, deteksi hanya dilakukan untuk penggunaan helm keselamatan kerja.
-
 \section{Tujuan}
 \label{sec:Tujuan}
 
+
 Dari permasalahan yang disebutkan, dapat dapat ditentukan tujuan : Merancang sistem yang dapat mendeteksi penggunaan helm keselamatan kerja secara real-time.
+
+\section{Batasan Masalah}
+\label{sec:batasanmasalah}
+
+Dalam pengerjaan judul penelitian ini terdapat beberapa batasan masalah :
+
+\begin{enumerate}[nolistsep]
+    \item Deteksi hanya dilakukan pada kepala yang menggunakan helm keselamatan kerja dan kepala yang tidak menggunakan pelindung kepala apapun
+    \item Metode deteksi objek menggunakan YOLOv5
+    \item Dataset yang digunakan berasal dari “Safety Helmet Detection Dataset” dan “SampleErasty2020”
+    \item Input berasal dari webcam / camera laptop
+    \item Dengan asumsi implementasi pengawasan pada checkpoint, jarak camera berada pada 1 m hingga 10 m dari yang diawasi
+\end{enumerate}
 
 \section{Manfaat}
 \label{sec:manfaat}
