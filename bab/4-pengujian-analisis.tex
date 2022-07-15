@@ -964,3 +964,40 @@ Pengujian dilakukan pada resolusi 256, 480, dan 640. Hasil pengukuran FPS pada p
 Performa dari nilai \emph{Frame Rate} dari \emph{weight} yang menggunakan \emph{Pretrained Weights} dengan pasangan bandingnya di \emph{weight}
 yang tidak menggunakan \emph{Pretrained Weights} memiliki performa yang tidak berbeda jauh. Sewajarnya, varian \emph{Nano (N)} dari
 \emph{Pretrained Weight} atau \emph{Pure Weight} memiliki FPS paling tinggi dibandingkan varian diatasnya yaitu S,M,dan L.
+
+\section{Pengujian Sistem dan Model Pada \emph{Headgear} Lain}
+\label{sec:otherheadgear_test}
+
+\par Pada bagian ini dilakukan pengujian pada \emph{headgear} selain helm keselamatan kerja yaitu topi dan beberapa \emph{headgear} lainnya. Terdapat kemungkinan pada area pekerjaan terdapat pekerja lapangan yang menggunakan \emph{headgear} selain helm keselamatan kerja seperti topi. Tetapi pelindung kepala selain helm keselamatan kerja berada diluar batasan masalah yang dibahas pada Subbab~\ref{sec:batasanmasalah}.
+
+Dilakukan 138 kali pengambilan test untuk \emph{headgear} selain helm keselamatan kerja, dengan confidence\_threshold 0.25 dan iou\_threshold 0.45, didapatkan untuk hasil dari sisi kelas "no\_helmet" sebagai berikut:
+
+\begin{enumerate}[nolistsep]
+  \item True Postive : 65
+  \item False Positive : 1
+  \item False Negative : 66
+  \item Precision : 0.9848484848
+  \item Recall : 0.4961832061
+\end{enumerate}
+
+Diluar dari sisi kelas "no\_helmet", terjadi 63 kali False Positive untuk kelas "with\_helmet" dimana model mendeteksi topi atau headgear lainnya sebagai "with\_helmet".
+
+Lalu berikut merupakan hasil pengujian sistem alarm, hanya terdapat False dan Negative dikarenakan semua test dilakukan pada keadaan dimana seharusnya alarm menyala :
+
+\begin{enumerate}[nolistsep]
+  \item True : 66
+  \item False : 72
+  \item Akurasi : 0.4782608696
+\end{enumerate}
+
+Didapati masih sering terjadi False Negative untuk deteksi "no\_helmet" pada penggunaan topi dimana tidak terdektsi sebagai "no\_helmet" atau bahkan terdeteksi sebagai "with\_helmet".
+
+\begin{figure} [h!]
+  \centering
+  \includegraphics[width=0.3\textwidth]{gambar/pengujian/Screenshot_105.png}
+  \includegraphics[width=0.3\textwidth]{gambar/pengujian/Screenshot_106.png}
+  \includegraphics[width=0.3\textwidth]{gambar/pengujian/Screenshot_107.png}
+  \caption{Pengujian Pada \emph{Headgear} selain Helm Keselamatan Kerja}
+  \label{fig:pengujian_headgear}  
+\end{figure}
+
