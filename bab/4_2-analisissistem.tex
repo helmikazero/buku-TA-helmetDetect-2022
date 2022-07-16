@@ -1,0 +1,35 @@
+\section{Pengujian Sistem Deteksi Helm Keselamatan Kerja}
+\label{sec:system_check}
+
+\par Pada bagian ini akan dipaparkan berbagai macam pengujian terhadap sistem deteksi yang dikembangkan. Seperti yang sebelumnya sudah dijelaskan pada Subab~\ref{sec:perancangansistem}, sistem deteksi helm keselamatan kerja ini akan menjalankan mekanisme alarm berupa suara audio sirine alarm jika dalam frame terdeteksi satu atau lebih kelas "no\_helmet".
+
+\par Pengujian - pengujian sebagian besar dilakukan dengan cara mengambil beberapa sampel gambar dari hasil rekaman sistem di beberapa kondisi berbeda : perbedaan jarak, kecerahan rendah, sudut pandang CCTV, dan percobaan penjalanan di SBC Jetson Nano. Pengujian ini berfokus untuk menjawab pertanyaan "Seberapa akurat sistem menyalakan alarm saat alarm memang dibutuhkan untuk dinyalakan?". Sisi "Positif" akan dilihat dari saat alarm dinyalakan dan "Negatif" saat alarm tidak menyala. 
+
+\subsection{Pengujain Sistem Pada Perbedaan jarak}
+\label{subsec:systest_test_dist}
+
+\par Pengujian ini dilakukan dengan pada perbedaan jarak antara kamera dengan objek yang diamati (orang yang memakai atau tidak memakai helm keselamatan kerja). Pengujian dilakukan dengan mengambil beberapa sampel gambar dari rekaman yang menjalankan deteksi pada jarak 1 meter hingga 10 meter.
+
+\begin{table}
+    \centering
+    \caption{Hasil Pengujain Sistem Pada Perbedaan jarak}
+    \label{tb:systest_dist_test}
+    \begin{tabular}{|l|l|l|l|l|l|l|} 
+    \hline
+    Distance & TP & TN & FP & FN & Akurasi    & Jumlah Test  \\ 
+    \hline
+    1m       & 17 & 61 & 7  & 0  & 0.9176470588 & 85               \\ 
+    \hline
+    3m       & 20 & 44 & 0  & 2  & 0.9696969697 & 66               \\ 
+    \hline
+    5m       & 40 & 53 & 0  & 0  & 1            & 93               \\ 
+    \hline
+    7m       & 32 & 56 & 0  & 0  & 1            & 88               \\ 
+    \hline
+    10m      & 78 & 32 & 0  & 0  & 1            & 110              \\
+    \hline
+    \end{tabular}
+\end{table}
+
+\par Berdasarkan hasil pengujian yang ditunjukan pada Tabel~\ref{tb:systest_dist_test}, akurasi pada jarak 5 meter hingga 10 meter bernilai 1 karena tidak mengalami kesalahan menyalakan alarm sama sekali dari masing - masing jumlah percobaan. Pada jarak 1 meter dan 3 meter terdapat beberapa \emph{False} dimana pada jarak 1 meter mengalami 7 kali False Positive atau dimana alarm menyala disaat tidak seharusnya menyala dan pada jarak 3 meter terdapat 2 kali False Negative dimana alarm seharusnya menyala tetapi tidak.
+
