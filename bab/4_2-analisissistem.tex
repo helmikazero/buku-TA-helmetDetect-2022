@@ -31,7 +31,24 @@
     \end{tabular}
 \end{table}
 
-\par Berdasarkan hasil pengujian yang ditunjukan pada Tabel~\ref{tb:systest_dist_test}, akurasi pada jarak 5 meter hingga 10 meter bernilai 1 karena tidak mengalami kesalahan menyalakan alarm sama sekali dari masing - masing jumlah percobaan seperti yang dapat dilihat pada Gambar~\ref{}. Pada jarak 1 meter dan 3 meter terdapat beberapa \emph{False} dimana pada jarak 1 meter mengalami 7 kali False Positive atau dimana alarm menyala disaat tidak seharusnya menyala dan pada jarak 3 meter terdapat 2 kali False Negative dimana alarm seharusnya menyala tetapi tidak seperti yang dapat dilihat pada Gambar~\ref{}.
+\par Berdasarkan hasil pengujian yang ditunjukan pada Tabel~\ref{tb:systest_dist_test}, akurasi pada jarak 5 meter hingga 10 meter bernilai 1 karena tidak mengalami kesalahan menyalakan alarm sama sekali dari masing - masing jumlah percobaan seperti yang dapat dilihat pada Gambar~\ref{fig:sys_1-3_meter}. Pada jarak 1 meter dan 3 meter terdapat beberapa \emph{False} dimana pada jarak 1 meter mengalami 7 kali False Positive atau dimana alarm menyala disaat tidak seharusnya menyala dan pada jarak 3 meter terdapat 2 kali False Negative dimana alarm seharusnya menyala tetapi tidak seperti yang dapat dilihat pada Gambar~\ref{fig:sys_5-9_meter}.
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_jarak/1-3_jelek/jarak_helmet_white (21).png}
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_jarak/1-3_jelek/jaraknohelmet (1).png}
+    \caption{Deteksi Pada Jarak 1 dan 3 meter}
+    \label{fig:sys_1-3_meter}  
+\end{figure}
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_jarak/5-9_bagus/jarak_helmet_orange (67).png}
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_jarak/5-9_bagus/jarak_helmet_white (129).png}
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_jarak/5-9_bagus/jaraknohelmet (82).png}
+    \caption{Deteksi Pada Jarak 5 - 10 meter}
+    \label{fig:sys_5-9_meter}  
+\end{figure}
 
 
 
@@ -51,12 +68,31 @@
     \hline
     27 & 28 & 0  & 9  & 0.859375         \\ 
     \hline
-    \multicolumn{2}{|l|}{55}   & \multicolumn{2}{l|}{9} & 64 test samples  \\
+    \multicolumn{2}{|l|}{55}   & \multicolumn{2}{l|}{9} & 64 tes \\
     \hline
     \end{tabular}
 \end{table}
 
-Berdasarkan hasil pengujian tersebut, dari 64 kali pengambilan sampel untuk pengujian, didapati 9 kali \emph{False Negative} dimana terjadi 9 kali kegagalan menyalakan alarm disaat seharusnya menyalakan alarm. Beberapa contoh kegagalan 
+Berdasarkan hasil pengujian tersebut, dari 64 kali pengambilan sampel untuk pengujian, didapati 9 kali \emph{False Negative} dimana terjadi 9 kali kegagalan menyalakan alarm disaat seharusnya menyalakan alarm. Beberapa contoh kegagalan menyalakan alarm atau False Negative ini dicontohkan seperti Gambar~\ref{fig:sys_cctvori_fn}. Tetapi untuk \emph{True Positive} dan \emph{True Negative} lebih banyak terjadi dengan angka 27 dan 28 kali seperti yang ditunjukkan pada Gambar~\ref{fig:sys_cctvori_fn}.
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_cctvori/betuls/cctv_perspective_pred (7).png}
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_cctvori/betuls/cctv_perspective_pred (11).png}
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_cctvori/betuls/cctv_perspective_pred (53).png}
+    \caption{Sistem Deteksi Tepat Pada Sudut 45 Derajat (CCTV)}
+    \label{fig:sys_cctvori_true}  
+\end{figure}
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_cctvori/falsenegative/cctv_perspective_pred (73).png}
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_cctvori/falsenegative/cctv_perspective_pred (83).png}
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_cctvori/falsenegative/cctv_perspective_pred (97).png}
+    \caption{Sistem Deteksi \emph{False Negative} Pada Sudut 45 Derajat (CCTV)}
+    \label{fig:sys_cctvori_fn}  
+\end{figure}
+
 
 \subsection{Pengujian \emph{Real-Time} Pada Jetson Nano}
 \label{subsec:systest_test_jetsonrealtime}
@@ -79,7 +115,7 @@ Berdasarkan hasil pengujian tersebut, dari 64 kali pengambilan sampel untuk peng
     \end{tabular}
 \end{table}
 
-\par Pada pengujian ini, ditemukan 2 kali \emph{False Negative} dari 33 kali pengambilan sampel gambar dari rekaman pengujian pada Jetson Nano. Lalu didapatkan akurasi pada pengujian ini yaitu 0.94. 
+\par Pada pengujian ini, ditemukan 2 kali \emph{False Negative} dari 33 kali pengambilan sampel gambar dari rekaman pengujian pada Jetson Nano. Selebihnya 31 pengujian didapati tepat. Lalu didapatkan akurasi pada pengujian ini yaitu 0.94. Beberapa hasil deteksi yang tepat ditunjukkan pada Gambar~\ref{fig:sys_cctvori_fn}.
 
 \subsection{Pengujian Sistem Pada Keadaan Rendah Cahaya (Sore)}
 \label{subsec:systest_test_lowilu_sore}
@@ -92,7 +128,7 @@ Berdasarkan hasil pengujian tersebut, dari 64 kali pengambilan sampel untuk peng
     \label{tb:systest_lowillum_dusk}
     \begin{tabular}{|l|l|l|l|l|} 
         \hline
-        TP & TN                    & FP & FN                & accuracy         \\ 
+        TP & TN                    & FP & FN                & Akurasi         \\ 
         \hline
         45 & 25                    & 0  & 5                 & 0.9333333333    \\ 
         \hline
@@ -101,8 +137,16 @@ Berdasarkan hasil pengujian tersebut, dari 64 kali pengambilan sampel untuk peng
     \end{tabular}
 \end{table}
 
-\par Pada pengujian dengan tingkat kecerahan rendah dengan penerangan background minimal ini, diambil 70 sampel pengujian. Dari 70 kali pengambil sampel tersebut, didapati 5 kali \emph{False Negative} yang lalu didapati nilai akurasi 0,93 .
+\par Pada pengujian dengan tingkat kecerahan rendah dengan penerangan background minimal ini, diambil 70 sampel pengujian. Dari 70 kali pengambil sampel tersebut, didapati 5 kali \emph{False Negative} yang lalu didapati nilai akurasi 0,93. Beberapa hasil pengujian sistem deteksi sistem pada keadaan rendah cahaya pada waktu sore ditunjukkan pada Gambar~\ref{fig:sys_lowilu_sore}.
 
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{gambar/sistem-sore/all_alif_5m_pred_Trim (56).png}
+    \includegraphics[width=0.3\textwidth]{gambar/sistem-sore/all_alif_5m_pred_Trim (65).png}
+    \includegraphics[width=0.3\textwidth]{gambar/sistem-sore/all_alif_5m_pred_Trim (72).png}
+    \caption{Contoh Hasil Deteksi Sistem pada Waktu Sore (Pencahayaan Rendah)}
+    \label{fig:sys_lowilu_sore}  
+\end{figure}
 
 \subsection{Pengujian Sistem Pada Keadaan Rendah Cahaya (Malam)}
 \label{subsec:systest_test_lowilu_malam}
