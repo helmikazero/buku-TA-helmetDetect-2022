@@ -31,12 +31,14 @@
     \end{tabular}
 \end{table}
 
-\par Berdasarkan hasil pengujian yang ditunjukan pada Tabel~\ref{tb:systest_dist_test}, akurasi pada jarak 5 meter hingga 10 meter bernilai 1 karena tidak mengalami kesalahan menyalakan alarm sama sekali dari masing - masing jumlah percobaan. Pada jarak 1 meter dan 3 meter terdapat beberapa \emph{False} dimana pada jarak 1 meter mengalami 7 kali False Positive atau dimana alarm menyala disaat tidak seharusnya menyala dan pada jarak 3 meter terdapat 2 kali False Negative dimana alarm seharusnya menyala tetapi tidak.
+\par Berdasarkan hasil pengujian yang ditunjukan pada Tabel~\ref{tb:systest_dist_test}, akurasi pada jarak 5 meter hingga 10 meter bernilai 1 karena tidak mengalami kesalahan menyalakan alarm sama sekali dari masing - masing jumlah percobaan seperti yang dapat dilihat pada Gambar~\ref{}. Pada jarak 1 meter dan 3 meter terdapat beberapa \emph{False} dimana pada jarak 1 meter mengalami 7 kali False Positive atau dimana alarm menyala disaat tidak seharusnya menyala dan pada jarak 3 meter terdapat 2 kali False Negative dimana alarm seharusnya menyala tetapi tidak seperti yang dapat dilihat pada Gambar~\ref{}.
+
+
 
 \subsection{Pengujian Pada Sudut Pandang CCTV}
 \label{subsec:systest_test_cctv}
 
-\par Pengujian ini dilakukan dengan tujuan mengimitasi bagaimana CCTV biasanya dipasang pada suatu \emph{checkpoint} di lokasi konstruksi yang biasanya dipasang dengan sudut 45 derajat. Hasil pengujian ini ditunjukan pada Tabel
+\par Pengujian ini dilakukan dengan tujuan mengimitasi bagaimana CCTV biasanya dipasang pada suatu \emph{checkpoint} di lokasi konstruksi yang biasanya dipasang dengan sudut 45 derajat. Hasil pengujian ini ditunjukan pada Tabel~\ref{tb:systest_cctv}.
 
 
 \begin{table}
@@ -54,7 +56,7 @@
     \end{tabular}
 \end{table}
 
-Berdasarkan hasil pengujian tersebut, dari 64 kali pengambilan sampel untuk pengujian, didapati 9 kali \emph{False Negative} dimana terjadi 9 kali kegagalan menyalakan alarm disaat seharusnya menyalakan alarm.
+Berdasarkan hasil pengujian tersebut, dari 64 kali pengambilan sampel untuk pengujian, didapati 9 kali \emph{False Negative} dimana terjadi 9 kali kegagalan menyalakan alarm disaat seharusnya menyalakan alarm. Beberapa contoh kegagalan 
 
 \subsection{Pengujian \emph{Real-Time} Pada Jetson Nano}
 \label{subsec:systest_test_jetsonrealtime}
@@ -68,11 +70,11 @@ Berdasarkan hasil pengujian tersebut, dari 64 kali pengambilan sampel untuk peng
     \label{tb:systest_jetson}
     \begin{tabular}{|l|l|l|l|l|} 
         \hline
-        TP & TN                    & FP & FN                & Accuracy         \\ 
+        TP & TN                    & FP & FN                & Akurasi        \\ 
         \hline
         14 & 17                    & 0  & 2                 & 0.9393939394     \\ 
         \hline
-        \multicolumn{2}{|l|}{31}   & \multicolumn{2}{l|}{2} & 33 test samples  \\
+        \multicolumn{2}{|l|}{31}   & \multicolumn{2}{l|}{2} & 33 tes  \\
         \hline
     \end{tabular}
 \end{table}
@@ -94,7 +96,7 @@ Berdasarkan hasil pengujian tersebut, dari 64 kali pengambilan sampel untuk peng
         \hline
         45 & 25                    & 0  & 5                 & 0.9333333333    \\ 
         \hline
-        \multicolumn{2}{|l|}{31}   & \multicolumn{2}{l|}{2} & 70 test samples  \\
+        \multicolumn{2}{|l|}{31}   & \multicolumn{2}{l|}{2} & 70 tes \\
         \hline
     \end{tabular}
 \end{table}
@@ -117,7 +119,7 @@ Berdasarkan hasil pengujian tersebut, dari 64 kali pengambilan sampel untuk peng
       \hline
       40 & 139                    & 0  & 71                 & 0.716     \\ 
       \hline
-      \multicolumn{2}{|l|}{179}   & \multicolumn{2}{l|}{71} &  250      \\
+      \multicolumn{2}{|l|}{179}   & \multicolumn{2}{l|}{71} &  250 tes    \\
       \hline
     \end{tabular}
 \end{table}
