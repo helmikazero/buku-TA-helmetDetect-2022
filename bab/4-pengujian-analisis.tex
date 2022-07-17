@@ -878,7 +878,7 @@ Hasil \emph{train} tanpa menggunakan \emph{pretrain weight} ini selanjutkan akan
   
   \begin{figure} [h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{gambar/train_v2_val/low_ligjt/customMedium/val_batch0_pred.jpg}
+    \includegraphics[scale=0.2]{gambar/train_v2_val/low_ligjt/customMedium/val_batch0_pred.jpg}
     \caption{Hasil Prediksi Pada Keadaan dengan \emph{Weight Hedec Medium}}
     % \label{fig:labelbaru}  
   \end{figure}
@@ -907,7 +907,7 @@ Hasil \emph{train} tanpa menggunakan \emph{pretrain weight} ini selanjutkan akan
   
   \begin{figure} [h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{gambar/train_v2_val/low_ligjt/customLarge/val_batch0_pred.jpg}
+    \includegraphics[scale=0.2]{gambar/train_v2_val/low_ligjt/customLarge/val_batch0_pred.jpg}
     % \includegraphics[scale=0.1]{gambar/train_v2_val/low_ligjt/customLarge/val_batch0_labels.jpg}
     \caption{Hasil Prediksi Pada Keadaan dengan \emph{Weight Hedec Large}}
     % \label{fig:labelbaru}  
@@ -959,7 +959,7 @@ yaitu nilai \emph{Frame Per Second}(FPS).
 
  
 \par Pengujian dilakukan menggunakan Webcam Nemesis NYK A-90 Everest yang dipasang dengan Jetson Nano melalui kabel USB. 
-Pengujian dilakukan pada resolusi 256, 480, dan 640. Hasil pengukuran FPS pada pengujian YOLOv5 Helmet Detection dipaparkan pada Tabel~\ref{tb:jetsonanoperformancetest}.
+Pengujian dilakukan pada resolusi 640. Hasil pengukuran FPS pada pengujian YOLOv5 Helmet Detection dipaparkan pada Tabel~\ref{tb:jetsonanoperformancetest}.
 
 
 
@@ -967,18 +967,16 @@ Pengujian dilakukan pada resolusi 256, 480, dan 640. Hasil pengukuran FPS pada p
   \caption{Hasil Test Peforma Pad Jetson Nano}
   \label{tb:jetsonanoperformancetest}\\
   \hline
-  \multirow{2}{*}{\textbf{Nama Bobot}} & \multicolumn{3}{l|}{\textbf{Resolusi}}      \\ 
-  \cline{2-4}
-                                       & \textbf{256} & \textbf{480} & \textbf{640}  \\ 
+  \textbf{Nama Bobot} & \textbf{FPS}      \\ 
   \hline
-  hedec\_pretrain\_N                   & 24.4         & 22           & 18.5          \\
-  hedec\_pretrain\_S                   & 22.2         & 13           & 7.8           \\
-  hedec\_pretrain\_M                   & 15.2         & 5.7          & 3.4           \\
-  hedec\_pretrain\_L                   & 8            & 3.2          & 1.8           \\
-  hedec\_pure\_N                       & 24.9         & 21.5         & 18.4          \\
-  hedec\_pure\_S                       & 23           & 12.3         & 7.8           \\
-  hedec\_pure\_M                       & 15           & 5.4          & 3.3           \\
-  hedec\_pure\_L                       & 8.3          & 3            & 1.8           \\
+  hedec\_pretrain\_N                             & 18.5          \\
+  hedec\_pretrain\_S                             & 7.8           \\
+  hedec\_pretrain\_M                           & 3.4           \\
+  hedec\_pretrain\_L                            & 1.8           \\
+  hedec\_pure\_N                              & 18.4          \\
+  hedec\_pure\_S                              & 7.8           \\
+  hedec\_pure\_M                              & 3.3           \\
+  hedec\_pure\_L                                 & 1.8           \\
   \hline
 \end{longtable}
 
