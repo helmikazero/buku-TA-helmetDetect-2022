@@ -166,7 +166,7 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pretrain".
   \end{figure}
 
  
-
+  \newpage
   \begin{longtable}{|l|l|l|l|l|} 
     \caption{Hasil Validasi Perbedaan Jarak Pada \textbf{"hedec\_pretrain\_N"}}
     \label{tb:hasiljarak_hedec_pretrain_N}\\
@@ -265,7 +265,7 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pretrain".
   secara umum memiliki nilai yang sangat buruk. Pada jarak 1.3 meter, nilai \emph{precision} untuk kelas "with\_helmet"
   mencapai nilai 0.374 sedangkan pada jarak 9 meter mendapatkan nilai 0.26. Untuk kelas "no\_helmet" untuk semua jarak memiliki
   nilai yang bagus diatas 0.9 untuk presisinya. Terlihat untuk \emph{weight} ini mengalami kesulitan untuk mendeteksi
-  kelas "with\_helmet" pada jarak 1.3 meter dan pada jarak 9 meter.
+  kelas "with\_helmet" pada jarak 1.3 meter dan  jarak 9 meter.
 
 
   \begin{longtable}{|l|l|l|l|l|} 
@@ -295,6 +295,8 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pretrain".
     9 meter   & with\_helmet & 0.26      & 1      & 0.995  \\
     \hline
   \end{longtable}
+
+
 
   \begin{figure} [h!]
     \centering
@@ -396,10 +398,39 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pure".
     \label{fig:valjarak_sample_hedec_pure_N}  
   \end{figure}
 
-  \begin{longtable}{|l|l|l|l|l|} 
+  % \begin{longtable}{|l|l|l|l|l|} 
+  %   \caption{Hasil Validasi Perbedaan Jarak Pada \textbf{"hedec\_pure\_N"}}
+  %   \label{tb:hasiljarak_hedec_pure_N}\\
+  %   \hline
+  %     Jarak     & class        & precision & recall & mAP    \\ 
+  %     \hline
+  %     1.3 meter & all          & 0.889     & 0.8    & 0.903  \\
+  %     2.6 meter & all          & 0.971     & 1      & 0.995  \\
+  %     4 meter   & all          & 0.904     & 0.986  & 0.995  \\
+  %     5.3 meter & all          & 0.847     & 0.989  & 0.995  \\
+  %     6.7 meter & all          & 0.949     & 1      & 0.995  \\
+  %     9 meter   & all          & 0.92      & 1      & 0.995  \\
+  %     1.3 meter & no\_helmet   & 0.876     & 0.6    & 0.812  \\
+  %     2.6 meter & no\_helmet   & 0.991     & 1      & 0.995  \\
+  %     4 meter   & no\_helmet   & 1         & 0.971  & 0.995  \\
+  %     5.3 meter & no\_helmet   & 1         & 0.977  & 0.995  \\
+  %     6.7 meter & no\_helmet   & 0.997     & 1      & 0.995  \\
+  %     9 meter   & no\_helmet   & 0.979     & 1      & 0.995  \\
+  %     1.3 meter & with\_helmet & 0.902     & 1      & 0.995  \\
+  %     2.6 meter & with\_helmet & 0.952     & 1      & 0.995  \\
+  %     4 meter   & with\_helmet & 0.808     & 1      & 0.995  \\
+  %     5.3 meter & with\_helmet & 0.694     & 1      & 0.995  \\
+  %     6.7 meter & with\_helmet & 0.901     & 1      & 0.995  \\
+  %     9 meter   & with\_helmet & 0.861     & 1      & 0.995  \\
+  %     \hline
+  % \end{longtable}
+
+  \begin{table}
+    \centering
     \caption{Hasil Validasi Perbedaan Jarak Pada \textbf{"hedec\_pure\_N"}}
-    \label{tb:hasiljarak_hedec_pure_N}\\
-    \hline
+    \label{tb:hasiljarak_hedec_pure_N}
+    \begin{tabular}{|l|l|l|l|l|} 
+      \hline
       Jarak     & class        & precision & recall & mAP    \\ 
       \hline
       1.3 meter & all          & 0.889     & 0.8    & 0.903  \\
@@ -421,7 +452,9 @@ dari repo YOLOv5 yang selanjutnya disebut sebagai "hedec\_pure".
       6.7 meter & with\_helmet & 0.901     & 1      & 0.995  \\
       9 meter   & with\_helmet & 0.861     & 1      & 0.995  \\
       \hline
-  \end{longtable}
+    \end{tabular}
+\end{table}
+
 
   \begin{figure} [h!]
     \centering
