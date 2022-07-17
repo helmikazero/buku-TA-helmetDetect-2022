@@ -168,5 +168,22 @@ Berdasarkan hasil pengujian tersebut, dari 64 kali pengambilan sampel untuk peng
     \end{tabular}
 \end{table}
 
-\par Pada pengujian dengan tingkat kecerahan sangat rendah pada malam hari dengan penerangan background minimal ini, diambil 250 sampel pengujian. Dari 250 kali pengambil sampel tersebut, didapati 71 kali \emph{False Negative} yang lalu didapati nilai akurasi 0,716. Nilai akurasi ini sangat jelas menunjukkan terdapat penurunan performa deteksi pada keadaan minim cahaya yang berlebihan.
+\par Pada pengujian dengan tingkat kecerahan sangat rendah pada malam hari dengan penerangan background minimal ini, diambil 250 sampel pengujian. Dari 250 kali pengambil sampel tersebut, didapati 71 kali \emph{False Negative} yang lalu didapati nilai akurasi 0,716. 71 kali kegagalan menyalakan alarm ini disebabkan saat kepala tanpa helm tidak terdetkeis sama sekali yang dimana kebanyakan saat pengujian pada orang yang mengenakan pakaian gelap yang tidak memantulkan cahaya ke wajah yang beberapa dicontohkan pada Gambar~\ref{fig:sys_lowilu_malam_problem}. Nilai akurasi ini sangat jelas menunjukkan terdapat penurunan performa deteksi pada keadaan minim cahaya yang berlebihan. Beberapa contoh hasil deteksi pada waktu malam hari dengan pencahayaan sangat rendah ditunjukkan pada Gambar~\ref{fig:sys_lowilu_malam}.
 
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_gelap/bagus/gelap_alif_ver2 (1).png}
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_gelap/bagus/gelap_alif_ver2 (54).png}
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_gelap/bagus/gelap_helmika_ver2 (57).png}
+    \caption{Contoh Hasil Deteksi Sistem pada Waktu Malam (Pencahayaan Sangat Rendah)}
+    \label{fig:sys_lowilu_malam}  
+\end{figure}
+
+\begin{figure} [h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_gelap/problem/gelap_helmika_ver2 (19).png}
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_gelap/problem/gelap_helmika_ver2 (26).png}
+    \includegraphics[width=0.3\textwidth]{gambar/sistem_gelap/problem/gelap_helmika_ver2 (33).png}
+    \caption{Contoh Hasil Deteksi Sistem pada Waktu Malam (Pencahayaan Sangat Rendah) \emph{False Negative}}
+    \label{fig:sys_lowilu_malam_problem}  
+\end{figure}
